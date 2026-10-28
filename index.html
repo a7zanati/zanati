@@ -21,28 +21,7 @@
     --text:'IBM Plex Sans Arabic', sans-serif;
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#111111;
-      --ink:#F4F4F2;
-      --ink-soft:#9A9A9A;
-      --line:#F4F4F2;
-      --line-soft:#333333;
-      --red:#FF5240;
-      --panel:#1B1B1B;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#111111;
-    --ink:#F4F4F2;
-    --ink-soft:#9A9A9A;
-    --line:#F4F4F2;
-    --line-soft:#333333;
-    --red:#FF5240;
-    --panel:#1B1B1B;
-    color-scheme: dark;
-  }
+  /* الخلفية بيضاء ثابتة دائمًا بناءً على طلب العميل — لا يتبع وضع الجهاز الداكن */
 
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth; scroll-padding-top:120px;}
@@ -53,10 +32,26 @@
     padding-top:env(safe-area-inset-top,0px);
     padding-bottom:calc(64px + env(safe-area-inset-bottom,0px));
     overflow-x:hidden;
+    position:relative;
   }
   body::before{
     content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px);
     background:var(--bg); z-index:60;
+  }
+  /* شبكة خلفية خافتة ثابتة أثناء السكرول */
+  .bg-grid{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:
+      repeating-linear-gradient(90deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent calc(100% / 12)),
+      repeating-linear-gradient(0deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent 120px);
+    opacity:0.35;
+  }
+  @media (max-width:760px){
+    .bg-grid{
+      background-image:
+        repeating-linear-gradient(90deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent calc(100% / 4)),
+        repeating-linear-gradient(0deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent 90px);
+    }
   }
   img{max-width:100%; display:block;}
   a{color:inherit; text-decoration:none;}
@@ -135,7 +130,17 @@
   }
   .hero-eyebrow::before{content:"";width:10px;height:10px;background:var(--red);border-radius:50%;flex-shrink:0;}
   .hero h1{
-    font-size:clamp(2.6rem, 6.4vw, 5.2rem); line-height:0.98;
+    font-size:clamp(2.6rem, 6.4vw, 5.2rem); line-height:1.08;
+  }
+  .typewriter .tw-line{display:block; min-height:1.08em;}
+  .tw-cursor{
+    display:inline-block; color:var(--red); font-weight:400;
+    animation:blink 1s step-end infinite;
+  }
+  .tw-cursor.done{animation:none; opacity:0;}
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion:reduce){
+    .tw-cursor{animation:none;}
   }
   .hero-meta-cell p{color:var(--ink-soft); font-size:1rem; margin-bottom:28px; max-width:34ch;}
   .hero-stats{display:flex; flex-direction:column; gap:0;}
@@ -398,14 +403,31 @@
 
   .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease;}
   .reveal.in{opacity:1; transform:none;}
+
+  /* عناصر تظهر بالترتيب (fade-in staggered) داخل الشبكات */
+  .cat-grid.reveal > *,
+  .work-grid.reveal > *,
+  .content-band.reveal > *{
+    opacity:0; transform:translateY(14px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .cat-grid.reveal.in > *,
+  .work-grid.reveal.in > *,
+  .content-band.reveal.in > *{
+    opacity:1; transform:none;
+  }
+
   @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
+    .reveal, .cat-grid.reveal > *, .work-grid.reveal > *, .content-band.reveal > *{
+      opacity:1; transform:none; transition:none;
+    }
     html{scroll-behavior:auto;}
     .app-frame{transition:opacity .2s;}
   }
 </style>
 </head>
 <body>
+<div class="bg-grid" aria-hidden="true"></div>
 
 <header class="topbar">
   <div class="wrap topbar-row">
@@ -439,7 +461,7 @@
       <div class="hero-top">
         <div class="hero-title-cell">
           <p class="hero-eyebrow">متاح الآن لمشاريع جديدة</p>
-          <h1>أنظمة تشتغل.<br>تصميم يوصل.<br>محتوى يعلّم.</h1>
+          <h1 class="typewriter" data-lines="أنظمة تشتغل.|تصميم يوصل.|محتوى يعلّم."><span class="tw-line"></span><span class="tw-line"></span><span class="tw-line"></span><span class="tw-cursor" aria-hidden="true">|</span></h1>
         </div>
         <div class="hero-meta-cell">
           <p>أحمد الزناتي — مطور أنظمة صيانة وبرامج محاسبة، مصمم جرافيك، ومنشئ محتوى تقني على يوتيوب.</p>
@@ -829,10 +851,112 @@
     menuBtn.setAttribute('aria-expanded', false);
   }));
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ===== Web Audio: نقرات خفيفة بدون ملفات صوت خارجية ===== */
+  let audioCtx = null;
+  function getCtx(){
+    if(!audioCtx){
+      try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch(e){ audioCtx = null; }
+    }
+    return audioCtx;
+  }
+  function playTick(freq, duration, gain){
+    const ctx = getCtx();
+    if(!ctx) return;
+    if(ctx.state === 'suspended') ctx.resume();
+    const osc = ctx.createOscillator();
+    const amp = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = freq;
+    amp.gain.value = gain;
+    amp.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    osc.connect(amp).connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+  }
+  function typeTick(){ if(!prefersReducedMotion) playTick(1300 + Math.random()*400, 0.03, 0.035); }
+  function clickTick(){ if(!prefersReducedMotion) playTick(700, 0.07, 0.06); }
+
+  /* صوت نقرة على كل الأزرار والروابط */
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('a, button');
+    if(target) clickTick();
+  }, true);
+
+  /* ===== Typewriter effect للعنوان الرئيسي ===== */
+  const twEl = document.querySelector('.typewriter');
+  if(twEl){
+    const lines = twEl.dataset.lines.split('|');
+    const lineEls = twEl.querySelectorAll('.tw-line');
+    const cursor = twEl.querySelector('.tw-cursor');
+
+    function typeLine(lineIndex, charIndex){
+      if(lineIndex >= lines.length){
+        cursor.classList.add('done');
+        return;
+      }
+      const text = lines[lineIndex];
+      if(charIndex <= text.length){
+        lineEls[lineIndex].textContent = text.slice(0, charIndex);
+        if(charIndex > 0 && charIndex <= text.length) typeTick();
+        setTimeout(() => typeLine(lineIndex, charIndex + 1), prefersReducedMotion ? 0 : 42);
+      } else {
+        setTimeout(() => typeLine(lineIndex + 1, 0), prefersReducedMotion ? 0 : 160);
+      }
+    }
+
+    if(prefersReducedMotion){
+      lines.forEach((t, i) => lineEls[i].textContent = t);
+      cursor.classList.add('done');
+    } else {
+      /* يبدأ الكتابة عند أول تفاعل أو تلقائيًا بعد لحظة بسيطة لضمان سماح المتصفح بالصوت */
+      let started = false;
+      function startTyping(){
+        if(started) return;
+        started = true;
+        typeLine(0, 0);
+      }
+      ['click','scroll','keydown','touchstart'].forEach(evt =>
+        window.addEventListener(evt, startTyping, {once:true, passive:true})
+      );
+      setTimeout(startTyping, 600);
+    }
+  }
+
+  /* ===== Scroll reveal بالترتيب (stagger) ===== */
+  const staggerGroups = new Set(['cat-grid','work-grid','content-band']);
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      const el = e.target;
+      const isGroup = [...el.classList].some(c => staggerGroups.has(c));
+      el.classList.add('in'); /* يفعّل CSS transition للعنصر نفسه ولأبنائه معًا */
+      if(isGroup){
+        Array.from(el.children).forEach((child, i) => {
+          child.style.transitionDelay = `${i * 70}ms`;
+        });
+      }
+      io.unobserve(el);
+    });
   }, {threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* سكرول خفيف يحرك خطوط الشبكة في الخلفية بالتوازي (parallax بسيط) */
+  if(!prefersReducedMotion){
+    const grid = document.querySelector('.bg-grid');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if(!ticking){
+        window.requestAnimationFrame(() => {
+          grid.style.backgroundPosition = `0 ${window.scrollY * 0.15}px, 0 ${window.scrollY * 0.15}px`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive:true});
+  }
 
   /* App scroll-driven showcase: cycles frames based on scroll position within the track */
   const track = document.getElementById('appTrack');
