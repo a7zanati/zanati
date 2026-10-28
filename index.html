@@ -1,646 +1,876 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="utf-8" />
-    <title>Ahmed - My Website</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
-    <meta content="" name="author" />
-
-   <!--[if lt IE 9]>
-            <script src="js/html5shiv.js"></script>
-        <![endif]-->
-    <!-- CSS Files
-    ================================================== -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/jpreloader.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css" />
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" />
-    <link href="css/owl.theme.css" rel="stylesheet" type="text/css" />
-    <link href="css/owl.transitions.css" rel="stylesheet" type="text/css" />
-    <link href="css/magnific-popup.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery.countdown.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- color scheme -->
-    <link id="colors" href="css/colors/scheme-03.css" rel="stylesheet" type="text/css" />
-    <link href="css/coloring.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body class="de_light">
-    <div id="wrapper">
-        <div id="btn-exit" class="dark">
-            <div class="line-1"></div>
-            <div class="line-2"></div>
-        </div>
-        <div class="transition"></div>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أحمد الزناتي — صيانة أنظمة · برامج محاسبة · تصميم · محتوى</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-    /* تلوين أيقونات التواصل الاجتماعي باللون الأزرق السماوي المأخوذ من الصورة */
-    .social-icons a i {
-        color: #56A7C5 !important;
-        transition: color 0.3s ease;
+  :root{
+    --bg:#FFFFFF;
+    --ink:#111111;
+    --ink-soft:#6B6B6B;
+    --line:#111111;
+    --line-soft:#D8D8D8;
+    --red:#E63326;
+    --panel:#F3F3F1;
+    --mono:'JetBrains Mono', monospace;
+    --disp:'Archivo', 'IBM Plex Sans Arabic', sans-serif;
+    --text:'IBM Plex Sans Arabic', sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#111111;
+      --ink:#F4F4F2;
+      --ink-soft:#9A9A9A;
+      --line:#F4F4F2;
+      --line-soft:#333333;
+      --red:#FF5240;
+      --panel:#1B1B1B;
+      color-scheme: dark;
     }
-    /* تأثير عند تمرير الماوس فوق الأيقونة */
-    .social-icons a:hover i {
-        color: #3C7A92 !important;
-    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#111111;
+    --ink:#F4F4F2;
+    --ink-soft:#9A9A9A;
+    --line:#F4F4F2;
+    --line-soft:#333333;
+    --red:#FF5240;
+    --panel:#1B1B1B;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:120px;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--text); font-weight:400; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:calc(64px + env(safe-area-inset-bottom,0px));
+    overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px);
+    background:var(--bg); z-index:60;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:var(--mono); direction:ltr; unicode-bidi:isolate;}
+
+  h1,h2,h3,.disp{font-family:var(--disp); font-weight:800; letter-spacing:-0.01em; text-transform:none;}
+
+  .wrap{max-width:1240px; margin:0 auto; padding:0 28px;}
+  .rule{height:1px; background:var(--line); border:none;}
+  .rule-soft{height:1px; background:var(--line-soft); border:none;}
+
+  /* ===== grid system ===== */
+  .grid12{display:grid; grid-template-columns:repeat(12,1fr); gap:0;}
+  .col-line{border-right:1px solid var(--line-soft);}
+  [dir="rtl"] .col-line{border-right:none; border-left:1px solid var(--line-soft);}
+
+  /* ===== top bar ===== */
+  .topbar{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:50;
+    background:var(--bg); border-bottom:1px solid var(--line);
+  }
+  .topbar-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    font-family:var(--disp); font-weight:900; font-size:1.15rem;
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand-index{
+    font-family:var(--mono); font-size:0.7rem; color:var(--ink-soft);
+    border:1px solid var(--line-soft); padding:3px 7px; border-radius:2px;
+  }
+  .topnav{display:flex; gap:0; font-family:var(--mono); font-size:0.8rem;}
+  .topnav a{
+    padding:0 18px; color:var(--ink-soft); border-right:1px solid var(--line-soft);
+    transition:color .15s;
+  }
+  [dir="rtl"] .topnav a{border-right:none; border-left:1px solid var(--line-soft);}
+  .topnav a:first-child{padding-right:0;}
+  [dir="rtl"] .topnav a:first-child{padding-right:18px; padding-left:0;}
+  .topnav a:last-child{border:none;}
+  .topnav a:hover{color:var(--red);}
+  .menu-btn{
+    display:none; background:none; border:1px solid var(--line); border-radius:2px;
+    width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer;
+  }
+  @media (max-width:900px){
+    .topnav{display:none;}
+    .menu-btn{display:flex;}
+  }
+  .mobile-panel{
+    position:fixed; inset:0; top:calc(72px + env(safe-area-inset-top,0px));
+    background:var(--bg); z-index:45; transform:translateY(-110%); transition:transform .3s ease;
+    padding:10px 28px; display:flex; flex-direction:column;
+  }
+  .mobile-panel.open{transform:translateY(0);}
+  .mobile-panel a{
+    padding:20px 0; border-bottom:1px solid var(--line-soft);
+    font-family:var(--disp); font-weight:700; font-size:1.3rem;
+  }
+
+  /* ===== hero ===== */
+  .hero{padding:72px 0 0;}
+  .hero-top{
+    display:grid; grid-template-columns:2fr 1fr; gap:0; border-bottom:1px solid var(--line);
+  }
+  .hero-title-cell{padding:0 0 48px;}
+  [dir="rtl"] .hero-top > div:first-child{border-left:1px solid var(--line-soft); padding-left:44px;}
+  .hero-meta-cell{padding:0 0 48px 44px;}
+  [dir="rtl"] .hero-meta-cell{padding:0 44px 48px 0;}
+
+  .hero-eyebrow{
+    font-family:var(--mono); font-size:0.8rem; color:var(--red);
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .hero-eyebrow::before{content:"";width:10px;height:10px;background:var(--red);border-radius:50%;flex-shrink:0;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6.4vw, 5.2rem); line-height:0.98;
+  }
+  .hero-meta-cell p{color:var(--ink-soft); font-size:1rem; margin-bottom:28px; max-width:34ch;}
+  .hero-stats{display:flex; flex-direction:column; gap:0;}
+  .hstat{display:flex; justify-content:space-between; padding:14px 0; border-top:1px solid var(--line-soft);}
+  .hstat:last-child{border-bottom:1px solid var(--line-soft);}
+  .hstat span:first-child{color:var(--ink-soft); font-size:0.9rem;}
+  .hstat span:last-child{font-family:var(--mono); font-weight:600;}
+
+  .hero-bottom{
+    display:grid; grid-template-columns:repeat(4,1fr);
+  }
+  .hero-bottom a{
+    padding:20px 24px; border-left:1px solid var(--line-soft);
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:0.92rem; font-weight:600; transition:background .15s, color .15s;
+  }
+  [dir="rtl"] .hero-bottom a{border-left:none; border-right:1px solid var(--line-soft);}
+  .hero-bottom a:first-child{border:none;}
+  .hero-bottom a:hover{background:var(--ink); color:var(--bg);}
+  @media (max-width:900px){
+    .hero-top{grid-template-columns:1fr;}
+    [dir="rtl"] .hero-top > div:first-child{border-left:none; padding-left:0; border-bottom:1px solid var(--line-soft); padding-bottom:36px;}
+    .hero-meta-cell{padding:36px 0 44px !important;}
+    .hero-bottom{grid-template-columns:1fr 1fr;}
+    .hero-bottom a{border-bottom:1px solid var(--line-soft);}
+  }
+  @media (max-width:560px){
+    .hero-bottom{grid-template-columns:1fr;}
+  }
+
+  /* ===== section header (numbered) ===== */
+  .sec-head{
+    display:grid; grid-template-columns:120px 1fr; align-items:end;
+    padding:60px 0 28px; border-bottom:1px solid var(--line);
+  }
+  .sec-num{font-family:var(--mono); font-size:0.95rem; color:var(--red); padding-bottom:6px;}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
+  .sec-head .sec-desc{color:var(--ink-soft); font-size:0.95rem; margin-top:10px; max-width:50ch;}
+  @media (max-width:700px){
+    .sec-head{grid-template-columns:1fr; gap:10px;}
+  }
+
+  section{padding-bottom:10px;}
+
+  /* ===== category cards (4 portals) ===== */
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line-soft);
+  }
+  .cat-card{
+    border-left:1px solid var(--line-soft); padding:34px 26px 30px;
+    min-height:230px; display:flex; flex-direction:column; justify-content:space-between;
+    transition:background .18s, color .18s;
+    position:relative;
+  }
+  [dir="rtl"] .cat-card{border-left:none; border-right:1px solid var(--line-soft);}
+  .cat-card:first-child{border:none;}
+  .cat-card:hover{background:var(--ink); color:var(--bg);}
+  .cat-card:hover .cat-num{color:var(--red);}
+  .cat-num{font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft);}
+  .cat-card h3{font-size:1.35rem; margin:18px 0 8px;}
+  .cat-card p{font-size:0.86rem; opacity:0.75;}
+  .cat-arrow{align-self:flex-end; font-size:1.3rem; margin-top:18px;}
+  @media (max-width:900px){
+    .cat-grid{grid-template-columns:1fr 1fr;}
+    .cat-card:nth-child(2){border-left:none;}
+    [dir="rtl"] .cat-card:nth-child(2){border-right:none;}
+    .cat-card:nth-child(n+3){border-top:1px solid var(--line-soft);}
+  }
+  @media (max-width:560px){
+    .cat-grid{grid-template-columns:1fr;}
+    .cat-card{border:none !important; border-top:1px solid var(--line-soft) !important;}
+    .cat-card:first-child{border-top:none !important;}
+  }
+
+  /* ===== services rows (per category) ===== */
+  .srow{
+    display:grid; grid-template-columns:70px 1fr 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line-soft);
+    align-items:start;
+  }
+  .srow .n{font-family:var(--mono); font-size:0.85rem; color:var(--red);}
+  .srow h4{font-size:1.1rem; font-weight:700;}
+  .srow p{color:var(--ink-soft); font-size:0.9rem;}
+  @media (max-width:700px){
+    .srow{grid-template-columns:36px 1fr; row-gap:6px;}
+    .srow p{grid-column:2;}
+  }
+
+  /* ===== app scroll showcase (accounting/cashier software) ===== */
+  .app-showcase{
+    border:1px solid var(--line); margin:36px 0 10px; overflow:hidden;
+  }
+  .app-topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:0.78rem;
+  }
+  .app-dots{display:flex; gap:6px;}
+  .app-dots span{width:9px;height:9px;border-radius:50%; background:var(--line-soft);}
+  .app-scroll-track{
+    position:relative; height:520px; overflow:hidden; background:var(--panel);
+  }
+  .app-frame{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    opacity:0; transform:translateY(40px); transition:opacity .5s ease, transform .5s ease;
+    padding:28px;
+  }
+  .app-frame.active{opacity:1; transform:translateY(0);}
+  .app-mock{
+    width:100%; max-width:640px; background:var(--bg); border:1px solid var(--line);
+  }
+  .app-mock-head{
+    display:flex; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--line-soft);
+    font-family:var(--mono); font-size:0.72rem; color:var(--ink-soft);
+  }
+  .app-mock-body{padding:22px;}
+  .app-mock-body h5{font-size:1.15rem; font-weight:700; margin-bottom:14px;}
+  .mock-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line-soft); font-size:0.88rem;}
+  .mock-row:last-child{border:none;}
+  .mock-row .lbl{color:var(--ink-soft);}
+  .mock-total{display:flex; justify-content:space-between; padding-top:16px; margin-top:6px; border-top:2px solid var(--ink); font-weight:800; font-size:1.05rem;}
+  .mock-total span:last-child{color:var(--red);}
+  .mock-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+  .mock-stat{border:1px solid var(--line-soft); padding:14px; text-align:center;}
+  .mock-stat b{display:block; font-family:var(--mono); font-size:1.3rem;}
+  .mock-stat span{font-size:0.76rem; color:var(--ink-soft);}
+  .app-dots-nav{
+    display:flex; justify-content:center; gap:10px; padding:16px; border-top:1px solid var(--line);
+  }
+  .app-dots-nav button{
+    width:8px; height:8px; border-radius:50%; border:1px solid var(--ink); background:transparent; cursor:pointer; padding:0;
+  }
+  .app-dots-nav button.active{background:var(--red); border-color:var(--red);}
+  @media (max-width:700px){ .app-scroll-track{height:460px;} .mock-grid{grid-template-columns:1fr 1fr;} }
+
+  /* ===== work grid (design) ===== */
+  .work-grid{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-soft);}
+  .work-item{
+    border-left:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);
+    aspect-ratio:4/3; position:relative; overflow:hidden; background:var(--panel);
+  }
+  [dir="rtl"] .work-item{border-left:none; border-right:1px solid var(--line-soft);}
+  .work-item:nth-child(3n+1){border-left:none;}
+  [dir="rtl"] .work-item:nth-child(3n+1){border-right:none;}
+  .work-item img{width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.05); transition:filter .3s;}
+  .work-item:hover img{filter:grayscale(0%) contrast(1.05);}
+  .work-tag{
+    position:absolute; bottom:12px; right:12px; background:var(--bg); border:1px solid var(--line);
+    padding:5px 10px; font-family:var(--mono); font-size:0.7rem; opacity:0; transition:opacity .2s;
+  }
+  [dir="rtl"] .work-tag{right:auto; left:12px;}
+  .work-item:hover .work-tag{opacity:1;}
+  @media (max-width:760px){
+    .work-grid{grid-template-columns:1fr 1fr;}
+    .work-item:nth-child(3n+1){border-left:1px solid var(--line-soft);}
+    [dir="rtl"] .work-item:nth-child(3n+1){border-right:1px solid var(--line-soft);}
+    .work-item:nth-child(2n+1){border-left:none;}
+    [dir="rtl"] .work-item:nth-child(2n+1){border-right:none;}
+  }
+  @media (max-width:500px){.work-grid{grid-template-columns:1fr;}}
+
+  /* ===== lessons / video + attachments ===== */
+  .lesson{
+    border:1px solid var(--line); margin-bottom:28px;
+  }
+  .lesson-top{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    padding:18px 22px; border-bottom:1px solid var(--line);
+  }
+  .lesson-meta{display:flex; gap:16px; font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft);}
+  .lesson h3{font-size:1.2rem; padding:0 22px; margin:18px 0 16px;}
+  .video-frame{position:relative; width:100%; aspect-ratio:16/9; background:#000;}
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .lesson-desc{padding:20px 22px 4px; color:var(--ink-soft); font-size:0.92rem; max-width:70ch;}
+  .attach-block{padding:18px 22px 22px;}
+  .attach-label{font-family:var(--mono); font-size:0.72rem; color:var(--red); margin-bottom:12px; display:block;}
+  .file-item{
+    display:flex; align-items:center; gap:14px; padding:13px 16px;
+    border:1px solid var(--line-soft); margin-bottom:8px; transition:border-color .15s;
+  }
+  .file-item:hover{border-color:var(--ink);}
+  .file-ext{
+    font-family:var(--mono); font-size:0.7rem; font-weight:700; width:40px; height:30px;
+    display:flex; align-items:center; justify-content:center; border:1px solid var(--line); flex-shrink:0;
+  }
+  .file-info{flex:1; min-width:0;}
+  .file-name{font-size:0.92rem; font-weight:600;}
+  .file-size{font-size:0.76rem; color:var(--ink-soft); font-family:var(--mono);}
+  .file-dl{
+    width:30px; height:30px; border:1px solid var(--ink); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s;
+  }
+  .file-item:hover .file-dl{background:var(--ink); color:var(--bg);}
+  .yt-link{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:0.8rem;
+    color:var(--red); margin-top:4px;
+  }
+
+  /* ===== content creator band ===== */
+  .content-band{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    display:grid; grid-template-columns:repeat(4,1fr);
+  }
+  .cband-item{
+    padding:30px 24px; border-left:1px solid var(--line-soft);
+    display:flex; flex-direction:column; gap:10px;
+  }
+  [dir="rtl"] .cband-item{border-left:none; border-right:1px solid var(--line-soft);}
+  .cband-item:first-child{border:none;}
+  .cband-item b{font-family:var(--mono); font-size:2rem; color:var(--red);}
+  .cband-item span{font-size:0.85rem; color:var(--ink-soft);}
+  @media (max-width:800px){
+    .content-band{grid-template-columns:1fr 1fr;}
+    .cband-item:nth-child(2){border:none;}
+    .cband-item:nth-child(n+3){border-top:1px solid var(--line-soft);}
+  }
+  @media (max-width:480px){
+    .content-band{grid-template-columns:1fr;}
+    .cband-item{border:none !important; border-top:1px solid var(--line-soft) !important;}
+    .cband-item:first-child{border-top:none !important;}
+  }
+
+  /* ===== telegram sticky bar ===== */
+  .tg-bar{
+    position:fixed; bottom:0; right:0; left:0; z-index:55;
+    background:var(--ink); color:var(--bg);
+    border-top:1px solid var(--ink);
+    padding:12px calc(env(safe-area-inset-left,0px) + 20px) calc(12px + env(safe-area-inset-bottom,0px)) calc(env(safe-area-inset-right,0px) + 20px);
+  }
+  .tg-bar-row{
+    max-width:1240px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .tg-left{display:flex; align-items:center; gap:12px; min-width:0;}
+  .tg-dot{width:9px; height:9px; border-radius:50%; background:var(--red); flex-shrink:0;}
+  .tg-text{font-size:0.86rem; min-width:0;}
+  .tg-text b{font-weight:700;}
+  .tg-text .sub{display:block; font-size:0.74rem; opacity:0.6; font-family:var(--mono);}
+  .tg-btn{
+    background:var(--red); color:#fff; padding:10px 20px; font-size:0.85rem; font-weight:700;
+    white-space:nowrap; flex-shrink:0; border:1px solid var(--red); transition:opacity .15s;
+  }
+  .tg-btn:hover{opacity:0.85;}
+  @media (max-width:560px){
+    .tg-text .sub{display:none;}
+    .tg-btn{padding:9px 14px; font-size:0.78rem;}
+  }
+
+  /* ===== footer ===== */
+  footer{border-top:1px solid var(--line); padding:44px 0 50px; margin-top:40px;}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:30px;}
+  .foot-grid h5{font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft); margin-bottom:14px;}
+  .foot-grid a{display:block; padding:6px 0; font-size:0.92rem;}
+  .foot-grid a:hover{color:var(--red);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:30px; margin-top:30px; border-top:1px solid var(--line-soft);
+    font-size:0.8rem; color:var(--ink-soft); flex-wrap:wrap; gap:10px;
+  }
+  @media (max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.foot-grid{grid-template-columns:1fr;}}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+    .app-frame{transition:opacity .2s;}
+  }
 </style>
+</head>
+<body>
 
-<header class="header-light transparent">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="d-flex justify-content-between">
-                            <div class="align-self-center header-col-left">
-                                <div id="logo">
-                                    <a href="index.html">
-                                        Ahmed EL-Zanaty</a>
-                                </div>
-                                </div>
-                            <div class="align-self-center ml-auto header-col-mid">
-                                <ul id="mainmenu" class="scrollnav">
-                                    <li><a href="#section-resume">Resume</a></li>
-                                    <li></li>
-                                    <li><a href="#section-about">About Me</a></li>
-                                    <li></li>
-                                    <li><a href="#section-portfolio">Portfolio</a></li>
-                                    <li></li>
-                                    <li><a href="#section-blog">Blog</a></li>
-                                    <li></li>
-                                    <li><a href="#section-contact">Contact</a></li>
-                                    <li></li>
-                                </ul>
-                                </div>
-                            <div class="align-self-center ml-auto header-col-right">
-                                <div class="social-icons s-border sm-hide">
-                                    <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin fa-lg"></i></a>
-                                    <a href="#"><i class="fa fa-instagram fa-lg"></i></a>
-                                </div>
-                                <span id="menu-btn"></span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-       
-        <!-- content begin -->
-        <div class="no-bottom no-top">
-            <div id="top"></div>
-  <!-- section begin -->
-            <section id="section-about" data-bgimage="url(images/background/3.jpg) center fixed">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 wow fadeInRight">
-                            <h4 class="title">Who I Am</h4>
-                            <h2 class="title">About Me</h2>
-                            <div class="title-underline"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-sm-30 text-center">
-                            <div class="de-images">                                 
-                                <div class="d-hover-zoom wow fadeInRight">
-                                    <a class="image-popup" href="https://pps.services.adobe.com/api/profile/A4E6285D627AE1A90A495F86@AdobeID/image/8c0eb1ef-09c5-43a0-9a32-3785bf3852e2/230">
-                                        <img class="img-fluid" src="https://pps.services.adobe.com/api/profile/A4E6285D627AE1A90A495F86@AdobeID/image/8c0eb1ef-09c5-43a0-9a32-3785bf3852e2/230" alt="Ahmed Mohamed" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 offset-md-1 wow fadeInRight" data-wow-delay=".5s">
-                            <h2>Hello, I'm <span class="id-color">Ahmed Mohamed</span></h2>
-                            <!-- النص المصحح والمصقول احترافيًا هنا -->
-                            <p>A highly motivated and versatile digital professional with proven experience in graphic design (print & social media), instructional design, video editing, and front-end web development. I am adept at combining creative vision with technical execution to deliver user-centered solutions across multiple platforms.<br><br>
+<header class="topbar">
+  <div class="wrap topbar-row">
+    <div class="brand">أحمد الزناتي <span class="brand-index mono">v.2026</span></div>
+    <nav class="topnav">
+      <a href="#maintenance">الصيانة</a>
+      <a href="#accounting">البرامج</a>
+      <a href="#design">التصميم</a>
+      <a href="#lessons">الدروس</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</header>
 
-In addition to my design expertise, I possess strong skills in desktop application development and a growing proficiency in AI prompt engineering, leveraging advanced artificial intelligence tools to optimize productivity and elevate content generation.<br><br>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#maintenance">01 — الصيانة</a>
+  <a href="#accounting">02 — البرامج</a>
+  <a href="#design">03 — التصميم</a>
+  <a href="#content">04 — المحتوى</a>
+  <a href="#lessons">الدروس</a>
+  <a href="#contact">تواصل</a>
+</div>
 
-Recognized for my keen eye for detail, strong communication abilities, and the capacity to manage multiple projects under tight deadlines, I am looking to contribute innovative thinking and practical solutions to a forward-thinking organization.</p>
-                            <ul class="info-list">
-                                <li><span class="d_title">Age</span><span class="d_value">20</span></li>
-                                <li><span class="d_title">Residence</span><span class="d_value">Egypt</span></li>
-                                <li><span class="d_title">Address</span><span class="d_value">Sanbaluwayn, Dakahlia, Egypt</span></li>
-                                <li><span class="d_title">Email</span><span class="d_value">ahmedalzanati@std.edu.mans.eg</span></li>
-                                <li><span class="d_title">Phone</span><span class="d_value">+20 164 4404 721</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spacer-80"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="s_border">My Services</h3>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb30">
-                            <div class="f-box f-icon-left f-icon-box">
-                                <i class="fa fa-laptop id-color"></i>
-                                <div class="fb-text">
-                                    <h4>Front-End Web Dev</h4>
-                                    <p>Building responsive, user-friendly web interfaces using clean code to bridge the gap between design and functionality.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay=".25s">
-                            <div class="f-box f-icon-left f-icon-box">
-                                <i class="fa fa-paint-brush id-color"></i>
-                                <div class="fb-text">
-                                    <h4>Graphic Design</h4>
-                                    <p>Crafting visually compelling print layouts and high-engagement social media graphics tailored to your brand identity.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-30 wow fadeInRight" data-wow-delay=".5s">
-                            <div class="f-box f-icon-left f-icon-box">
-                                <i class="fa fa-graduation-cap id-color"></i>
-                                <div class="fb-text">
-                                    <h4>Instructional Design</h4>
-                                    <p>Creating structured, interactive, and effective learning experiences that translate complex workflows into clear content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-sm-30 wow fadeInRight" data-wow-delay="0s">
-                            <div class="f-box f-icon-left f-icon-box">
-                                <i class="fa fa-film id-color"></i>
-                                <div class="fb-text">
-                                    <h4>Video Editing</h4>
-                                    <p>Assembling, pacing, and polishing raw footage into crisp, engaging videos with strong narrative flows.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-sm-30 wow fadeInRight" data-wow-delay=".25s">
-                            <div class="f-box f-icon-left f-icon-box">
-                                <i class="fa fa-windows id-color"></i>
-                                <div class="fb-text">
-                                    <h4>Desktop Applications</h4>
-                                    <p>Designing and developing stable, high-performance offline tools tailored to optimize specific business processes.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 mb-sm-30 wow fadeInRight" data-wow-delay=".5s">
-                            <div class="f-box f-icon-left f-icon-box">
-                                <i class="fa fa-magic id-color"></i>
-                                <div class="fb-text">
-                                    <h4>AI Prompt Engineering</h4>
-                                    <p>Leveraging cutting-edge AI methodologies to design precise workflows, enhance content generation, and scale productivity.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="spacer-80"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="s_border">Testimonials</h3>
-                        </div>
-                        <div class="col-md-12">
-                            <div id="testimonial-carousel" class="owl-carousel owl-theme wow fadeInUp">
-                                <blockquote class="testimonial-big">
-                                    Working with Ahmed was a seamless experience. His video editing skills are top-notch, delivering high-quality, engaging content right on schedule.
-                                    <img src="https://i.pinimg.com/1200x/17/c0/d1/17c0d1bfcef18ad4a83d5b5b95f328df.jpg" alt="" />
-                                    <span class="name">John, Content Creator</span>
-                                </blockquote>
-                                <blockquote class="testimonial-big">
-                                    I am genuinely impressed by his versatility. He translated our training manuals into brilliant instructional design modules while keeping our UI look sharp.
-                                    <img src="https://i.pinimg.com/736x/af/92/51/af92516ab0412504becf06a1defe1a43.jpg" alt="" />
-                                    <span class="name">Oweys, Project Manager</span>
-                                </blockquote>
-                                <blockquote class="testimonial-big">
-                                    Ahmed brought a phenomenal mix of visual design flair and technical capability to our front-end project. Exceptional communication throughout!
-                                    <img src="https://i.pinimg.com/736x/7e/84/cb/7e84cb0169b6dd9d9501e58a06106d09.jpg" alt="" />
-                                    <span class="name">Rayan, AIP</span>
-                                </blockquote>
-                                <blockquote class="testimonial-big">
-                                    His prompt engineering knowledge saved our team days of work. Ahmed knows exactly how to fuse design logic with modern AI tools.
-                                    <img src="https://i.pinimg.com/736x/3d/40/08/3d4008867bc0863b75e4016fc4428801.jpg" alt="" />
-                                    <span class="name">Mahmoud, Marketing at DX</span>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- section close -->
-            <!-- section begin -->
-            <section id="section-main" class="vertical-center" data-bgimage="url(images/background/1.jpg) top">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6"></div>
-
-                        <div class="col-md-6">
-                            <div class="typed-words wow fadeInRight" data-wow-delay=".2s">
-                                <div class="typed-strings">
-                                    <p>Graphic Design & Social Media</p>
-                                    <p>Welcome..</p>                                             <p>Instructional Design</p>  
-                                    <p>Video Editing</p>
-                                    <p>AI Commands Expert</p>
-                                    <p>Creative Solutions for Your Business</p>
-                                </div>
-                                <div class="typed"></div>
-                            </div>
-                            <div class="spacer-single"></div>
-                            <h1 class="wow fadeInRight" data-wow-delay=".4s">Hello! I'm a <span class="underline">freelance</span> Graphic Designer based in <span class="underline">Mansoura</span></h1>
-                            <div class="spacer-single"></div>
-                            <a href="https://drive.google.com/file/d/1xCPV3ft6ZKcPHvZi9Gahtv_3-iiwqyK1/view?usp=sharing" target="_blank" class="btn-custom light wow fadeInRight" data-wow-delay=".6s">Download CV</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- section close -->
-<!-- section begin -->
-            <section id="section-resume" data-bgimage="url(images/background/3.jpg) center fixed">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12 wow fadeInRight">
-                            <h4 class="title">I'm available for hire</h4>
-                            <h2 class="title">My Resume</h2>
-                            <div class="title-underline"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 wow fadeInRight" data-wow-delay=".25s">
-                            <h3 class="s_border">Education</h3>
-                            <ul class="d_timeline">
-                                <li class="d_timeline-item">
-                                    <h3 class="d_timeline-title">Feb 2025 - Apr 2025 ( Expected Graduation )</h3>
-                                    <p class="d_timeline-text"><span class="d_title">Million AI Experts – Prompt Engineering Scholarship<span>UAE Government Initiative</span></span>Completed an intensive program focused on AI prompt engineering, including the effective use of tools like ChatGPT, DALL·E, and Midjourney for creative content generation, design, development, and automation. Gained practical skills in crafting powerful prompts to maximize AI output across multiple domains.</p>
-                                </li>
-                                <li class="d_timeline-item">
-                                    <h3 class="d_timeline-title">Feb 2023 - Expected Graduation: 2027</h3>
-                                    <p class="d_timeline-text"><span class="d_title">Student – Computer Teacher Program Faculty of Specific Education<span>Mansoura University</span></span>Enrolled in a specialized academic program that combines computer science, instructional design, and educational technology, with a strong emphasis on pedagogical methods and practical teaching skills. The program is designed to prepare future educators capable of integrating technology effectively into modern classrooms.</p>
-                                </li>
-                                <li class="d_timeline-item">
-                                    <h3 class="d_timeline-title">Feb 2017 – Present</h3>
-                                    <p class="d_timeline-text"><span class="d_title">Self-Learning</span>Pursued independent learning through YouTube and other online platforms, developing skills in graphic design, video editing, and related creative fields.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 wow fadeInRight" data-wow-delay=".5s">
-                            <h3 class="s_border">Work Experiences</h3>
-                            <ul class="d_timeline">
-                                <li class="d_timeline-item">
-                                    <h3 class="d_timeline-title">Dec 2023 - 2024</h3>
-                                    <p class="d_timeline-text"><span class="d_title">Visual Designer / Social Media<span>Resala Association</span></span>Worked as a graphic designer creating visual content for both print materials and social media platforms. Collaborated with various teams to deliver impactful designs for awareness campaigns and events.</p>
-                                </li>
-                                <li class="d_timeline-item">
-                                    <h3 class="d_timeline-title">Feb 2024 - (Now) 2025</h3>
-                                    <p class="d_timeline-text"><span class="d_title">Team Leader &amp; Social Media Designer<span>Bahary youth</span></span>Led a team of designers to create intuitive and engaging design. Designed and implemented social media graphics and campaigns. Coordinated design efforts across departments to ensure consistency and high quality. Mentored junior designers and managed project timelines.</p>
-                                </li>
-                                <li class="d_timeline-item">
-                                    <h3 class="d_timeline-title">Feb 2018 - Mar 2020</h3>
-                                    <p class="d_timeline-text"><span class="d_title">Junior &amp; Print Designer<span>Sanbaluwayn, Dakahlia</span></span>Designed print materials (brochures, flyers, posters) for local clients as a freelancer. Managed client requests and delivered print-ready designs independently. Gained experience in client communication and project management.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spacer-50"></div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 class="s_border">Graphic Skills</h3>
-                            <div class="skill-bar">
-                                <h5>Adobe Photoshop</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>Adobe Illustrator</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="70%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>AI Tools (Midjourney, DALL·E, etc.)</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>Canva</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>Adobe InDesign</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="25%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="s_border">Other Skills</h3>
-                            <div class="skill-bar">
-                                <h5>Video Editing</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>Adobe After Effects</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="30%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>Desktop Application Programming</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="30%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-bar">
-                                <h5>Instructional Design</h5>
-                                <div class="de-progress">
-                                    <div class="value"></div>
-                                    <div class="progress-bar" data-value="80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- section end -->
-           
-
-          <!-- section begin -->
-            <section id="section-portfolio" data-bgimage="url(images/background/3.jpg) center fixed">
-                <div class="container">
-                    <!-- portfolio filter begin -->
-                    <div class="row">
-                        <div class="col-lg-12 wow fadeInRight">
-                            <h4 class="title">Showcase of my best works</h4>
-                            <h2 class="title">My Portfolio</h2>
-                            <div class="title-underline"></div>
-                        </div>
-                        <div class="col-md-12 text-center wow fadeInRight" data-wow-delay=".25s">
-                            <ul id="filters">
-                                <li><a href="#" data-filter="*" id="btn_all" class="selected">all projects</a></li>
-                                <li><a href="#" data-filter=".social-media">social media</a></li>
-                                <li><a href="#" data-filter=".print-design">print design</a></li>
-                                <li><a href="#" data-filter=".photo-manipulation">photo manipulation</a></li>
-                                <li><a href="#" data-filter=".video-editing">video</a></li>
-                                <li><a href="#" data-filter=".motion-graphics">motion graphics</a></li>
-                            </ul>
-                            
-                            <div id="gallery" class="gallery full-gallery de-gallery zoom-gallery row sequence wow fadeInRight" data-wow-delay=".5s">
-                                
-                                <!-- gallery item 1 (مطبوعات) -->
-                                <div class="item col-md-4 mb30 gallery-item print-design" data-value="project-details-image.html">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/cf7067203253349.669452ba82927.jpg" title="Printing Design" data-source="https://www.behance.net/a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Printing Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/cf7067203253349.669452ba82927.jpg" alt="Printing Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-
-                                <!-- gallery item 2 (فوتومانبيولاشن) -->
-                                <div class="item col-md-4 mb30 gallery-item photo-manipulation">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/7d959d203385969.6696780e897f8.jpg" title="Photo Manipulation" data-source="https://www.behance.net/a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Photo Manipulation</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/7d959d203385969.6696780e897f8.jpg" alt="Photo Manipulation" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-                                 <!-- gallery item 2 (فوتومانبيولاشن) -->
-                                <div class="item col-md-4 mb30 gallery-item photo-manipulation">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/92de08233289561.68ace6dadff13.jpg" title="Photo Manipulation" data-source="https://www.behance.net/a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Photo Manipulation</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/92de08233289561.68ace6dadff13.jpg" alt="Photo Manipulation" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-
-                                <!-- gallery item 3 (سوشيال ميديا) -->
-                                <div class="item col-md-4 mb30 gallery-item social-media">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/dc7538249946285.6a136b8730c72.jpg" title="Social Media Design" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Social Media Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/dc7538249946285.6a136b8730c72.jpg" alt="Social Media Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-                                 <!-- gallery item 3 (سوشيال ميديا) -->
-                                <div class="item col-md-4 mb30 gallery-item social-media">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/15d232249946285.6a136b8730419.jpg" title="Social Media Design" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Social Media Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/15d232249946285.6a136b8730419.jpg" alt="Social Media Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-                                 <!-- gallery item 3 (سوشيال ميديا) -->
-                                <div class="item col-md-4 mb30 gallery-item social-media">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/aad9b5249946285.6a136b872fc44.jpg" title="Social Media Design" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Social Media Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/aad9b5249946285.6a136b872fc44.jpg" alt="Social Media Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-                                   <!-- gallery item 3 (سوشيال ميديا) -->
-                                <div class="item col-md-4 mb30 gallery-item social-media">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/a1a731243177419.697bddebd7be4.jpg" title="Social Media Design" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Social Media Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_webp/a1a731243177419.697bddebd7be4.jpg" alt="Social Media Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-                                   <!-- gallery item 3 (سوشيال ميديا) -->
-                                <div class="item col-md-4 mb30 gallery-item social-media">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/3f058d205323073.66b943762d6bb.jpg" title="Social Media Design" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Social Media Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/3f058d205323073.66b943762d6bb.jpg" alt="Social Media Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-                                 <!-- gallery item 3 (سوشيال ميديا) -->
-                                <div class="item col-md-4 mb30 gallery-item social-media">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/6df295249946285.6a136b873086d.jpg" title="Social Media Design" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Social Media Design</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/6df295249946285.6a136b873086d.jpg" alt="Social Media Design" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-
-                                
-
-                                <!-- gallery item 5 (فيديو + موشن جرافيك) -->
-                                <div class="item col-md-4 mb30 gallery-item video-editing motion-graphics">
-                                    <a class="picframe" href="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/3f058d205323073.66b943762d6bb.jpg" title="Motion Graphics &amp; Video" data-source="https://youtu.be/RqK5jFsYaCY?feature=shared">
-                                        <span class="overlay">
-                                            <span class="d-title">Motion Graphics &amp; Video</span>
-                                        </span>
-                                        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/3f058d205323073.66b943762d6bb.jpg" alt="Motion Graphics &amp; Video" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-
-                                <!-- gallery item 6 (موشن جرافيك) -->
-                                <div class="item col-md-4 mb30 gallery-item motion-graphics">
-                                    <a class="picframe" href="images/portfolio/6.jpg" title="Motion Graphics Project" data-source="https://www.youtube.com/@a7zanati">
-                                        <span class="overlay">
-                                            <span class="d-title">Motion Graphics Project</span>
-                                        </span>
-                                        <img src="images/portfolio/6.jpg" alt="Motion Graphics Project" />
-                                    </a>
-                                </div>
-                                <!-- close gallery item -->
-
-                            </div>
-                        </div>
-                        <!-- portfolio filter close -->
-                    </div>
-                </div>
-            </section>
-            <!-- section close -->
-
-          
-           <!-- section begin -->
-<section id="section-blog" data-bgimage="url(images/background/3.jpg) center fixed">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 wow fadeInRight">
-                <h4 class="title">This is my story</h4>
-                <h2 class="title">My Blog</h2>
-                <div class="title-underline"></div>
-            </div>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="hero-title-cell">
+          <p class="hero-eyebrow">متاح الآن لمشاريع جديدة</p>
+          <h1>أنظمة تشتغل.<br>تصميم يوصل.<br>محتوى يعلّم.</h1>
         </div>
-        
-        <div class="row wow fadeInRight" data-wow-delay=".25s">
-            <!-- المقالة الأولى: منصة Anything -->
-            <div class="col-lg-4 col-md-6 mb30" style="direction: rtl; text-align: right;">
-                <div class="bloglist item">
-                    <div class="post-content">
-                        <div class="post-image d-hover-zoom">
-                            <!-- الضغط على الصورة يفتحها بحجم كامل -->
-                            <a class="image-popup" href="https://cdn.hostadvice.com/2026/02/create-xyz-review-0.png">
-                                <img alt="منصة Anything" src="https://cdn.hostadvice.com/2026/02/create-xyz-review-0.png">
-                            </a>
-                            <div class="post-info">
-                                <div class="inner">
-                                   <span class="post-date">25 / 05 / 2026</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-text">
-                            <h4>
-                                <a href="https://www.anything.com/signup?utmsource=promo&utmmedium=free-credit&utmcampaign=anythingplaystorelaunch&dubid=znvE3L0a0X3pl4Jz&promo=anythingplaystorelaunch" target="_blank">
-                                    منصة Anything — الحصول على 20,000 كريديت مجانية عند التسجيل (عرض ترويجي)
-                                </a>
-                            </h4>
-                            <p>تُعد منصة Anything واحدة من أدوات الذكاء الاصطناعي الحديثة التي تتيح للمستخدمين إنشاء التطبيقات والمواقع بدون الحاجة إلى خبرة برمجية متقدمة. تعتمد المنصة على فكرة بسيطة: يقوم المستخدم بكتابة وصف للفكرة ليتم توليدها تلقائياً.</p>
-                            
-                            <p><strong>💡 فكرة العرض الترويجي:</strong> توفر المنصة عرض تسجيل يتضمن رصيدًا مجانيًا يصل إلى 20,000 كريديت للمستخدمين الجدد عبر رابط الحملة الخاصة.</p>
-                            
-                            <p><strong>📌 خطوات التسجيل:</strong> سجل حساباً جديداً عبر رابط العرض الترويجي أدناه ليتم إضافة الرصيد المجاني تلقائيًا إلى حسابك والبدء في بناء تطبيقاتك.</p>
-                            
-                            <a href="https://www.anything.com/signup?utmsource=promo&utmmedium=free-credit&utmcampaign=anythingplaystorelaunch&dubid=znvE3L0a0X3pl4Jz&promo=anythingplaystorelaunch" target="_blank" class="btn-main" style="padding: 5px 15px; font-size: 13px; margin-top: 10px; display: inline-block;">
-                                سجل الآن واحصل على الرصيد
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- يمكنك إضافة كروت المقالات القادمة هنا -->
-            
+        <div class="hero-meta-cell">
+          <p>أحمد الزناتي — مطور أنظمة صيانة وبرامج محاسبة، مصمم جرافيك، ومنشئ محتوى تقني على يوتيوب.</p>
+          <div class="hero-stats">
+            <div class="hstat"><span>سنوات خبرة</span><span class="mono">07+</span></div>
+            <div class="hstat"><span>مشروع منفّذ</span><span class="mono">120+</span></div>
+            <div class="hstat"><span>فيديو تعليمي</span><span class="mono">90+</span></div>
+          </div>
         </div>
+      </div>
+      <div class="hero-bottom">
+        <a href="#maintenance">صيانة الأنظمة <span class="mono">01</span></a>
+        <a href="#accounting">برامج محاسبة <span class="mono">02</span></a>
+        <a href="#design">تصميم جرافيك <span class="mono">03</span></a>
+        <a href="#content">صناعة محتوى <span class="mono">04</span></a>
+      </div>
     </div>
-</section>
-<!-- section close -->
+  </section>
 
-            <!-- section begin -->
-            <section id="section-contact" data-bgimage="url(images/background/3.jpg) center fixed">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 wow fadeInRight">
-                            <h4 class="title">I'm available for hire</h4>
-                            <h2 class="title">Contact Me</h2>
-                            <div class="title-underline"></div>
-                        </div>
-                    </div>
-                    <form name="contactForm" id="contact_form" class="row form-default wow fadeInRight" data-wow-delay=".25s" method="post" action="email.php">
-                        <div class="col-md-6">
-                            <div class="field-set">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" />
-                                <div class="line-fx"></div>
-                            </div>
-                            <div class="field-set">
-                                <input type="text" name="email" id="email" class="form-control" placeholder="Your Email" />
-                                <div class="line-fx"></div>
-                            </div>
-                            <div class="field-set">
-                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone" />
-                                <div class="line-fx"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="field-set">
-                                <textarea name="message" id="message" class="form-control" placeholder="Your Message"></textarea>
-                                <div class="line-fx"></div>
-                            </div>
-                        </div>
-                        <div class="spacer-single"></div>
-                        <div class="col-md-12 text-center">
-                            <div id="submit">
-                                <input type="submit" id="send_message" value="Send" class="btn btn-custom color-2" />
-                            </div>
-                            <div id="mail_success" class="success">Your message has been sent successfully.</div>
-                            <div id="mail_fail" class="error">Sorry, error occured this time sending your message.</div>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </div>
-        <!-- content close -->
+  <!-- 4 CATEGORY PORTALS -->
+  <section>
+    <div class="wrap">
+      <div class="cat-grid reveal">
+        <a href="#maintenance" class="cat-card">
+          <span class="cat-num mono">01 / صيانة</span>
+          <div>
+            <h3>أنظمة صيانة WinPE</h3>
+            <p>أقراص صيانة وإصلاح جاهزة لاسترجاع الأنظمة المعطلة بسرعة واحترافية.</p>
+          </div>
+          <span class="cat-arrow">←</span>
+        </a>
+        <a href="#accounting" class="cat-card">
+          <span class="cat-num mono">02 / برامج</span>
+          <div>
+            <h3>محاسبة وكاشير</h3>
+            <p>أنظمة نقاط بيع ومحاسبة مرنة تناسب المحلات والشركات الصغيرة.</p>
+          </div>
+          <span class="cat-arrow">←</span>
+        </a>
+        <a href="#design" class="cat-card">
+          <span class="cat-num mono">03 / تصميم</span>
+          <div>
+            <h3>تصميم جرافيك</h3>
+            <p>هويات بصرية ومحتوى تصميمي يعبّر عن مشروعك بوضوح وبساطة.</p>
+          </div>
+          <span class="cat-arrow">←</span>
+        </a>
+        <a href="#content" class="cat-card">
+          <span class="cat-num mono">04 / محتوى</span>
+          <div>
+            <h3>صناعة محتوى</h3>
+            <p>شروحات تقنية ومراجعات على يوتيوب بأسلوب عملي ومباشر.</p>
+          </div>
+          <span class="cat-arrow">←</span>
+        </a>
+      </div>
     </div>
-    
-    <!-- Javascript Files
-    ================================================== -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jpreLoader.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/easing.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <script src="js/validation.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/enquire.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.plugin.js"></script>
-    <script src="js/typed.js"></script>
-    <script src="js/typed-custom.js"></script>
-    <script src="js/designesia.js"></script>
+  </section>
 
+  <!-- 01 MAINTENANCE -->
+  <section id="maintenance">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">01 / الصيانة</span>
+        <div>
+          <h2>أنظمة صيانة WinPE</h2>
+          <p class="sec-desc">أقراص تشغيل وصيانة مبنية على WinPE، جاهزة لاسترجاع الملفات، فحص الأعطال، وإعادة تجهيز الأجهزة من غير ما تخسر بيانات العميل.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="srow">
+          <span class="n mono">A</span>
+          <h4>قرص صيانة شامل</h4>
+          <p>أدوات فحص الهارد، استرجاع الملفات، وتثبيت الويندوز في بيئة واحدة خفيفة وسريعة الإقلاع.</p>
+        </div>
+        <div class="srow">
+          <span class="n mono">B</span>
+          <h4>أدوات استرجاع البيانات</h4>
+          <p>استرجاع الملفات المحذوفة أو المفقودة بسبب أعطال الهارد أو الفورمات الخاطئ.</p>
+        </div>
+        <div class="srow">
+          <span class="n mono">C</span>
+          <h4>تحديثات دورية</h4>
+          <p>إصدارات محدّثة بأحدث الأدوات والتعريفات لضمان التوافق مع الأجهزة الحديثة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!---------------------------------->
- 
+  <!-- 02 ACCOUNTING / CASHIER with scroll animation -->
+  <section id="accounting">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">02 / البرامج</span>
+        <div>
+          <h2>برامج محاسبة وكاشير</h2>
+          <p class="sec-desc">أنظمة نقاط بيع ومحاسبة سهلة الاستخدام، مصممة لتناسب احتياج المحل أو الشركة الصغيرة من أول يوم تشغيل.</p>
+        </div>
+      </div>
+
+      <div class="app-showcase reveal">
+        <div class="app-topbar">
+          <span>نظام الكاشير — واجهة حية</span>
+          <div class="app-dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="app-scroll-track" id="appTrack">
+          <div class="app-frame active" data-frame="0">
+            <div class="app-mock">
+              <div class="app-mock-head"><span>POS / فاتورة جديدة</span><span class="mono">#INV-0231</span></div>
+              <div class="app-mock-body">
+                <h5>فاتورة بيع</h5>
+                <div class="mock-row"><span class="lbl">لابتوب Dell Inspiron</span><span class="mono">1 × 18,500</span></div>
+                <div class="mock-row"><span class="lbl">ماوس لاسلكي</span><span class="mono">2 × 150</span></div>
+                <div class="mock-row"><span class="lbl">ضريبة القيمة المضافة</span><span class="mono">14%</span></div>
+                <div class="mock-total"><span>الإجمالي</span><span class="mono">21,281 ج.م</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="app-frame" data-frame="1">
+            <div class="app-mock">
+              <div class="app-mock-head"><span>إدارة المخزون</span><span class="mono">live</span></div>
+              <div class="app-mock-body">
+                <h5>حالة المخزون</h5>
+                <div class="mock-grid">
+                  <div class="mock-stat"><b class="mono">842</b><span>منتج متاح</span></div>
+                  <div class="mock-stat"><b class="mono mono" style="color:var(--red)">12</b><span>وشك النفاد</span></div>
+                  <div class="mock-stat"><b class="mono">36</b><span>فئة منتجات</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-frame" data-frame="2">
+            <div class="app-mock">
+              <div class="app-mock-head"><span>تقرير المبيعات اليومي</span><span class="mono">28 Oct</span></div>
+              <div class="app-mock-body">
+                <h5>ملخص اليوم</h5>
+                <div class="mock-row"><span class="lbl">عدد الفواتير</span><span class="mono">47</span></div>
+                <div class="mock-row"><span class="lbl">متوسط الفاتورة</span><span class="mono">612 ج.م</span></div>
+                <div class="mock-total"><span>صافي المبيعات</span><span class="mono">28,764 ج.م</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-dots-nav" id="appDotsNav">
+          <button class="active" data-go="0" aria-label="شريحة 1"></button>
+          <button data-go="1" aria-label="شريحة 2"></button>
+          <button data-go="2" aria-label="شريحة 3"></button>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="srow">
+          <span class="n mono">A</span>
+          <h4>فوترة سريعة</h4>
+          <p>إصدار فواتير البيع والشراء في ثوانٍ مع دعم الباركود والطباعة الحرارية.</p>
+        </div>
+        <div class="srow">
+          <span class="n mono">B</span>
+          <h4>إدارة مخزون دقيقة</h4>
+          <p>تتبع الكميات لحظيًا وتنبيهات تلقائية عند اقتراب نفاد المنتجات.</p>
+        </div>
+        <div class="srow">
+          <span class="n mono">C</span>
+          <h4>تقارير مالية جاهزة</h4>
+          <p>تقارير مبيعات وأرباح يومية وشهرية قابلة للتصدير بضغطة واحدة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 DESIGN -->
+  <section id="design">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">03 / التصميم</span>
+        <div>
+          <h2>تصميم جرافيك</h2>
+          <p class="sec-desc">هوية بصرية ومحتوى تصميمي بأسلوب نظيف وواضح، من الشعار لحد تصميمات السوشيال ميديا.</p>
+        </div>
+      </div>
+      <div class="work-grid reveal">
+        <div class="work-item"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=700&auto=format&fit=crop" alt="هوية بصرية" loading="lazy"><span class="work-tag mono">identity</span></div>
+        <div class="work-item"><img src="https://images.unsplash.com/photo-1600508773594-b3e4afb6db98?q=80&w=700&auto=format&fit=crop" alt="تصميم طباعي" loading="lazy"><span class="work-tag mono">print</span></div>
+        <div class="work-item"><img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=700&auto=format&fit=crop" alt="سوشيال ميديا" loading="lazy"><span class="work-tag mono">social</span></div>
+        <div class="work-item"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=700&auto=format&fit=crop" alt="تغليف" loading="lazy"><span class="work-tag mono">package</span></div>
+        <div class="work-item"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=700&auto=format&fit=crop" alt="هوية رقمية" loading="lazy"><span class="work-tag mono">digital</span></div>
+        <div class="work-item"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=700&auto=format&fit=crop" alt="تصميم شعار" loading="lazy"><span class="work-tag mono">logo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CONTENT -->
+  <section id="content">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">04 / المحتوى</span>
+        <div>
+          <h2>صناعة محتوى</h2>
+          <p class="sec-desc">قناة يوتيوب تقنية بتشرح الصيانة والبرمجة والتصميم بأسلوب عملي مباشر.</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-band reveal">
+      <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="cband-item">
+        <b class="mono">90+</b>
+        <span>فيديو تعليمي منشور</span>
+      </a>
+      <div class="cband-item">
+        <b class="mono">4</b>
+        <span>مجالات تقنية مختلفة</span>
+      </div>
+      <div class="cband-item">
+        <b class="mono">∞</b>
+        <span>مرفقات تحميل مجانية</span>
+      </div>
+      <a href="#" class="cband-item">
+        <b class="mono">bot</b>
+        <span>مكتبة برامج آمنة عبر تليجرام</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+  <section id="lessons">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">05 / الدروس</span>
+        <div>
+          <h2>دروس وشروحات</h2>
+          <p class="sec-desc">كل درس من قناة يوتيوب معاه الفيديو كامل، وتحته مباشرة كل الملفات المستخدمة في الشرح جاهزة للتحميل.</p>
+        </div>
+      </div>
+
+      <article class="lesson reveal">
+        <div class="lesson-top">
+          <div class="lesson-meta">
+            <span>LESSON_01</span>
+            <span>19:40</span>
+            <span>WinPE</span>
+          </div>
+          <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="yt-link">قناة اليوتيوب ↗</a>
+        </div>
+        <h3>تجهيز قرص صيانة WinPE من الصفر</h3>
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="تجهيز قرص صيانة WinPE من الصفر" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="lesson-desc">في الدرس ده بنجهز قرص صيانة متكامل بأدوات فحص الهارد واسترجاع الملفات، خطوة بخطوة من أول التجهيز لحد الحرق على فلاشة.</p>
+        <div class="attach-block">
+          <span class="attach-label">مرفقات الدرس</span>
+          <a href="#" class="file-item" download>
+            <span class="file-ext mono">ISO</span>
+            <span class="file-info"><span class="file-name">نسخة قرص الصيانة الجاهزة</span><span class="file-size">680 ميجابايت</span></span>
+            <span class="file-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
+          </a>
+          <a href="#" class="file-item" download>
+            <span class="file-ext mono">PDF</span>
+            <span class="file-info"><span class="file-name">دليل خطوات التجهيز</span><span class="file-size">2.4 ميجابايت</span></span>
+            <span class="file-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
+          </a>
+        </div>
+      </article>
+
+      <article class="lesson reveal">
+        <div class="lesson-top">
+          <div class="lesson-meta">
+            <span>LESSON_02</span>
+            <span>26:15</span>
+            <span>POS System</span>
+          </div>
+          <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="yt-link">قناة اليوتيوب ↗</a>
+        </div>
+        <h3>برمجة شاشة فاتورة كاشير بسيطة</h3>
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="برمجة شاشة فاتورة كاشير بسيطة" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="lesson-desc">بنبني في الدرس ده واجهة فاتورة كاشير بسيطة بحساب الإجمالي والضريبة تلقائيًا، جاهزة للربط بقاعدة بيانات المنتجات.</p>
+        <div class="attach-block">
+          <span class="attach-label">مرفقات الدرس</span>
+          <a href="#" class="file-item" download>
+            <span class="file-ext mono">ZIP</span>
+            <span class="file-info"><span class="file-name">الكود المصدري الكامل</span><span class="file-size">3.6 ميجابايت</span></span>
+            <span class="file-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
+          </a>
+        </div>
+      </article>
+
+      <article class="lesson reveal">
+        <div class="lesson-top">
+          <div class="lesson-meta">
+            <span>LESSON_03</span>
+            <span>14:52</span>
+            <span>Branding</span>
+          </div>
+          <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="yt-link">قناة اليوتيوب ↗</a>
+        </div>
+        <h3>تصميم هوية بصرية بسيطة وسريعة</h3>
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="تصميم هوية بصرية بسيطة وسريعة" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="lesson-desc">شرح سريع لأساسيات بناء هوية بصرية متكاملة: الشعار، الألوان، والخطوط، مع أمثلة تطبيقية جاهزة.</p>
+        <div class="attach-block">
+          <span class="attach-label">مرفقات الدرس</span>
+          <a href="#" class="file-item" download>
+            <span class="file-ext mono">AI</span>
+            <span class="file-info"><span class="file-name">ملف المشروع - Illustrator</span><span class="file-size">15 ميجابايت</span></span>
+            <span class="file-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
+          </a>
+        </div>
+      </article>
+
+      <div style="text-align:center; padding:20px 0 10px;">
+        <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="file-item" style="display:inline-flex; padding:14px 26px;">
+          <span class="file-info" style="flex:none;"><span class="file-name">كل الدروس على القناة</span></span>
+          <span class="file-dl">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="rule reveal"></div>
+      <div style="padding:60px 0 50px;">
+        <div class="grid12 reveal" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+          <div style="grid-column:span 7; padding:36px 0;">
+            <h2 style="font-size:clamp(2rem,4vw,3rem); line-height:1.05;">عندك مشروع<br>محتاج تنفيذ؟</h2>
+          </div>
+          <div style="grid-column:span 5; padding:36px 0 36px 32px; display:flex; flex-direction:column; justify-content:center; gap:14px;">
+            <a href="mailto:hello@zanaty.dev" class="mono" style="font-size:1.1rem; border-bottom:2px solid var(--ink); padding-bottom:4px; width:fit-content;" dir="ltr">hello@zanaty.dev</a>
+            <a href="#" style="color:var(--ink-soft);">واتساب للتواصل المباشر</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>أحمد الزناتي</h5>
+        <p style="color:var(--ink-soft); font-size:0.92rem; max-width:40ch;">مطور أنظمة صيانة وبرامج محاسبة، مصمم جرافيك، ومنشئ محتوى تقني.</p>
+      </div>
+      <div>
+        <h5>الأقسام</h5>
+        <a href="#maintenance">الصيانة</a>
+        <a href="#accounting">البرامج</a>
+        <a href="#design">التصميم</a>
+        <a href="#lessons">الدروس</a>
+      </div>
+      <div>
+        <h5>تابعني</h5>
+        <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener">يوتيوب</a>
+        <a href="#">تليجرام</a>
+        <a href="#">فيسبوك</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 أحمد الزناتي — جميع الحقوق محفوظة</span>
+      <span class="mono">made with care</span>
+    </div>
+  </div>
+</footer>
+
+<!-- TELEGRAM STICKY BAR -->
+<div class="tg-bar">
+  <div class="wrap tg-bar-row">
+    <div class="tg-left">
+      <span class="tg-dot"></span>
+      <span class="tg-text"><b>مكتبة البرامج على تليجرام</b><span class="sub mono">مجانًا · آمنة 100% من الفيروسات</span></span>
+    </div>
+    <a href="#" class="tg-btn">افتح البوت</a>
+  </div>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
+  menuBtn.addEventListener('click', () => {
+    const open = mobilePanel.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobilePanel.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', false);
+  }));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* App scroll-driven showcase: cycles frames based on scroll position within the track */
+  const track = document.getElementById('appTrack');
+  const frames = Array.from(track.querySelectorAll('.app-frame'));
+  const dots = Array.from(document.getElementById('appDotsNav').querySelectorAll('button'));
+  let current = 0;
+  let autoTimer = null;
+
+  function showFrame(i){
+    frames.forEach((f, idx) => f.classList.toggle('active', idx === i));
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    current = i;
+  }
+  dots.forEach(d => d.addEventListener('click', () => {
+    showFrame(parseInt(d.dataset.go, 10));
+    resetAuto();
+  }));
+
+  function resetAuto(){
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      showFrame((current + 1) % frames.length);
+    }, 3200);
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const trackObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        if(!prefersReducedMotion) resetAuto();
+      } else {
+        clearInterval(autoTimer);
+      }
+    });
+  }, {threshold:0.4});
+  trackObserver.observe(track);
+</script>
+
 </body>
-
 </html>
