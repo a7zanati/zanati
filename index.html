@@ -290,7 +290,7 @@ $("#form").addEventListener("submit", e => {
  $("#e-name").textContent = ""; $("#e-phone").textContent = "";
  if(name.length < 2){ $("#e-name").textContent = "اكتب اسمك من فضلك."; ok = false; }
  if(!/^(\+?20|0)?1[0125]\d{8}$/.test(phone) && !/^\+?\d{8,15}$/.test(phone)){
-  $("#e-phone").textContent = "اكتب رقم موبايل صحيح، مثلًا 01064404721."; ok = false;
+  $("#e-phone").textContent = "اكتب رقم موبايل صحيح، مثلًا 010987654321."; ok = false;
  }
  if(!ok) return;
  const lines = [
