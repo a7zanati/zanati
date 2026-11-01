@@ -1,1493 +1,319 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>أحمد الزناتي | Ahmed ElZanati</title>
-<meta name="description" content="أحمد الزناتي: تطوير مواقع الويب، أنظمة صيانة WinPE، برامج تقنية، تصميم جرافيك، ودروس تقنية مجانية بالفيديو مع ملفات الشرح للتحميل.">
-<meta name="keywords" content="تطوير مواقع ويب, تصميم مواقع, صيانة أنظمة, WinPE, تصميم بالذكاء الإصطناعى, AI prompt, a7zanti, a7zanaty, تصميم جرافيك, دروس برمجة, أحمد الزناتي">
-<meta name="author" content="أحمد الزناتي">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.ahmedzanati.tech/">
-
-<!-- Open Graph / Facebook -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أحمد الزناتي </title>
+<meta name="description" content="أحمد الزناتي مطور برمجيات. برامج محاسبة، أنظمة إدارة عيادات، كاشير، وحضور وانصراف ببصمة الوجه. جرّب كل برنامج من موقعه.">
+<meta property="og:title" content="أحمد الزناتي | مطور تطبيقات سطح المكتب">
+<meta property="og:description" content="أنظمة محاسبة وعيادات وكاشير وحضور وانصراف. جرّب كل برنامج بنفسك.">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ar_AR">
-<meta property="og:site_name" content="أحمد الزناتي">
-<meta property="og:title" content="أحمد الزناتي — تطوير مواقع الويب، صيانة أنظمة، تصميم جرافيك">
-<meta property="og:description" content="تطوير مواقع الويب، أنظمة صيانة WinPE، تصميم جرافيك، ودروس تقنية مجانية مع ملفات الشرح.">
-<meta property="og:url" content="https://www.zanaty.dev/">
-<meta property="og:image" content="https://www.zanaty.dev/og-image.jpg">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="أحمد الزناتي — تطوير مواقع الويب، صيانة أنظمة، تصميم جرافيك">
-<meta name="twitter:description" content="معاينة مباشرة لمشاريع مواقع الويب، وأنظمة صيانة WinPE، وتصميم جرافيك، ودروس تقنية مجانية بالفيديو.">
-<meta name="twitter:image" content="https://www.zanaty.dev/og-image.jpg">
-
-<meta name="theme-color" content="#FFFFFF">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Cairo:wght@600;700;800;900&family=Tajawal:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "أحمد الزناتي",
-  "description": "تطوير مواقع الويب، أنظمة صيانة WinPE، تصميم جرافيك، ودروس تقنية مجانية.",
-  "url": "https://www.zanaty.dev/",
-  "sameAs": [
-    "http://www.youtube.com/@a7zanati"
-  ],
-  "areaServed": "EG",
-  "knowsAbout": ["تطوير مواقع الويب", "تصميم مواقع", "صيانة أنظمة", "WinPE", "تصميم جرافيك", "صناعة محتوى"]
-}
-</script>
-
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#FFFFFF;
-    --ink:#111111;
-    --ink-soft:#6B6B6B;
-    --line:#111111;
-    --line-soft:#D8D8D8;
-    --red:#E63326;
-    --panel:#F3F3F1;
-    --mono:'JetBrains Mono', monospace;
-    --disp:'Archivo', 'IBM Plex Sans Arabic', sans-serif;
-    --text:'IBM Plex Sans Arabic', sans-serif;
-    color-scheme: light;
-  }
-  /* الخلفية بيضاء ثابتة دائمًا بناءً على طلب العميل — لا يتبع وضع الجهاز الداكن */
-
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth; scroll-padding-top:150px;}
-  body{
-    background:var(--bg); color:var(--ink);
-    font-family:var(--text); font-weight:400; line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-    overflow-x:hidden;
-    position:relative;
-  }
-  body::before{
-    content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px);
-    background:var(--bg); z-index:60;
-  }
-  /* شبكة خلفية خافتة ثابتة أثناء السكرول */
-  .bg-grid{
-    position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background-image:
-      repeating-linear-gradient(90deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent calc(100% / 12)),
-      repeating-linear-gradient(0deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent 120px);
-    opacity:0.35;
-  }
-  @media (max-width:760px){
-    .bg-grid{
-      background-image:
-        repeating-linear-gradient(90deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent calc(100% / 4)),
-        repeating-linear-gradient(0deg, var(--line-soft) 0, var(--line-soft) 1px, transparent 1px, transparent 90px);
-    }
-  }
-  img{max-width:100%; display:block;}
-  a{color:inherit; text-decoration:none;}
-  .mono{font-family:var(--mono); direction:ltr; unicode-bidi:isolate;}
-
-  h1,h2,h3,.disp{font-family:var(--disp); font-weight:800; letter-spacing:-0.01em; text-transform:none;}
-
-  .wrap{max-width:1240px; margin:0 auto; padding:0 28px;}
-  .rule{height:1px; background:var(--line); border:none;}
-  .rule-soft{height:1px; background:var(--line-soft); border:none;}
-
-  /* ===== grid system ===== */
-  .grid12{display:grid; grid-template-columns:repeat(12,1fr); gap:0;}
-  .col-line{border-right:1px solid var(--line-soft);}
-  [dir="rtl"] .col-line{border-right:none; border-left:1px solid var(--line-soft);}
-
-  /* ===== top bar ===== */
-  .topbar{
-    position:sticky; top:var(--tg-bar-h, 0px); z-index:50;
-    background:var(--bg); border-bottom:1px solid var(--line);
-  }
-  .topbar-row{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 0;
-  }
-  .brand{
-    font-family:var(--disp); font-weight:900; font-size:1.15rem;
-    display:flex; align-items:center; gap:12px;
-  }
-  .brand-index{
-    font-family:var(--mono); font-size:0.7rem; color:var(--ink-soft);
-    border:1px solid var(--line-soft); padding:3px 7px; border-radius:2px;
-  }
-  .topnav{display:flex; gap:0; font-family:var(--mono); font-size:0.8rem;}
-  .topnav a{
-    padding:0 18px; color:var(--ink-soft); border-right:1px solid var(--line-soft);
-    transition:color .15s;
-  }
-  [dir="rtl"] .topnav a{border-right:none; border-left:1px solid var(--line-soft);}
-  .topnav a:first-child{padding-right:0;}
-  [dir="rtl"] .topnav a:first-child{padding-right:18px; padding-left:0;}
-  .topnav a:last-child{border:none;}
-  .topnav a:hover{color:var(--red);}
-  .menu-btn, .settings-btn{
-    background:none; border:1px solid var(--line); border-radius:2px;
-    width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer;
-    display:flex; color:var(--ink); flex-shrink:0;
-    transition:background .15s, color .15s, transform .4s;
-  }
-  .settings-btn:hover{background:var(--ink); color:var(--bg);}
-  .settings-btn.spin svg{animation:spin-once .5s ease;}
-  @keyframes spin-once{to{transform:rotate(75deg);}}
-  .topbar-actions{display:flex; align-items:center; gap:10px;}
-  .menu-btn{display:none;}
-  @media (max-width:900px){
-    .topnav{display:none;}
-    .menu-btn{display:flex;}
-  }
-  .mobile-panel{
-    position:fixed; inset:0; top:calc(72px + env(safe-area-inset-top,0px));
-    background:var(--bg); z-index:45; transform:translateY(-110%); transition:transform .3s ease;
-    padding:10px 28px; display:flex; flex-direction:column;
-  }
-  .mobile-panel.open{transform:translateY(0);}
-  .mobile-panel a{
-    padding:20px 0; border-bottom:1px solid var(--line-soft);
-    font-family:var(--disp); font-weight:700; font-size:1.3rem;
-  }
-
-  /* ===== hero ===== */
-  .hero{padding:72px 0 0;}
-  .hero-top{
-    display:grid; grid-template-columns:2fr 1fr; gap:0; border-bottom:1px solid var(--line);
-  }
-  .hero-title-cell{padding:0 0 48px;}
-  [dir="rtl"] .hero-top > div:first-child{border-left:1px solid var(--line-soft); padding-left:44px;}
-  .hero-meta-cell{padding:0 0 48px 44px;}
-  [dir="rtl"] .hero-meta-cell{padding:0 44px 48px 0;}
-
-  .hero-eyebrow{
-    font-family:var(--mono); font-size:0.8rem; color:var(--red);
-    display:flex; align-items:center; gap:10px; margin-bottom:22px;
-  }
-  .hero-eyebrow::before{content:"";width:10px;height:10px;background:var(--red);border-radius:50%;flex-shrink:0;}
-  .hero h1{
-    font-size:clamp(2.6rem, 6.4vw, 5.2rem); line-height:1.08;
-  }
-  .typewriter .tw-line{display:block; min-height:1.08em;}
-  .tw-cursor{
-    display:inline-block; color:var(--red); font-weight:400;
-    animation:blink 1s step-end infinite;
-  }
-  .tw-cursor.done{animation:none; opacity:0;}
-  @keyframes blink{50%{opacity:0;}}
-  @media (prefers-reduced-motion:reduce){
-    .tw-cursor{animation:none;}
-  }
-  .hero-meta-cell p{color:var(--ink-soft); font-size:1rem; margin-bottom:28px; max-width:34ch;}
-  .hero-stats{display:flex; flex-direction:column; gap:0;}
-  .hstat{display:flex; justify-content:space-between; padding:14px 0; border-top:1px solid var(--line-soft);}
-  .hstat:last-child{border-bottom:1px solid var(--line-soft);}
-  .hstat span:first-child{color:var(--ink-soft); font-size:0.9rem;}
-  .hstat span:last-child{font-family:var(--mono); font-weight:600;}
-
-  .hero-bottom{
-    display:grid; grid-template-columns:repeat(4,1fr);
-  }
-  .hero-bottom a{
-    padding:20px 24px; border-left:1px solid var(--line-soft);
-    display:flex; align-items:center; justify-content:space-between;
-    font-size:0.92rem; font-weight:600; transition:background .15s, color .15s;
-  }
-  [dir="rtl"] .hero-bottom a{border-left:none; border-right:1px solid var(--line-soft);}
-  .hero-bottom a:first-child{border:none;}
-  .hero-bottom a:hover{background:var(--ink); color:var(--bg);}
-  @media (max-width:900px){
-    .hero-top{grid-template-columns:1fr;}
-    [dir="rtl"] .hero-top > div:first-child{border-left:none; padding-left:0; border-bottom:1px solid var(--line-soft); padding-bottom:36px;}
-    .hero-meta-cell{padding:36px 0 44px !important;}
-    .hero-bottom{grid-template-columns:1fr 1fr;}
-    .hero-bottom a{border-bottom:1px solid var(--line-soft);}
-  }
-  @media (max-width:560px){
-    .hero-bottom{grid-template-columns:1fr;}
-  }
-
-  /* ===== section header (numbered) ===== */
-  .sec-head{
-    display:grid; grid-template-columns:120px 1fr; align-items:end;
-    padding:60px 0 28px; border-bottom:1px solid var(--line);
-  }
-  .sec-num{font-family:var(--mono); font-size:0.95rem; color:var(--red); padding-bottom:6px;}
-  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
-  .sec-head .sec-desc{color:var(--ink-soft); font-size:0.95rem; margin-top:10px; max-width:50ch;}
-  @media (max-width:700px){
-    .sec-head{grid-template-columns:1fr; gap:10px;}
-  }
-
-  section{padding-bottom:10px;}
-
-  /* ===== category cards (4 portals) ===== */
-  .cat-grid{
-    display:grid; grid-template-columns:repeat(4,1fr);
-    border-top:1px solid var(--line-soft);
-  }
-  .cat-card{
-    border-left:1px solid var(--line-soft); padding:34px 26px 30px;
-    min-height:230px; display:flex; flex-direction:column; justify-content:space-between;
-    transition:background .18s, color .18s;
-    position:relative;
-  }
-  [dir="rtl"] .cat-card{border-left:none; border-right:1px solid var(--line-soft);}
-  .cat-card:first-child{border:none;}
-  .cat-card:hover{background:var(--ink); color:var(--bg);}
-  .cat-card:hover .cat-num{color:var(--red);}
-  .cat-num{font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft);}
-  .cat-card h3{font-size:1.35rem; margin:18px 0 8px;}
-  .cat-card p{font-size:0.86rem; opacity:0.75;}
-  .cat-arrow{align-self:flex-end; font-size:1.3rem; margin-top:18px;}
-  @media (max-width:900px){
-    .cat-grid{grid-template-columns:1fr 1fr;}
-    .cat-card:nth-child(2){border-left:none;}
-    [dir="rtl"] .cat-card:nth-child(2){border-right:none;}
-    .cat-card:nth-child(n+3){border-top:1px solid var(--line-soft);}
-  }
-  @media (max-width:560px){
-    .cat-grid{grid-template-columns:1fr;}
-    .cat-card{border:none !important; border-top:1px solid var(--line-soft) !important;}
-    .cat-card:first-child{border-top:none !important;}
-  }
-
-  /* ===== services rows (per category) ===== */
-  .srow{
-    display:grid; grid-template-columns:70px 1fr 1fr; gap:24px;
-    padding:26px 0; border-bottom:1px solid var(--line-soft);
-    align-items:start;
-  }
-  .srow .n{font-family:var(--mono); font-size:0.85rem; color:var(--red);}
-  .srow h4{font-size:1.1rem; font-weight:700;}
-  .srow p{color:var(--ink-soft); font-size:0.9rem;}
-  @media (max-width:700px){
-    .srow{grid-template-columns:36px 1fr; row-gap:6px;}
-    .srow p{grid-column:2;}
-  }
-
-  /* ===== app scroll showcase (accounting/cashier software) ===== */
-  .app-showcase{
-    border:1px solid var(--line); margin:36px 0 10px; overflow:hidden;
-  }
-  .app-topbar{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 20px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:0.78rem;
-  }
-  .app-dots{display:flex; gap:6px;}
-  .app-dots span{width:9px;height:9px;border-radius:50%; background:var(--line-soft);}
-  .app-scroll-track{
-    position:relative; height:520px; overflow:hidden; background:var(--panel);
-  }
-  .app-frame{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    opacity:0; transform:translateY(40px); transition:opacity .5s ease, transform .5s ease;
-    padding:28px;
-  }
-  .app-frame.active{opacity:1; transform:translateY(0);}
-  .app-mock{
-    width:100%; max-width:640px; background:var(--bg); border:1px solid var(--line);
-  }
-  .app-mock-head{
-    display:flex; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--line-soft);
-    font-family:var(--mono); font-size:0.72rem; color:var(--ink-soft);
-  }
-  .app-mock-body{padding:22px;}
-  .app-mock-body h5{font-size:1.15rem; font-weight:700; margin-bottom:14px;}
-  .mock-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line-soft); font-size:0.88rem;}
-  .mock-row:last-child{border:none;}
-  .mock-row .lbl{color:var(--ink-soft);}
-  .mock-total{display:flex; justify-content:space-between; padding-top:16px; margin-top:6px; border-top:2px solid var(--ink); font-weight:800; font-size:1.05rem;}
-  .mock-total span:last-child{color:var(--red);}
-  .mock-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
-  .mock-stat{border:1px solid var(--line-soft); padding:14px; text-align:center;}
-  .mock-stat b{display:block; font-family:var(--mono); font-size:1.3rem;}
-  .mock-stat span{font-size:0.76rem; color:var(--ink-soft);}
-  .app-dots-nav{
-    display:flex; justify-content:center; gap:10px; padding:16px; border-top:1px solid var(--line);
-  }
-  .app-dots-nav button{
-    width:8px; height:8px; border-radius:50%; border:1px solid var(--ink); background:transparent; cursor:pointer; padding:0;
-  }
-  .app-dots-nav button.active{background:var(--red); border-color:var(--red);}
-  @media (max-width:700px){ .app-scroll-track{height:460px;} .mock-grid{grid-template-columns:1fr 1fr;} }
-
-  /* ===== work grid (design) ===== */
-  .work-grid{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-soft);}
-  .work-item{
-    border-left:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);
-    aspect-ratio:4/3; position:relative; overflow:hidden; background:var(--panel);
-  }
-  [dir="rtl"] .work-item{border-left:none; border-right:1px solid var(--line-soft);}
-  .work-item:nth-child(3n+1){border-left:none;}
-  [dir="rtl"] .work-item:nth-child(3n+1){border-right:none;}
-  .work-item img{width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.05); transition:filter .3s;}
-  .work-item:hover img{filter:grayscale(0%) contrast(1.05);}
-  .work-tag{
-    position:absolute; bottom:12px; right:12px; background:var(--bg); border:1px solid var(--line);
-    padding:5px 10px; font-family:var(--mono); font-size:0.7rem; opacity:0; transition:opacity .2s;
-  }
-  [dir="rtl"] .work-tag{right:auto; left:12px;}
-  .work-item:hover .work-tag{opacity:1;}
-  @media (max-width:760px){
-    .work-grid{grid-template-columns:1fr 1fr;}
-    .work-item:nth-child(3n+1){border-left:1px solid var(--line-soft);}
-    [dir="rtl"] .work-item:nth-child(3n+1){border-right:1px solid var(--line-soft);}
-    .work-item:nth-child(2n+1){border-left:none;}
-    [dir="rtl"] .work-item:nth-child(2n+1){border-right:none;}
-  }
-  @media (max-width:500px){.work-grid{grid-template-columns:1fr;}}
-
-  /* ===== lessons / video + attachments ===== */
-  .lesson{
-    border:1px solid var(--line); margin-bottom:28px;
-  }
-  .lesson-top{
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
-    padding:18px 22px; border-bottom:1px solid var(--line);
-  }
-  .lesson-meta{display:flex; gap:16px; font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft);}
-  .lesson h3{font-size:1.2rem; padding:0 22px; margin:18px 0 16px;}
-  .video-frame{position:relative; width:100%; aspect-ratio:16/9; background:#000;}
-  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
-  .lesson-desc{padding:20px 22px 4px; color:var(--ink-soft); font-size:0.92rem; max-width:70ch;}
-  .attach-block{padding:18px 22px 22px;}
-  .attach-label{font-family:var(--mono); font-size:0.72rem; color:var(--red); margin-bottom:12px; display:block;}
-  .file-item{
-    display:flex; align-items:center; gap:14px; padding:13px 16px;
-    border:1px solid var(--line-soft); margin-bottom:8px; transition:border-color .15s;
-  }
-  .file-item:hover{border-color:var(--ink);}
-  .file-ext{
-    font-family:var(--mono); font-size:0.7rem; font-weight:700; width:40px; height:30px;
-    display:flex; align-items:center; justify-content:center; border:1px solid var(--line); flex-shrink:0;
-  }
-  .file-info{flex:1; min-width:0;}
-  .file-name{font-size:0.92rem; font-weight:600;}
-  .file-size{font-size:0.76rem; color:var(--ink-soft); font-family:var(--mono);}
-  .file-dl{
-    width:30px; height:30px; border:1px solid var(--ink); flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; transition:background .15s, color .15s;
-  }
-  .file-item:hover .file-dl{background:var(--ink); color:var(--bg);}
-  .yt-link{
-    display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:0.8rem;
-    color:var(--red); margin-top:4px;
-  }
-
-  /* ===== content creator band ===== */
-  .content-band{
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    display:grid; grid-template-columns:repeat(4,1fr);
-  }
-  .cband-item{
-    padding:30px 24px; border-left:1px solid var(--line-soft);
-    display:flex; flex-direction:column; gap:10px;
-  }
-  [dir="rtl"] .cband-item{border-left:none; border-right:1px solid var(--line-soft);}
-  .cband-item:first-child{border:none;}
-  .cband-item b{font-family:var(--mono); font-size:2rem; color:var(--red);}
-  .cband-item span{font-size:0.85rem; color:var(--ink-soft);}
-  @media (max-width:800px){
-    .content-band{grid-template-columns:1fr 1fr;}
-    .cband-item:nth-child(2){border:none;}
-    .cband-item:nth-child(n+3){border-top:1px solid var(--line-soft);}
-  }
-  @media (max-width:480px){
-    .content-band{grid-template-columns:1fr;}
-    .cband-item{border:none !important; border-top:1px solid var(--line-soft) !important;}
-    .cband-item:first-child{border-top:none !important;}
-  }
-
-  /* ===== telegram top banner ===== */
-  .tg-bar{
-    position:sticky; top:env(safe-area-inset-top,0px); z-index:56;
-    background:var(--ink); color:var(--bg);
-    border-bottom:1px solid var(--ink);
-    padding:10px calc(env(safe-area-inset-left,0px) + 20px) 10px calc(env(safe-area-inset-right,0px) + 20px);
-  }
-  .tg-bar-row{
-    max-width:1240px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px;
-  }
-  .tg-left{display:flex; align-items:center; gap:12px; min-width:0;}
-  .tg-dot{width:9px; height:9px; border-radius:50%; background:var(--red); flex-shrink:0; animation:tg-pulse 1.8s ease-in-out infinite;}
-  @keyframes tg-pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
-  @media (prefers-reduced-motion:reduce){.tg-dot{animation:none;}}
-  .tg-text{font-size:0.86rem; min-width:0;}
-  .tg-text b{font-weight:700;}
-  .tg-text .sub{display:block; font-size:0.74rem; opacity:0.6; font-family:var(--mono);}
-  .tg-btn{
-    background:var(--red); color:#fff; padding:9px 20px; font-size:0.85rem; font-weight:700;
-    white-space:nowrap; flex-shrink:0; border:1px solid var(--red); transition:opacity .15s;
-  }
-  .tg-btn:hover{opacity:0.85;}
-  @media (max-width:560px){
-    .tg-text .sub{display:none;}
-    .tg-btn{padding:8px 14px; font-size:0.78rem;}
-  }
-
-  /* ===== settings panel (الترس) ===== */
-  .settings-overlay{
-    position:fixed; inset:0; background:rgba(17,17,17,.35); z-index:68;
-    opacity:0; pointer-events:none; transition:opacity .25s;
-  }
-  .settings-overlay.open{opacity:1; pointer-events:auto;}
-  .settings-panel{
-    position:fixed; top:0; bottom:0; left:0; z-index:69;
-    width:min(340px, 88vw); background:var(--bg); color:var(--ink);
-    border-right:1px solid var(--line);
-    transform:translateX(-100%); transition:transform .3s ease;
-    padding:22px 22px calc(22px + env(safe-area-inset-bottom,0px));
-    overflow-y:auto;
-  }
-  [dir="rtl"] .settings-panel{left:auto; right:0; border-right:none; border-left:1px solid var(--line); transform:translateX(100%);}
-  .settings-panel.open{transform:translateX(0);}
-  .settings-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;}
-  .settings-head h3{font-size:1.15rem;}
-  .settings-close{
-    background:none; border:1px solid var(--line-soft); width:32px; height:32px; cursor:pointer;
-    font-size:1.1rem; line-height:1; color:var(--ink); border-radius:2px;
-  }
-  .settings-group{margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--line-soft);}
-  .settings-group:last-child{border:none;}
-  .settings-label{display:block; font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft); margin-bottom:12px;}
-  .swatch-row{display:flex; flex-wrap:wrap; gap:10px;}
-  .swatch{
-    width:34px; height:34px; border-radius:50%; border:2px solid transparent; cursor:pointer;
-    position:relative; flex-shrink:0;
-  }
-  .swatch.active{border-color:var(--ink);}
-  .swatch.active::after{
-    content:"✓"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    color:#fff; font-size:0.85rem; text-shadow:0 0 3px rgba(0,0,0,.5);
-  }
-  .font-list{display:flex; flex-direction:column; gap:8px;}
-  .font-opt{
-    text-align:right; padding:10px 14px; border:1px solid var(--line-soft); background:none; color:var(--ink);
-    cursor:pointer; font-size:0.95rem; border-radius:2px; transition:border-color .15s;
-  }
-  [dir="rtl"] .font-opt{text-align:right;}
-  .font-opt.active{border-color:var(--ink); border-width:2px;}
-  .font-opt:hover{border-color:var(--ink);}
-  .sound-toggle, .settings-reset{
-    width:100%; padding:11px 14px; border:1px solid var(--line); background:none; color:var(--ink);
-    cursor:pointer; font-size:0.9rem; border-radius:2px; transition:background .15s, color .15s;
-  }
-  .sound-toggle:hover, .settings-reset:hover{background:var(--ink); color:var(--bg);}
-  .settings-reset{color:var(--ink-soft); font-size:0.82rem; border-color:var(--line-soft);}
-
-  /* ===== footer ===== */
-  footer{border-top:1px solid var(--line); padding:44px 0 50px; margin-top:40px;}
-  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:30px;}
-  .foot-grid h5{font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft); margin-bottom:14px;}
-  .foot-grid a{display:block; padding:6px 0; font-size:0.92rem;}
-  .foot-grid a:hover{color:var(--red);}
-  .foot-bottom{
-    display:flex; justify-content:space-between; padding-top:30px; margin-top:30px; border-top:1px solid var(--line-soft);
-    font-size:0.8rem; color:var(--ink-soft); flex-wrap:wrap; gap:10px;
-  }
-  @media (max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;}}
-  @media (max-width:480px){.foot-grid{grid-template-columns:1fr;}}
-
-  .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease;}
-  .reveal.in{opacity:1; transform:none;}
-
-  /* عناصر تظهر بالترتيب (fade-in staggered) داخل الشبكات */
-  .cat-grid.reveal > *,
-  .work-grid.reveal > *,
-  .content-band.reveal > *{
-    opacity:0; transform:translateY(14px);
-    transition:opacity .5s ease, transform .5s ease;
-  }
-  .cat-grid.reveal.in > *,
-  .work-grid.reveal.in > *,
-  .content-band.reveal.in > *{
-    opacity:1; transform:none;
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    .reveal, .cat-grid.reveal > *, .work-grid.reveal > *, .content-band.reveal > *{
-      opacity:1; transform:none; transition:none;
-    }
-    html{scroll-behavior:auto;}
-    .app-frame{transition:opacity .2s;}
-  }
-
-
-  /* ======================================================
-     RESPONSIVE PATCH — Mobile, tablet and desktop
-     Added without removing the existing visual design.
-     ====================================================== */
-  :root{--container-gutter:clamp(16px, 3.2vw, 28px);}
-  html{scroll-padding-top:calc(var(--tg-bar-h, 0px) + var(--header-h, 72px) + 16px);}
-  body{min-width:320px; width:100%; overflow-x:hidden; overflow-wrap:anywhere;}
-  .wrap{width:100%; max-width:1240px; padding-inline:var(--container-gutter);}
-  main, section, header, footer, .wrap, .hero-top, .hero-bottom,
-  .sec-head, .cat-grid, .srow, .app-showcase, .lesson, .foot-grid,
-  .content-band, .grid12{min-width:0;}
-  h1,h2,h3,h4,h5,p,a,span{overflow-wrap:anywhere;}
-  img, iframe, video, svg{max-width:100%;}
-  button, a{-webkit-tap-highlight-color:transparent;}
-  button{touch-action:manipulation;}
-  .topbar{top:calc(var(--tg-bar-h, 0px) + env(safe-area-inset-top, 0px));}
-  .mobile-panel{
-    top:calc(var(--tg-bar-h, 0px) + var(--header-h, 72px) + env(safe-area-inset-top, 0px));
-    bottom:0; overflow-y:auto; overscroll-behavior:contain;
-    padding-inline:var(--container-gutter);
-    padding-bottom:calc(20px + env(safe-area-inset-bottom, 0px));
-  }
-  .mobile-panel a{flex-shrink:0;}
-  .hero h1{font-size:clamp(2rem, 6.4vw, 5.2rem); overflow-wrap:normal;}
-  .hero-title-cell, .hero-meta-cell, .sec-head > div{min-width:0;}
-  .hero-meta-cell p{max-width:60ch;}
-  .hero-bottom a, .cat-card, .cband-item{min-width:0;}
-  .cat-card p, .srow p, .sec-desc, .lesson-desc{overflow-wrap:anywhere;}
-  .app-showcase, .app-scroll-track, .app-mock{min-width:0; max-width:100%;}
-  .app-frame{min-width:0; width:100%;}
-  .app-mock-head{gap:8px; flex-wrap:wrap; align-items:flex-start;}
-  .app-mock-head > *{min-width:0;}
-  .app-mock-body{min-width:0;}
-  .mock-row{gap:12px; align-items:flex-start;}
-  .mock-row > span{min-width:0;}
-  .mock-row .mono, .mock-total .mono{white-space:normal; text-align:left;}
-  .mock-grid{min-width:0;}
-  .mock-stat{min-width:0; padding:clamp(8px, 2vw, 14px);}
-  .lesson-meta{flex-wrap:wrap; min-width:0;}
-  .lesson h3{overflow-wrap:anywhere;}
-  .video-frame{overflow:hidden;}
-  .file-item{min-width:0;}
-  .file-name{display:block; overflow-wrap:anywhere;}
-  .file-size{display:block; overflow-wrap:anywhere;}
-  .file-info{min-width:0;}
-  .foot-grid > div{min-width:0;}
-  .grid12 > div{min-width:0;}
-
-  @media (max-width:1024px){
-    .wrap{padding-inline:clamp(18px, 3.2vw, 28px);}
-    .hero{padding-top:clamp(36px, 6vw, 64px);}
-    .hero-top{grid-template-columns:minmax(0, 1.6fr) minmax(230px, 1fr);}
-    [dir="rtl"] .hero-top > div:first-child{padding-left:clamp(20px, 3vw, 44px);}
-    [dir="rtl"] .hero-meta-cell{padding-right:clamp(20px, 3vw, 44px);}
-    .cat-card{padding:28px 20px;}
-    .srow{gap:18px;}
-  }
-  @media (max-width:900px){
-    .topbar-row{padding-block:12px;}
-    .brand{font-size:1.05rem; gap:8px;}
-    .topnav{display:none;}
-    .menu-btn{display:flex;}
-    .hero-top{grid-template-columns:minmax(0, 1fr);}
-    [dir="rtl"] .hero-top > div:first-child{padding-left:0; border-left:0; border-bottom:1px solid var(--line-soft); padding-bottom:28px;}
-    .hero-meta-cell{padding:28px 0 32px !important;}
-    .hero-meta-cell p{max-width:unset;}
-    .hero-bottom{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .cat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .cat-card:nth-child(2){border-left:none;}
-    [dir="rtl"] .cat-card:nth-child(2){border-right:none;}
-    .cat-card:nth-child(n+3){border-top:1px solid var(--line-soft);}
-    .content-band{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .cband-item:nth-child(2){border:none;}
-    .cband-item:nth-child(n+3){border-top:1px solid var(--line-soft);}
-    .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .foot-grid > div:first-child{grid-column:1/-1;}
-    .grid12{grid-template-columns:minmax(0,1fr);}
-    .grid12 > div{grid-column:1/-1 !important; padding-inline:0 !important;}
-  }
-  @media (max-width:760px){
-    .sec-head{grid-template-columns:minmax(0,1fr); gap:10px; padding-top:44px;}
-    .sec-num{padding-bottom:0;}
-    .srow{grid-template-columns:36px minmax(0,1fr); column-gap:12px; row-gap:6px;}
-    .srow h4, .srow p{grid-column:2; min-width:0;}
-    .srow .n{grid-row:1 / span 2;}
-    .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .work-item:nth-child(3n+1){border-right:1px solid var(--line-soft);}
-    [dir="rtl"] .work-item:nth-child(3n+1){border-right:1px solid var(--line-soft);}
-    .work-item:nth-child(2n+1){border-right:none;}
-    [dir="rtl"] .work-item:nth-child(2n+1){border-right:none;}
-    .app-scroll-track{height:420px;}
-    .app-frame{padding:16px;}
-    .app-mock-body{padding:16px;}
-    .lesson-top{padding:14px 16px;}
-    .lesson h3{padding-inline:16px; font-size:1.08rem;}
-    .lesson-desc{padding:16px 16px 4px;}
-    .attach-block{padding:16px;}
-  }
-  @media (max-width:560px){
-    .wrap{padding-inline:16px;}
-    .tg-bar{padding:9px 12px;}
-    .tg-bar-row{gap:8px; flex-wrap:wrap;}
-    .tg-left{flex:1 1 150px; gap:8px;}
-    .tg-text{font-size:.78rem; line-height:1.45;}
-    .tg-text .sub{display:none;}
-    .tg-btn{padding:8px 11px; font-size:.75rem;}
-    .brand{font-size:.96rem; gap:7px;}
-    .brand-index{font-size:.62rem; padding:2px 5px;}
-    .topbar-actions{gap:7px;}
-    .settings-btn,.menu-btn{width:38px; height:38px;}
-    .hero{padding-top:34px;}
-    .hero-eyebrow{font-size:.7rem; margin-bottom:14px;}
-    .hero h1{font-size:clamp(2rem, 9vw, 3rem); line-height:1.14;}
-    .hero-title-cell{padding-bottom:26px;}
-    .hero-meta-cell{padding-block:24px 28px !important;}
-    .hero-meta-cell p{font-size:.93rem; margin-bottom:20px;}
-    .hero-bottom{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .hero-bottom a{padding:14px 10px; font-size:.82rem; gap:8px;}
-    .sec-head{padding:38px 0 20px;}
-    .sec-head h2{font-size:clamp(1.55rem, 7vw, 2rem);}
-    .sec-head .sec-desc{font-size:.88rem;}
-    .cat-card{padding:22px 16px; min-height:200px;}
-    .cat-card h3{font-size:1.08rem; margin:14px 0 8px;}
-    .cat-card p{font-size:.82rem;}
-    .app-topbar{padding:12px; gap:8px; flex-wrap:wrap; font-size:.7rem;}
-    .app-scroll-track{height:390px;}
-    .app-frame{padding:10px;}
-    .app-mock-head{font-size:.65rem; padding:12px;}
-    .app-mock-body{padding:12px;}
-    .app-mock-body h5{font-size:1rem;}
-    .mock-row{font-size:.78rem; gap:8px;}
-    .mock-total{font-size:.92rem; gap:8px;}
-    .mock-stat b{font-size:1.08rem;}
-    .mock-stat span{font-size:.7rem;}
-    .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .work-tag{opacity:1; bottom:7px; left:7px; right:auto; padding:4px 7px; font-size:.62rem;}
-    [dir="rtl"] .work-tag{left:7px; right:auto;}
-    .content-band{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .cband-item{padding:22px 16px;}
-    .cband-item b{font-size:1.65rem;}
-    .cband-item span{font-size:.8rem;}
-    .lesson-meta{font-size:.68rem; gap:9px;}
-    .yt-link{font-size:.73rem;}
-    .file-item{gap:9px; padding:11px;}
-    .file-ext{width:36px;}
-    .file-name{font-size:.84rem;}
-    .file-size{font-size:.68rem;}
-    .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 16px;}
-    .foot-grid > div:first-child{grid-column:1/-1;}
-    .foot-grid h5{font-size:.7rem;}
-    .foot-grid a{font-size:.85rem;}
-    footer{padding:32px 0 36px;}
-    .foot-bottom{font-size:.72rem;}
-    .settings-panel{width:min(340px,92vw); padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));}
-  }
-  @media (max-width:380px){
-    .hero-bottom{grid-template-columns:minmax(0,1fr);}
-    .cat-grid{grid-template-columns:minmax(0,1fr);}
-    .cat-card{min-height:170px; border-inline:none !important; border-top:1px solid var(--line-soft) !important;}
-    .cat-card:first-child{border-top:none !important;}
-    .work-grid{grid-template-columns:minmax(0,1fr);}
-    .content-band{grid-template-columns:minmax(0,1fr);}
-    .cband-item{border-inline:none !important; border-top:1px solid var(--line-soft) !important;}
-    .cband-item:first-child{border-top:none !important;}
-    .app-scroll-track{height:370px;}
-    .mock-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
-    .tg-left{flex-basis:125px;}
-    .tg-btn{font-size:.72rem;}
-  }
-  @media (hover:none){
-    .work-item .work-tag{opacity:1;}
-    .work-item img{filter:grayscale(0%) contrast(1.05);}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .mobile-panel,.settings-panel,.settings-overlay,.work-item img{transition:none !important;}
-  }
-
-
-  /* ===== live website preview ===== */
-  .web-preview-showcase{border:1px solid var(--line); margin:36px 0 10px; overflow:hidden; background:var(--bg); min-width:0;}
-  .web-preview-topline{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 18px; border-bottom:1px solid var(--line); font-size:.76rem;}
-  .web-live-status{display:inline-flex; align-items:center; gap:8px; color:var(--ink-soft); font-family:var(--text);}
-  .web-live-dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:#16a34a; box-shadow:0 0 0 3px rgba(22,163,74,.12);}
-  .web-preview-toolbar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:15px 18px; border-bottom:1px solid var(--line-soft); flex-wrap:wrap;}
-  .web-project-info{display:flex; flex-direction:column; gap:3px; min-width:0;}
-  .web-project-info strong{font-size:1.05rem;}
-  .web-project-info .mono{font-size:.72rem; color:var(--ink-soft); overflow-wrap:anywhere;}
-  .web-preview-actions{display:flex; align-items:center; justify-content:flex-end; gap:8px; flex-wrap:wrap; min-width:0;}
-  .web-device-switch{display:flex; align-items:center; gap:0; border:1px solid var(--line-soft);}
-  .web-device-btn,.web-tool-btn,.web-open-btn{min-height:38px; padding:8px 12px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:600 .78rem var(--text); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; white-space:nowrap; transition:background .16s,color .16s,border-color .16s;}
-  .web-device-btn{border:0; border-left:1px solid var(--line-soft);}
-  [dir="rtl"] .web-device-btn{border-left:0; border-right:1px solid var(--line-soft);}
-  .web-device-btn:first-child{border-inline-start:0;}
-  .web-device-btn.active,.web-tool-btn:hover,.web-open-btn{background:var(--ink); color:var(--bg);}
-  .web-device-btn:hover{background:var(--panel); color:var(--ink);}
-  .web-device-btn.active:hover{background:var(--ink); color:var(--bg);}
-  .web-open-btn:hover{opacity:.82;}
-  .web-preview-stage{display:flex; align-items:flex-start; justify-content:center; width:100%; min-width:0; padding:18px; overflow:auto; background:var(--panel);}
-  .web-preview-window{width:100%; height:680px; flex:0 0 auto; background:#fff; border:1px solid var(--line); box-shadow:0 6px 24px rgba(0,0,0,.09); transition:width .25s ease,height .25s ease; overflow:hidden;}
-  .web-preview-window[data-mode="tablet"]{width:min(820px,100%); height:650px;}
-  .web-preview-window[data-mode="mobile"]{width:min(390px,100%); height:740px; border-radius:20px; border-width:6px; border-color:#222;}
-  .web-preview-window iframe{display:block; width:100%; height:100%; border:0; background:#fff;}
-  .web-preview-note{display:flex; align-items:flex-start; gap:9px; padding:13px 18px; border-top:1px solid var(--line-soft); font-size:.82rem; color:var(--ink-soft);}
-  .web-preview-note p{margin:0;}
-  .web-preview-note > span{font-size:1rem; color:var(--red); flex-shrink:0;}
-  @media (max-width:760px){
-    .web-preview-toolbar{align-items:flex-start;}
-    .web-preview-actions{justify-content:flex-start; width:100%;}
-    .web-preview-stage{padding:12px;}
-    .web-preview-window{height:560px;}
-    .web-preview-window[data-mode="tablet"]{height:600px;}
-    .web-preview-window[data-mode="mobile"]{height:680px;}
-  }
-  @media (max-width:480px){
-    .web-preview-topline{padding:11px 12px; font-size:.68rem;}
-    .web-preview-toolbar{padding:12px;}
-    .web-preview-actions{gap:6px;}
-    .web-device-btn,.web-tool-btn,.web-open-btn{min-height:36px; padding:7px 9px; font-size:.72rem;}
-    .web-preview-stage{padding:8px;}
-    .web-preview-window{height:500px;}
-    .web-preview-window[data-mode="tablet"]{height:540px;}
-    .web-preview-window[data-mode="mobile"]{height:620px;}
-    .web-preview-note{padding:11px 12px; font-size:.76rem;}
-  }
-  @media (prefers-reduced-motion:reduce){.web-preview-window,.web-device-btn,.web-tool-btn,.web-open-btn{transition:none !important;}}
-
+:root{--bg:#F4F7F9;--ink:#10283D;--muted:#51657A;--line:#D5DEE6;--card:#fff;--acc:#0B7F72;--acc-ink:#fff;--hi:#F0B44C;color-scheme:light}
+:root[data-theme="dark"]{--bg:#0C1822;--ink:#E6EEF4;--muted:#9FB3C4;--line:#243847;--card:#12212D;--acc:#3FC1AE;--acc-ink:#06201C;--hi:#F0B44C;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1822;--ink:#E6EEF4;--muted:#9FB3C4;--line:#243847;--card:#12212D;--acc:#3FC1AE;--acc-ink:#06201C;color-scheme:dark}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.8 "IBM Plex Sans Arabic",Tahoma,sans-serif}
+h1,h2,h3{font-family:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;line-height:1.35}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.logo{font:700 18px "Readex Pro",sans-serif;text-decoration:none;margin-inline-end:auto}
+nav{display:flex;gap:18px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.icon-btn{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;width:38px;height:38px;cursor:pointer;font-size:17px}
+.btn{display:inline-block;border:0;border-radius:8px;padding:11px 22px;font:600 16px "IBM Plex Sans Arabic",sans-serif;cursor:pointer;text-decoration:none;background:var(--acc);color:var(--acc-ink)}
+.btn.alt{background:none;color:var(--ink);border:1.5px solid var(--ink)}
+.btn:hover{filter:brightness(1.08)}
+section{padding:64px 0}
+h2{font-size:clamp(24px,4vw,34px);margin-bottom:8px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:28px}
+/* hero */
+.hero{padding:56px 0 48px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+h1{font-size:clamp(30px,5.2vw,52px);margin-bottom:16px}
+.hero p{color:var(--muted);max-width:52ch;margin-bottom:26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.ledger{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--acc);border-radius:4px 4px 14px 14px;padding:22px 22px 14px}
+.ledger h3{font-size:16px;color:var(--muted);font-weight:500;margin-bottom:10px;text-align:center}
+.ledger a{display:flex;align-items:baseline;gap:8px;text-decoration:none;padding:9px 0}
+.ledger a span:first-child{font-weight:600}
+.ledger i{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px)}
+.ledger em{font-style:normal;color:var(--acc);font-weight:600;font-size:14px}
+.ledger a:hover span:first-child{color:var(--acc)}
+.ledger footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:10px;display:flex;justify-content:space-between;font-weight:600}
+/* projects */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:5px 16px;font:500 15px "IBM Plex Sans Arabic",sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card .tag{font-size:14px;color:var(--acc);font-weight:600}
+.card h3{font-size:21px}
+.card p{color:var(--muted);font-size:16px}
+.card ul{padding-inline-start:20px;font-size:16px}
+.card li::marker{color:var(--acc)}
+.card .acts{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:8px}
+.card .btn{padding:9px 16px;font-size:15px}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.svc div{padding:20px 22px;border-inline-start:1px solid var(--line)}
+.svc div:first-child{border-inline-start:0}
+.svc b{display:block;font-family:"Readex Pro",sans-serif;margin-bottom:4px}
+.svc span{color:var(--muted);font-size:15px}
+/* video + contact */
+.yt{background:var(--ink);color:var(--bg);border-radius:14px;padding:32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.yt p{opacity:.8;max-width:46ch}
+.yt .btn{background:var(--hi);color:#2a1a00}
+form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:15px;margin-bottom:4px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+input[type=tel]{direction:ltr;text-align:right}
+textarea{min-height:110px;resize:vertical}
+.err{color:#C0392B;font-size:14px;min-height:20px}
+:root[data-theme="dark"] .err{color:#FF8A7A}
+.note{color:var(--muted);font-size:14px}
+footer.site{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:15px}
+footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.wa{position:fixed;inset-inline-start:18px;bottom:18px;background:#25D366;color:#073b1b;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font:700 13px "Readex Pro",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+@media (max-width:760px){
+ .hero .wrap{grid-template-columns:1fr}
+ nav{display:none}
+ form{grid-template-columns:1fr}
+ .svc div{border-inline-start:0;border-top:1px solid var(--line)}
+ .svc div:first-child{border-top:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="bg-grid" aria-hidden="true"></div>
 
-<div class="tg-bar">
-  <div class="wrap tg-bar-row">
-    <div class="tg-left">
-      <span class="tg-dot" aria-hidden="true"></span>
-      <span class="tg-text"><b>مكتبة البرامج على تليجرام</b><span class="sub mono">مجانًا · آمنة 100% من الفيروسات</span></span>
-    </div>
-    <!-- TODO: استبدل # برابط بوت التليجرام الحقيقي -->
-    <a href="https://t.me/a7zanati_bot" class="tg-btn">افتح البوت ↗</a>
-  </div>
-</div>
-
-<header class="topbar">
-  <div class="wrap topbar-row">
-    <div class="brand">أحمد الزناتي <span class="brand-index mono">اصدار تجريبي</span></div>
-    <nav class="topnav">
-      <a href="#maintenance">الصيانة</a>
-      <a href="#accounting">مواقع الويب</a>
-      <a href="#design">التصميم</a>
-      <a href="#lessons">الدروس</a>
-      <a href="#contact">تواصل</a>
-    </nav>
-    <div class="topbar-actions">
-      <button class="settings-btn" id="settingsBtn" aria-label="إعدادات الألوان والخط" aria-expanded="false" title="إعدادات الموقع">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      </button>
-      <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-      </button>
-    </div>
-  </div>
+<header>
+ <div class="wrap">
+  <a class="logo" href="#top">أحمد الزناتي</a>
+  <nav aria-label="التنقل">
+   <a href="#projects">أعمالي</a>
+   <a href="#services">الخدمات</a>
+   <a href="#videos">الفيديوهات</a>
+   <a href="#contact">كلمني</a>
+  </nav>
+  <button class="icon-btn" id="theme" aria-label="تغيير الوضع بين فاتح وغامق">◐</button>
+ </div>
 </header>
 
-<div class="mobile-panel" id="mobilePanel">
-  <a href="#maintenance">01 — الصيانة</a>
-  <a href="#accounting">02 — مواقع الويب</a>
-  <a href="#design">03 — التصميم</a>
-  <a href="#content">04 — المحتوى</a>
-  <a href="#lessons">الدروس</a>
-  <a href="#contact">تواصل</a>
-</div>
+<main id="top">
+<section class="hero">
+ <div class="wrap">
+  <div>
+   <h1>برامج بتظبّط شغلك: حسابات وعيادات وكاشير وحضور وانصراف</h1>
+   <p>أنا أحمد الزناتي، مطور برمجيات. بعمل أنظمة بسيطة وسريعة تمشي مع شغلك اليومي، وكل برنامج ليه موقعه تدخله وتجرّبه بنفسك قبل ما تقرر.</p>
+   <div class="cta">
+    <a class="btn" href="#projects">شوف شغلي</a>
+    <a class="btn alt" href="#contact">احجز مكالمة</a>
+   </div>
+  </div>
+  <aside class="ledger" aria-label="ملخص الأنظمة">
+   <h3>دفتر الأنظمة الشغّالة</h3>
+   <div id="ledger"></div>
+   <footer><span>الإجمالي</span><span id="count"></span></footer>
+  </aside>
+ </div>
+</section>
 
-<main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-top">
-        <div class="hero-title-cell">
-          <p class="hero-eyebrow">متاح الآن لمشاريع جديدة</p>
-          <h1 class="typewriter" data-lines="تطوير برامج تجارية.|تصاميم إعلانية.|دورات تدريبية."><span class="tw-line"></span><span class="tw-line"></span><span class="tw-line"></span><span class="tw-cursor" aria-hidden="true">|</span></h1>
-        </div>
-        <div class="hero-meta-cell">
-          <p>أحمد الزناتي — مطور برامج وأنظمة صيانة، مصمم جرافيك.</p>
-          <div class="hero-stats">
-            <div class="hstat"><span>سنوات خبرة</span><span class="mono">04+</span></div>
-            <div class="hstat"><span>مشروع منفّذ</span><span class="mono">50+</span></div>
-            <div class="hstat"><span>فيديو تعليمي</span><span class="mono">90+</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-bottom">
-        <a href="#maintenance">صيانة الأنظمة <span class="mono">01</span></a>
-        <a href="#accounting">مواقع الويب <span class="mono">02</span></a>
-        <a href="#design">تصميم جرافيك <span class="mono">03</span></a>
-        <a href="#content">صناعة محتوى <span class="mono">04</span></a>
-      </div>
-    </div>
-  </section>
+<section id="projects">
+ <div class="wrap">
+  <h2>أعمالي</h2>
+  <p class="lead">اختار أي برنامج واضغط «افتح موقع البرنامج» تشوفه شغّال. ولو عجبك، اطلب نسخة أو عرض سعر.</p>
+  <div class="chips" id="chips" role="group" aria-label="تصفية حسب النوع"></div>
+  <div class="grid" id="grid"></div>
+ </div>
+</section>
 
-  <!-- 4 CATEGORY PORTALS -->
-  <section>
-    <div class="wrap">
-      <div class="cat-grid reveal">
-        <a href="#maintenance" class="cat-card">
-          <span class="cat-num mono">01 / صيانة</span>
-          <div>
-            <h3>أنظمة صيانة WinPE</h3>
-            <p>أقراص صيانة وإصلاح جاهزة لاسترجاع الأنظمة المعطلة بسرعة واحترافية.</p>
-          </div>
-          <span class="cat-arrow">←</span>
-        </a>
-        <a href="#accounting" class="cat-card">
-          <span class="cat-num mono">02 / مواقع</span>
-          <div>
-            <h3>تطوير مواقع الويب</h3>
-            <p>استعرض المواقع التي نفذتها من خلال معاينة مباشرة داخل معرض الأعمال.</p>
-          </div>
-          <span class="cat-arrow">←</span>
-        </a>
-        <a href="#design" class="cat-card">
-          <span class="cat-num mono">03 / تصميم</span>
-          <div>
-            <h3>تصميم جرافيك</h3>
-            <p>هويات بصرية ومحتوى تصميمي يعبّر عن مشروعك بوضوح وبساطة.</p>
-          </div>
-          <span class="cat-arrow">←</span>
-        </a>
-        <a href="#content" class="cat-card">
-          <span class="cat-num mono">04 / محتوى</span>
-          <div>
-            <h3>صناعة محتوى</h3>
-            <p>شروحات تقنية ومراجعات على يوتيوب بأسلوب عملي ومباشر.</p>
-          </div>
-          <span class="cat-arrow">←</span>
-        </a>
-      </div>
-    </div>
-  </section>
+<section id="services">
+ <div class="wrap">
+  <h2>أقدر أعملك إيه</h2>
+  <p class="lead">لو شغلك محتاج برنامج مخصوص، قولّي المشكلة وأنا أظبطها.</p>
+  <div class="svc">
+   <div><b>برامج المحاسبة</b><span>فواتير، مصروفات، عملاء وموردين، وتقارير واضحة.</span></div>
+   <div><b>إدارة العيادات</b><span>مواعيد، ملفات مرضى، علاج وحسابات.</span></div>
+   <div><b>كاشير ومخازن</b><span>بيع سريع ومتابعة للمخزون والمبيعات.</span></div>
+   <div><b>حضور وانصراف</b><span>تسجيل ببصمة الوجه وتقارير للموظفين.</span></div>
+   <div><b>مواقع وصفحات هبوط</b><span>صفحة تعرّف بشغلك وتجيب لك عملاء.</span></div>
+  </div>
+ </div>
+</section>
 
-  <!-- 01 MAINTENANCE -->
-  <section id="maintenance">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-num">01 / الصيانة</span>
-        <div>
-          <h2>أنظمة صيانة WinPE</h2>
-          <p class="sec-desc">أقراص تشغيل وصيانة مبنية على WinPE، جاهزة لاسترجاع الملفات، فحص الأعطال، وإعادة تجهيز الأجهزة من غير ما تخسر بيانات العميل.</p>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="srow">
-          <span class="n mono">A</span>
-          <h4>قرص صيانة شامل</h4>
-          <p>أدوات فحص الهارد، استرجاع الملفات، وتثبيت الويندوز في بيئة واحدة خفيفة وسريعة الإقلاع.</p>
-        </div>
-        <div class="srow">
-          <span class="n mono">B</span>
-          <h4>أدوات استرجاع البيانات</h4>
-          <p>استرجاع الملفات المحذوفة أو المفقودة بسبب أعطال الهارد أو الفورمات الخاطئ.</p>
-        </div>
-        <div class="srow">
-          <span class="n mono">C</span>
-          <h4>تحديثات دورية</h4>
-          <p>إصدارات محدّثة بأحدث الأدوات والتعريفات لضمان التوافق مع الأجهزة الحديثة.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="videos">
+ <div class="wrap">
+  <div class="yt">
+   <div>
+    <h2>شروحات وتجارب على اليوتيوب</h2>
+    <p>على القناة هتلاقي شرح للبرامج وتجارب فعلية. اشترك عشان توصلك الفيديوهات الجديدة.</p>
+   </div>
+   <a class="btn" href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener noreferrer">افتح القناة</a>
+  </div>
+ </div>
+</section>
 
-  <!-- 02 WEB PROJECTS / LIVE PREVIEW -->
-  <section id="accounting">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-num">02 / مواقع الويب</span>
-        <div>
-          <h2>مواقع الويب التي نفذتها</h2>
-          <p class="sec-desc">تصفّح الموقع مباشرة من هنا، وبدّل بين عرض الكمبيوتر والتابلت والموبايل لمعاينة التصميم على أحجام شاشات مختلفة.</p>
-        </div>
-      </div>
-
-      <div class="web-preview-showcase reveal" id="webPreview">
-        <div class="web-preview-topline">
-          <span class="mono">LIVE WEBSITE PREVIEW</span>
-          <span class="web-live-status"><span class="web-live-dot" aria-hidden="true"></span> معاينة موقع مباشر</span>
-        </div>
-        <div class="web-preview-toolbar">
-          <div class="web-project-info">
-            <strong>Madrasity</strong>
-            <span class="mono" dir="ltr">madrasity.zya.me</span>
-          </div>
-          <div class="web-preview-actions">
-            <div class="web-device-switch" role="group" aria-label="حجم معاينة الموقع">
-              <button type="button" class="web-device-btn active" data-preview-mode="desktop" aria-pressed="true">كمبيوتر</button>
-              <button type="button" class="web-device-btn" data-preview-mode="tablet" aria-pressed="false">تابلت</button>
-              <button type="button" class="web-device-btn" data-preview-mode="mobile" aria-pressed="false">موبايل</button>
-            </div>
-            <button type="button" class="web-tool-btn" id="reloadWebPreview">إعادة تحميل ↻</button>
-            <a class="web-open-btn" href="https://madrasity.zya.me/" target="_blank" rel="noopener noreferrer">فتح الموقع ↗</a>
-          </div>
-        </div>
-        <div class="web-preview-stage">
-          <div class="web-preview-window" id="webPreviewWindow" data-mode="desktop">
-            <iframe
-              id="webPreviewFrame"
-              src="https://madrasity.zya.me/"
-              title="معاينة مباشرة لموقع Madrasity"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="fullscreen"
-            >المتصفح لا يدعم عرض المواقع داخل إطار.</iframe>
-          </div>
-        </div>
-        <div class="web-preview-note">
-          <span aria-hidden="true">ⓘ</span>
-          <p>لو المعاينة ما ظهرتش، ممكن إعدادات الموقع تمنع عرضه داخل إطار. استخدم زر <b>فتح الموقع</b> للوصول إليه مباشرة.</p>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="srow">
-          <span class="n mono">A</span>
-          <h4>تصميم واجهات المواقع</h4>
-          <p>عرض المشاريع في إطار مباشر يتيح للزائر استكشاف واجهة الموقع قبل فتحه في نافذة مستقلة.</p>
-        </div>
-        <div class="srow">
-          <span class="n mono">B</span>
-          <h4>معاينة متجاوبة</h4>
-          <p>التبديل بين عرض الكمبيوتر والتابلت والموبايل لمراجعة طريقة ظهور الموقع بأحجام مختلفة.</p>
-        </div>
-        <div class="srow">
-          <span class="n mono">C</span>
-          <h4>زيارة الموقع الأصلي</h4>
-          <p>يمكن فتح المشروع في تبويب جديد للوصول إلى التجربة الكاملة إذا لم يسمح الموقع بالعرض داخل الإطار.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 DESIGN -->
-  <section id="design">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-num">03 / التصميم</span>
-        <div>
-          <h2>تصميم جرافيك</h2>
-          <p class="sec-desc">عبر عن منتجك من خلال تصاميم السوشيال ميديا</p>
-        </div>
-      </div>
-      <div class="work-grid reveal">
-        <div class="work-item"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/aad9b5249946285.6a136b872fc44.jpg" alt="سوشيال ميديا" loading="lazy"><span class="work-tag mono">social</span></div>
-        <div class="work-item"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/92de08233289561.68ace6dadff13.jpg" alt="سوشيال ميديا" loading="lazy"><span class="work-tag mono">social</span></div>
-      <div class="work-item"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/a1a731243177419.697bddebd7be4.jpg" alt="سوشيال ميديا" loading="lazy"><span class="work-tag mono">social</span></div>
-
-        </div>
-    </div>
-  </section>
-
-  <!-- 04 CONTENT -->
-  <section id="content">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-num">04 / المحتوى</span>
-        <div>
-          <h2>صناعة محتوى</h2>
-          <p class="sec-desc">قناة يوتيوب تقنية بتشرح الصيانة والبرمجة والتصميم بأسلوب عملي مباشر.</p>
-        </div>
-      </div>
-    </div>
-    <div class="content-band reveal">
-      <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="cband-item">
-        <b class="mono">90+</b>
-        <span>فيديو تعليمي منشور</span>
-      </a>
-      <div class="cband-item">
-        <b class="mono">4</b>
-        <span>مجالات تقنية مختلفة</span>
-      </div>
-      <div class="cband-item">
-        <b class="mono">∞</b>
-        <span>مرفقات تحميل مجانية</span>
-      </div>
-      <a href="#" class="cband-item">
-        <b class="mono">bot</b>
-        <span>مكتبة برامج آمنة عبر تليجرام</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- LESSONS -->
-  <section id="lessons">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-num">05 / الدروس</span>
-        <div>
-          <h2>دروس وشروحات</h2>
-          <p class="sec-desc">كل درس من قناة اليوتيوب معاه الملفات المستخدمة في الشرح جاهزة للتحميل.</p>
-        </div>
-      </div>
-
-      <article class="lesson reveal">
-        <div class="lesson-top">
-          <div class="lesson-meta">
-            <span>LESSON_01</span>
-            <span>19:40</span>
-            <span>متاجر الكترونية</span>
-          </div>
-          <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="yt-link">قناة اليوتيوب ↗</a>
-        </div>
-        <h3>عمل متجر الكتروني بالذكاء الإصطناعى</h3>
-        <div class="video-frame">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/N3ATyzrfQzE?si=geJnql81Uq1SiK4y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
-        <p class="lesson-desc">في الدرس ده بعمل متجر الكتروني لبيع اى خدمة - متجر يشتل على الموبايل والكمبيوتر ومتجاوب مع جميع الانظمة.</p>
-        <div class="attach-block">
-          <span class="attach-label">مرفقات الدرس</span>
-          
-          <a href="https://www.youtube.com/redirect?event=comments&redir_token=QUlxb01IYkxfZjRjVFp2Y0hjZjNBcVFNNVlqSnxBSTVJdTVzTUdWQnp3TXdyVVVKZFBLaWx5NEVsa1dVQy1oWnJ0RmYxVzZQX0VYRzJ0cWhwTzNiai0ybVNqUTEwZE9GbjE2TW1qT0VlQnU4enhENWhDTl9pODZIQ1hsLWt3aTlH&q=https%3A%2F%2Fwhacka.app%2Fi%2Fahmed_mohamed_n3mb" class="file-item" download>
-            <span class="file-ext mono">PDF</span>
-            <span class="file-info"><span class="file-name">رابط المنصة المستخدمة </span><span class="file-size">2.4 ميجابايت</span></span>
-            <span class="file-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
-          </a>
-        </div>
-      </article>
-
-
-      <article class="lesson reveal">
-        <div class="lesson-top">
-          <div class="lesson-meta">
-            <span>LESSON_02</span>
-            <span>05:22</span>
-            <span>برامج محاسبة</span>
-          </div>
-          <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="yt-link">قناة اليوتيوب ↗</a>
-        </div>
-        <h3>برنامج لإدارة الصيدلية</h3>
-        <div class="video-frame">
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/VADztdGEzqA?si=BeaIWZToASvFeXM8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div>
-        <p class="lesson-desc"> أبرز مميزات البرنامج التي ستنقل صيدليتك لمستوى آخر:
-
-إدارة المخزون والجرد الذكي: متابعة دقيقة لكميات الأدوية ونواقص الصيدلية وتنبيهك بها فوراً.
-
-نظام الصلاحية (Expiry System): تنبيهات ذكية ومسبقة بالأدوية القريبة من انتهاء الصلاحية لتجنب الخسائر.
-
-دعم كامل للباركود: سرعة فائقة في عمليات البيع والشراء وإدخال الفواتير.
-
-إدارة الحسابات والتقارير المالية: تقارير مفصلة عن الأرباح، المبيعات اليومية، حسابات الموردين، والشركات.
-
-واجهة مستخدم (UI) عصرية وسهلة: تصميم مريح ومبسط يسهل على أي طبيب أو مساعد صيدلي التعامل معه بدون تعقيد.</p>
-        <div class="attach-block">
-          <span class="attach-label">مرفقات الدرس</span>
-          <a href="#" class="file-item" download>
-            <span class="file-ext mono">RAR</span>
-            <span class="file-info"><span class="file-name">ملف المشروع - حمل البرنامج</span><span class="file-size">100 ميجابايت</span></span>
-            <span class="file-dl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
-          </a>
-        </div>
-      </article>
-
-      <div style="text-align:center; padding:20px 0 10px;">
-        <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener" class="file-item" style="display:inline-flex; padding:14px 26px;">
-          <span class="file-info" style="flex:none;"><span class="file-name">كل الدروس على القناة</span></span>
-          <span class="file-dl">↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="rule reveal"></div>
-      <div style="padding:60px 0 50px;">
-        <div class="grid12 reveal" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-          <div style="grid-column:span 7; padding:36px 0;">
-            <h2 style="font-size:clamp(2rem,4vw,3rem); line-height:1.05;">عندك مشروع<br>محتاج تنفيذ؟</h2>
-          </div>
-          <div style="grid-column:span 5; padding:36px 0 36px 32px; display:flex; flex-direction:column; justify-content:center; gap:14px;">
-            <a href="mailto:dx.company.c1@gmail.com" class="mono" style="font-size:1.1rem; border-bottom:2px solid var(--ink); padding-bottom:4px; width:fit-content;" dir="ltr">info@ahmedzanaty.tech</a>
-            <a href="#" style="color:var(--ink-soft);">واتساب للتواصل المباشر</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="contact">
+ <div class="wrap">
+  <h2>احجز مكالمة أو اطلب عرض سعر</h2>
+  <p class="lead">املا البيانات واضغط إرسال، هيتفتحلك واتساب والرسالة جاهزة تتبعتلي.</p>
+  <form id="form" novalidate>
+   <div>
+    <label for="name">اسمك</label>
+    <input id="name" autocomplete="name" required>
+    <div class="err" id="e-name"></div>
+   </div>
+   <div>
+    <label for="phone">رقم موبايلك</label>
+    <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required>
+    <div class="err" id="e-phone"></div>
+   </div>
+   <div>
+    <label for="service">محتاج إيه</label>
+    <select id="service"></select>
+   </div>
+   <div>
+    <label for="when">أنسب وقت أكلمك فيه</label>
+    <input id="when" placeholder="مثلًا: بكرة بعد العصر">
+   </div>
+   <div class="full">
+    <label for="msg">تفاصيل (اختياري)</label>
+    <textarea id="msg" placeholder="احكيلي باختصار شغلك محتاج إيه"></textarea>
+   </div>
+   <div class="full">
+    <button class="btn" type="submit">إرسال على واتساب</button>
+    <p class="note" style="margin-top:8px">بياناتك بتتبعت لي أنا بس على واتساب، ومش بتتحفظ في أي مكان.</p>
+   </div>
+  </form>
+ </div>
+</section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <h5>أحمد الزناتي</h5>
-        <p style="color:var(--ink-soft); font-size:0.92rem; max-width:40ch;">مطور مواقع ويب وأنظمة صيانة، مصمم جرافيك، ومنشئ محتوى تقني.</p>
-      </div>
-      <div>
-        <h5>الأقسام</h5>
-        <a href="#maintenance">الصيانة</a>
-        <a href="#accounting">مواقع الويب</a>
-        <a href="#design">التصميم</a>
-        <a href="#lessons">الدروس</a>
-      </div>
-      <div>
-        <h5>تابعني</h5>
-        <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener">يوتيوب</a>
-        <a href="#">تليجرام</a>
-        <a href="#">فيسبوك</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 أحمد الزناتي — جميع الحقوق محفوظة</span>
-      <span class="mono">made with care</span>
-    </div>
-  </div>
+<footer class="site">
+ <div class="wrap">
+  <span>© <span id="yr"></span> أحمد الزناتي - مطور برمجيات</span>
+  <a href="http://www.youtube.com/@a7zanati" target="_blank" rel="noopener noreferrer">قناة اليوتيوب</a>
+ </div>
 </footer>
 
-<div class="settings-overlay" id="settingsOverlay"></div>
-<aside class="settings-panel" id="settingsPanel" aria-label="إعدادات الموقع"></aside>
+<a class="wa" id="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="كلمني على واتساب">واتس</a>
 
 <script>
-(function(){
-  'use strict';
+/* ====== عدّل هنا ====== */
+// رقم الواتساب بالصيغة الدولية بدون + وبدون أصفار في الأول. مثال: 201012345678
+const WHATSAPP = "20XXXXXXXXXX";
+const BASE = "https://a7zanati.github.io/";
 
-  /* ======================================================
-     00 — إعداد عام
-     ====================================================== */
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// لإضافة مشروع جديد: انسخ عنصر وضيفه في القائمة دي، وهيظهر لوحده.
+const PROJECTS = [
+ {id:"dental",title:"مدير عيادة الأسنان",cat:"عيادات",
+  about:"نظام لإدارة عيادة الأسنان: المواعيد وملفات المرضى والعلاج والحسابات في مكان واحد.",
+  features:["حجز المواعيد ومتابعتها","ملف لكل مريض وخطة علاج","فواتير وحسابات العيادة"],
+  url:BASE+"dental-clinic-manager/"},
+ {id:"pos",title:"نظام الكاشير ونقاط البيع",cat:"كاشير ومحاسبة",
+  about:"كاشير سريع للمحلات: بيع وفواتير ومخزن وتقارير من غير تعقيد.",
+  features:["فاتورة في ثواني","متابعة المخزون","تقارير يومية وشهرية"],
+  url:BASE+"pos-landing/"},
+ {id:"face",title:"نظام الحضور بالوش",cat:"حضور وانصراف",
+  about:"نظام بيسجّل حضور وانصراف الموظفين ببصمة الوجه، من غير كروت ولا تلاعب.",
+  features:["تسجيل الحضور بالوش","تقارير التأخير والغياب","مفيش كارت يتنسي أو يتبصم عنه حد"],
+  url:BASE+"Face-Attendance-System/"},
+ {id:"volume",title:"Volume Higher",cat:"أدوات",
+  about:"أداة ويب بسيطة وسريعة. افتح الموقع وجرّبها بنفسك.", /* عدّل الوصف ده بوصف البرنامج الحقيقي */
+  features:["بتشتغل من المتصفح مباشرة","خفيفة وسهلة الاستخدام","مجانية للتجربة"],
+  url:BASE+"volume-higher/"}
+];
+/* ====================== */
 
-  /* ======================================================
-     01 — ضبط ارتفاع بانر تليجرام لتثبيت الهيدر تحته مباشرة
-     ====================================================== */
-  function syncTgBarHeight(){
-    const tgBar = document.querySelector('.tg-bar');
-    const header = document.querySelector('.topbar');
-    const root = document.documentElement;
-    if(tgBar) root.style.setProperty('--tg-bar-h', tgBar.offsetHeight + 'px');
-    if(header) root.style.setProperty('--header-h', header.offsetHeight + 'px');
-  }
-  syncTgBarHeight();
-  window.addEventListener('resize', syncTgBarHeight, {passive:true});
-  if(document.fonts && document.fonts.ready){
-    document.fonts.ready.then(syncTgBarHeight).catch(() => {});
-  }
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-  /* ======================================================
-     01b — قائمة الموبايل
-     ====================================================== */
-  const menuBtn = document.getElementById('menuBtn');
-  const mobilePanel = document.getElementById('mobilePanel');
-  if(menuBtn && mobilePanel){
-    menuBtn.addEventListener('click', () => {
-      const open = mobilePanel.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-    });
-    mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      mobilePanel.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    }));
-  }
+// دفتر الأنظمة
+$("#ledger").innerHTML = PROJECTS.map(p =>
+ `<a href="#p-${p.id}"><span>${esc(p.title)}</span><i></i><em>شغّال</em></a>`).join("");
+$("#count").textContent = PROJECTS.length + " أنظمة";
 
-  /* ======================================================
-     02 — Web Audio: نقرات خفيفة بدون ملفات صوت خارجية
-     ====================================================== */
-  let audioCtx = null;
-  function getCtx(){
-    if(!audioCtx){
-      try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-      catch(e){ audioCtx = null; }
-    }
-    return audioCtx;
-  }
-  function playTick(freq, duration, gain){
-    if(prefersReducedMotion) return;
-    if(window.__soundOff) return;
-    const ctx = getCtx();
-    if(!ctx) return;
-    if(ctx.state === 'suspended') ctx.resume();
-    const osc = ctx.createOscillator();
-    const amp = ctx.createGain();
-    osc.type = 'square';
-    osc.frequency.value = freq;
-    amp.gain.value = gain;
-    amp.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
-    osc.connect(amp).connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + duration);
-  }
-  function typeTick(){ playTick(1300 + Math.random() * 400, 0.03, 0.035); }
-  function clickTick(){ playTick(700, 0.07, 0.06); }
+// الكروت والتصفية
+const cats = ["الكل", ...new Set(PROJECTS.map(p => p.cat))];
+let active = "الكل";
+function renderChips(){
+ $("#chips").innerHTML = cats.map(c =>
+  `<button class="chip" aria-pressed="${c===active}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+}
+function renderGrid(){
+ $("#grid").innerHTML = PROJECTS.filter(p => active==="الكل" || p.cat===active).map(p => `
+  <article class="card" id="p-${p.id}">
+   <span class="tag">${esc(p.cat)}</span>
+   <h3>${esc(p.title)}</h3>
+   <p>${esc(p.about)}</p>
+   <ul>${p.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+   <div class="acts">
+    <a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">افتح موقع البرنامج</a>
+    <button class="btn alt" data-req="${esc(p.title)}">اطلب نسخة</button>
+   </div>
+  </article>`).join("");
+}
+$("#chips").addEventListener("click", e => {
+ const b = e.target.closest("[data-c]"); if(!b) return;
+ active = b.dataset.c; renderChips(); renderGrid();
+});
+$("#grid").addEventListener("click", e => {
+ const b = e.target.closest("[data-req]"); if(!b) return;
+ $("#service").value = b.dataset.req;
+ $("#contact").scrollIntoView({behavior:"smooth"});
+ setTimeout(() => $("#name").focus({preventScroll:true}), 400);
+});
+renderChips(); renderGrid();
 
-  document.addEventListener('click', (e) => {
-    const target = e.target.closest('a, button');
-    if(target) clickTick();
-  }, true);
+// قائمة الخدمات في الفورم
+$("#service").innerHTML = [...PROJECTS.map(p => p.title),
+ "برنامج محاسبة","موقع أو صفحة هبوط","حاجة تانية"].map(s => `<option>${esc(s)}</option>`).join("");
 
-  /* ======================================================
-     03 — Typewriter effect للعنوان الرئيسي
-     ====================================================== */
-  const twEl = document.querySelector('.typewriter');
-  if(twEl){
-    const lines = (twEl.dataset.lines || '').split('|').filter(Boolean);
-    const lineEls = twEl.querySelectorAll('.tw-line');
-    const cursor = twEl.querySelector('.tw-cursor');
+// الإرسال على واتساب
+function waLink(text){ return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`; }
+$("#wa").href = waLink("السلام عليكم يا أحمد، شفت موقعك وعاوز أستفسر.");
+$("#form").addEventListener("submit", e => {
+ e.preventDefault();
+ const name = $("#name").value.trim();
+ const phone = $("#phone").value.replace(/[\s-]/g,"");
+ let ok = true;
+ $("#e-name").textContent = ""; $("#e-phone").textContent = "";
+ if(name.length < 2){ $("#e-name").textContent = "اكتب اسمك من فضلك."; ok = false; }
+ if(!/^(\+?20|0)?1[0125]\d{8}$/.test(phone) && !/^\+?\d{8,15}$/.test(phone)){
+  $("#e-phone").textContent = "اكتب رقم موبايل صحيح، مثلًا 01012345678."; ok = false;
+ }
+ if(!ok) return;
+ const lines = [
+  "السلام عليكم يا أحمد 👋",
+  "الاسم: " + name,
+  "الموبايل: " + phone,
+  "محتاج: " + $("#service").value
+ ];
+ if($("#when").value.trim()) lines.push("أنسب وقت: " + $("#when").value.trim());
+ if($("#msg").value.trim()) lines.push("التفاصيل: " + $("#msg").value.trim());
+ lines.push("(الرسالة من موقعك)");
+ window.open(waLink(lines.join("\n")), "_blank", "noopener");
+});
 
-    function typeLine(lineIndex, charIndex){
-      if(lineIndex >= lines.length){
-        if(cursor) cursor.classList.add('done');
-        return;
-      }
-      const text = lines[lineIndex];
-      if(charIndex <= text.length){
-        if(lineEls[lineIndex]) lineEls[lineIndex].textContent = text.slice(0, charIndex);
-        if(charIndex > 0) typeTick();
-        setTimeout(() => typeLine(lineIndex, charIndex + 1), prefersReducedMotion ? 0 : 42);
-      } else {
-        setTimeout(() => typeLine(lineIndex + 1, 0), prefersReducedMotion ? 0 : 160);
-      }
-    }
-
-    if(prefersReducedMotion){
-      lines.forEach((t, i) => { if(lineEls[i]) lineEls[i].textContent = t; });
-      if(cursor) cursor.classList.add('done');
-    } else {
-      let started = false;
-      function startTyping(){
-        if(started) return;
-        started = true;
-        typeLine(0, 0);
-      }
-      ['click', 'scroll', 'keydown', 'touchstart'].forEach(evt =>
-        window.addEventListener(evt, startTyping, { once: true, passive: true })
-      );
-      setTimeout(startTyping, 500);
-    }
-  }
-
-  /* ======================================================
-     04 — Scroll reveal بالترتيب (stagger)
-     ====================================================== */
-  const staggerGroups = new Set(['cat-grid', 'work-grid', 'content-band']);
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(!e.isIntersecting) return;
-      const el = e.target;
-      const isGroup = [...el.classList].some(c => staggerGroups.has(c));
-      el.classList.add('in');
-      if(isGroup){
-        Array.from(el.children).forEach((child, i) => {
-          child.style.transitionDelay = prefersReducedMotion ? '0ms' : `${i * 70}ms`;
-        });
-      }
-      io.unobserve(el);
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  /* ======================================================
-     05 — باراالاكس خفيف لشبكة الخلفية أثناء السكرول
-     ====================================================== */
-  if(!prefersReducedMotion){
-    const grid = document.querySelector('.bg-grid');
-    if(grid){
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if(!ticking){
-          window.requestAnimationFrame(() => {
-            const y = window.scrollY * 0.15;
-            grid.style.backgroundPosition = `0 ${y}px, 0 ${y}px`;
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    }
-  }
-
-  /* ======================================================
-     06 — معاينة مواقع الويب وتغيير حجم الجهاز
-     ====================================================== */
-  const previewWindow = document.getElementById('webPreviewWindow');
-  const previewFrame = document.getElementById('webPreviewFrame');
-  const previewModeButtons = Array.from(document.querySelectorAll('[data-preview-mode]'));
-  const reloadPreviewButton = document.getElementById('reloadWebPreview');
-
-  if(previewWindow && previewFrame){
-    previewModeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const mode = button.dataset.previewMode;
-        if(!['desktop', 'tablet', 'mobile'].includes(mode)) return;
-        previewWindow.dataset.mode = mode;
-        previewModeButtons.forEach(item => {
-          const active = item === button;
-          item.classList.toggle('active', active);
-          item.setAttribute('aria-pressed', String(active));
-        });
-      });
-    });
-
-    if(reloadPreviewButton){
-      reloadPreviewButton.addEventListener('click', () => {
-        previewFrame.src = previewFrame.src;
-      });
-    }
-  }
-
-  /* ======================================================
-     07 — ترس الإعدادات: الألوان والخط
-     ====================================================== */
-  const THEMES = {
-    classic:  { name: 'أبيض وأحمر',  accent: '#E63326', ink: '#111111', bg: '#FFFFFF' },
-    ocean:    { name: 'أزرق محيطي',  accent: '#1C64F2', ink: '#101828', bg: '#FFFFFF' },
-    forest:   { name: 'أخضر هادئ',   accent: '#0E8A5F', ink: '#102118', bg: '#FFFFFF' },
-    amber:    { name: 'كهرماني',     accent: '#D97706', ink: '#201603', bg: '#FFFFFF' },
-    violet:   { name: 'بنفسجي',      accent: '#7C3AED', ink: '#160A26', bg: '#FFFFFF' },
-    midnight: { name: 'داكن',        accent: '#4C8DFF', ink: '#EAEFF8', bg: '#0B0F1A' }
-  };
-  const FONTS = {
-    archivo: { name: 'Archivo (افتراضي)', disp: "'Archivo','IBM Plex Sans Arabic',sans-serif" },
-    cairo:   { name: 'Cairo',             disp: "'Cairo','IBM Plex Sans Arabic',sans-serif" },
-    tajawal: { name: 'Tajawal',           disp: "'Tajawal','IBM Plex Sans Arabic',sans-serif" },
-    jakarta: { name: 'Plus Jakarta Sans', disp: "'Plus Jakarta Sans','IBM Plex Sans Arabic',sans-serif" }
-  };
-
-  const root = document.documentElement;
-  const STORAGE_KEY = 'zanaty-site-prefs';
-
-  function loadPrefs(){
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    } catch(e){ return {}; }
-  }
-  function savePrefs(prefs){
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs)); } catch(e){}
-  }
-
-  function applyTheme(key){
-    const t = THEMES[key] || THEMES.classic;
-    root.style.setProperty('--red', t.accent);
-    root.style.setProperty('--ink', t.ink);
-    root.style.setProperty('--bg', t.bg);
-    root.style.setProperty('--line', t.ink);
-    if(key === 'midnight'){
-      root.style.setProperty('--ink-soft', '#9AA4B8');
-      root.style.setProperty('--line-soft', '#2A3142');
-      root.style.setProperty('--panel', '#121826');
-    } else {
-      root.style.setProperty('--ink-soft', '#6B6B6B');
-      root.style.setProperty('--line-soft', '#D8D8D8');
-      root.style.setProperty('--panel', '#F3F3F1');
-    }
-  }
-  function applyFont(key){
-    const f = FONTS[key] || FONTS.archivo;
-    root.style.setProperty('--disp', f.disp);
-  }
-
-  const savedPrefs = loadPrefs();
-  if(savedPrefs.theme) applyTheme(savedPrefs.theme);
-  if(savedPrefs.font) applyFont(savedPrefs.font);
-  if(savedPrefs.sound === 'off') window.__soundOff = true;
-
-  const settingsBtn = document.getElementById('settingsBtn');
-  const settingsPanel = document.getElementById('settingsPanel');
-  const settingsOverlay = document.getElementById('settingsOverlay');
-
-  function buildSettingsPanel(){
-    if(!settingsPanel) return;
-    const prefs = loadPrefs();
-    const currentTheme = prefs.theme || 'classic';
-    const currentFont = prefs.font || 'archivo';
-    const soundOn = prefs.sound !== 'off';
-
-    let html = '<div class="settings-head"><h3>إعدادات الموقع</h3><button type="button" class="settings-close" id="settingsClose" aria-label="إغلاق">×</button></div>';
-
-    html += '<div class="settings-group"><span class="settings-label">لون الموقع</span><div class="swatch-row">';
-    Object.keys(THEMES).forEach(key => {
-      const t = THEMES[key];
-      const active = key === currentTheme ? ' active' : '';
-      html += `<button type="button" class="swatch${active}" data-theme="${key}" style="background:${t.accent}" title="${t.name}" aria-label="${t.name}"></button>`;
-    });
-    html += '</div></div>';
-
-    html += '<div class="settings-group"><span class="settings-label">خط الموقع</span><div class="font-list">';
-    Object.keys(FONTS).forEach(key => {
-      const f = FONTS[key];
-      const active = key === currentFont ? ' active' : '';
-      html += `<button type="button" class="font-opt${active}" data-font="${key}" style="font-family:${f.disp}">${f.name}</button>`;
-    });
-    html += '</div></div>';
-
-    html += `<div class="settings-group"><span class="settings-label">صوت الكتابة والنقرات</span>
-      <button type="button" class="sound-toggle" id="soundToggle" aria-pressed="${soundOn}">${soundOn ? 'الصوت مفعّل 🔊' : 'الصوت متوقف 🔇'}</button>
-    </div>`;
-
-    html += '<div class="settings-group"><button type="button" class="settings-reset" id="settingsReset">استرجاع الإعدادات الافتراضية</button></div>';
-
-    settingsPanel.innerHTML = html;
-
-    settingsPanel.querySelectorAll('.swatch').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.dataset.theme;
-        applyTheme(key);
-        const p = loadPrefs(); p.theme = key; savePrefs(p);
-        settingsPanel.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-    settingsPanel.querySelectorAll('.font-opt').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.dataset.font;
-        applyFont(key);
-        const p = loadPrefs(); p.font = key; savePrefs(p);
-        settingsPanel.querySelectorAll('.font-opt').forEach(s => s.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-    const soundToggleBtn = document.getElementById('soundToggle');
-    if(soundToggleBtn){
-      soundToggleBtn.addEventListener('click', () => {
-        const p = loadPrefs();
-        const nowOn = p.sound === 'off';
-        p.sound = nowOn ? 'on' : 'off';
-        window.__soundOff = !nowOn;
-        savePrefs(p);
-        soundToggleBtn.textContent = nowOn ? 'الصوت مفعّل 🔊' : 'الصوت متوقف 🔇';
-        soundToggleBtn.setAttribute('aria-pressed', String(nowOn));
-      });
-    }
-    const resetBtn = document.getElementById('settingsReset');
-    if(resetBtn){
-      resetBtn.addEventListener('click', () => {
-        savePrefs({});
-        window.__soundOff = false;
-        applyTheme('classic');
-        applyFont('archivo');
-        buildSettingsPanel();
-      });
-    }
-    const closeBtn = document.getElementById('settingsClose');
-    if(closeBtn) closeBtn.addEventListener('click', closeSettings);
-  }
-
-  function openSettings(){
-    if(!settingsPanel) return;
-    buildSettingsPanel();
-    settingsPanel.classList.add('open');
-    if(settingsOverlay) settingsOverlay.classList.add('open');
-    if(settingsBtn) settingsBtn.setAttribute('aria-expanded', 'true');
-  }
-  function closeSettings(){
-    if(!settingsPanel) return;
-    settingsPanel.classList.remove('open');
-    if(settingsOverlay) settingsOverlay.classList.remove('open');
-    if(settingsBtn) settingsBtn.setAttribute('aria-expanded', 'false');
-  }
-  if(settingsBtn){
-    settingsBtn.addEventListener('click', () => {
-      const isOpen = settingsPanel && settingsPanel.classList.contains('open');
-      if(isOpen) closeSettings(); else openSettings();
-    });
-  }
-  if(settingsOverlay) settingsOverlay.addEventListener('click', closeSettings);
-  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeSettings(); });
-
-})();
+// الوضع الفاتح والغامق
+const root = document.documentElement;
+try{ const t = localStorage.getItem("theme"); if(t) root.dataset.theme = t; }catch(_){}
+$("#theme").addEventListener("click", () => {
+ const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme:dark)").matches;
+ root.dataset.theme = dark ? "light" : "dark";
+ try{ localStorage.setItem("theme", root.dataset.theme); }catch(_){}
+});
+$("#yr").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
