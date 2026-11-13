@@ -1,320 +1,489 @@
-\<!DOCTYPE html>\
-\<html lang="ar" dir="rtl">\
-\<head>\
-\<meta charset="utf-8">\
-\<meta name="viewport" content="width=device-width, initial-scale=1">\
-\<title>أحمد الزناتي \</title>\
-\<meta name="description" content="أحمد الزناتي مطور برمجيات. برامج محاسبة، أنظمة إدارة عيادات، كاشير، وحضور وانصراف ببصمة الوجه. جرّب كل برنامج من موقعه.">\
-\<meta property="og:title" content="أحمد الزناتي | مطور تطبيقات سطح المكتب">\
-\<meta property="og:description" content="أنظمة محاسبة وعيادات وكاشير وحضور وانصراف. جرّب كل برنامج بنفسك.">\
-\<meta property="og:type" content="website">\
-\<link rel="preconnect" href="https\://fonts.googleapis.com">\
-\<link rel="preconnect" href="https\://fonts.gstatic.com" crossorigin>\
-\<link href="https\://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;700&display=swap" rel="stylesheet">\
-\<style>\
-:root{--bg:#F4F7F9;--ink:#10283D;--muted:#51657A;--line:#D5DEE6;--card:#fff;--acc:#0B7F72;--acc-ink:#fff;--hi:#F0B44C;color-scheme:light}\
-:root[data-theme="dark"]{--bg:#0C1822;--ink:#E6EEF4;--muted:#9FB3C4;--line:#243847;--card:#12212D;--acc:#3FC1AE;--acc-ink:#06201C;--hi:#F0B44C;color-scheme:dark}\
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1822;--ink:#E6EEF4;--muted:#9FB3C4;--line:#243847;--card:#12212D;--acc:#3FC1AE;--acc-ink:#06201C;color-scheme:dark}}\
-\*{box-sizing:border-box;margin:0}\
-html{scroll-behavior:smooth;scroll-padding-top:72px}\
-body{background:var(--bg);color:var(--ink);font:400 17px/1.8 "IBM Plex Sans Arabic",Tahoma,sans-serif}\
-h1,h2,h3{font-family:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;line-height:1.35}\
-a{color:inherit}\
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}\
-:focus-visible{outline:3px solid var(--hi);outline-offset:2px}\
-header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}\
-header .wrap{display:flex;align-items:center;gap:16px;height:64px}\
-.logo{font:700 18px "Readex Pro",sans-serif;text-decoration:none;margin-inline-end:auto}\
-nav{display:flex;gap:18px;font-size:15px}\
-nav a{text-decoration:none;color:var(--muted)}\
-nav a:hover{color:var(--ink)}\
-.icon-btn{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;width:38px;height:38px;cursor:pointer;font-size:17px}\
-.btn{display:inline-block;border:0;border-radius:8px;padding:11px 22px;font:600 16px "IBM Plex Sans Arabic",sans-serif;cursor:pointer;text-decoration:none;background:var(--acc);color:var(--acc-ink)}\
-.btn.alt{background:none;color:var(--ink);border:1.5px solid var(--ink)}\
-.btn:hover{filter:brightness(1.08)}\
-section{padding:64px 0}\
-h2{font-size:clamp(24px,4vw,34px);margin-bottom:8px}\
-.lead{color:var(--muted);max-width:60ch;margin-bottom:28px}\
-/\* hero \*/\
-.hero{padding:56px 0 48px}\
-.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}\
-h1{font-size:clamp(30px,5.2vw,52px);margin-bottom:16px}\
-.hero p{color:var(--muted);max-width:52ch;margin-bottom:26px}\
-.cta{display:flex;gap:12px;flex-wrap:wrap}\
-.ledger{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--acc);border-radius:4px 4px 14px 14px;padding:22px 22px 14px}\
-.ledger h3{font-size:16px;color:var(--muted);font-weight:500;margin-bottom:10px;text-align:center}\
-.ledger a{display:flex;align-items:baseline;gap:8px;text-decoration:none;padding:9px 0}\
-.ledger a span:first-child{font-weight:600}\
-.ledger i{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px)}\
-.ledger em{font-style:normal;color:var(--acc);font-weight:600;font-size:14px}\
-.ledger a:hover span:first-child{color:var(--acc)}\
-.ledger footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:10px;display:flex;justify-content:space-between;font-weight:600}\
-/\* projects \*/\
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}\
-.chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:5px 16px;font:500 15px "IBM Plex Sans Arabic",sans-serif;cursor:pointer}\
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}\
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}\
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px}\
-.card .tag{font-size:14px;color:var(--acc);font-weight:600}\
-.card h3{font-size:21px}\
-.card p{color:var(--muted);font-size:16px}\
-.card ul{padding-inline-start:20px;font-size:16px}\
-.card li::marker{color:var(--acc)}\
-.card .acts{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:8px}\
-.card .btn{padding:9px 16px;font-size:15px}\
-/\* services \*/\
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}\
-.svc div{padding:20px 22px;border-inline-start:1px solid var(--line)}\
-.svc div:first-child{border-inline-start:0}\
-.svc b{display:block;font-family:"Readex Pro",sans-serif;margin-bottom:4px}\
-.svc span{color:var(--muted);font-size:15px}\
-/\* video + contact \*/\
-.yt{background:var(--ink);color:var(--bg);border-radius:14px;padding:32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}\
-.yt p{opacity:.8;max-width:46ch}\
-.yt .btn{background:var(--hi);color:#2a1a00}\
-form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}\
-.full{grid-column:1/-1}\
-label{display:block;font-weight:600;font-size:15px;margin-bottom:4px}\
-input,select,textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}\
-input[type=tel]{direction:ltr;text-align:right}\
-textarea{min-height:110px;resize:vertical}\
-.err{color:#C0392B;font-size:14px;min-height:20px}\
-:root[data-theme="dark"] .err{color:#FF8A7A}\
-.note{color:var(--muted);font-size:14px}\
-footer.site{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:15px}\
-footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}\
-.wa{position:fixed;inset-inline-start:18px;bottom:18px;background:#25D366;color:#073b1b;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font:700 13px "Readex Pro",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25)}\
-@media (max-width:760px){\
-&#x20;.hero .wrap{grid-template-columns:1fr}\
-&#x20;nav{display:none}\
-&#x20;form{grid-template-columns:1fr}\
-&#x20;.svc div{border-inline-start:0;border-top:1px solid var(--line)}\
-&#x20;.svc div:first-child{border-top:0}\
-}\
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}\
-\</style>\
-\</head>\
-\<body>\
-\
-\<header>\
-&#x20;\<div class="wrap">\
-&#x20; \<a class="logo" href="#top">أحمد الزناتي\</a>\
-&#x20; \<nav aria-label="التنقل">\
-&#x20;  \<a href="#projects">أعمالي\</a>\
-&#x20;  \<a href="#services">الخدمات\</a>\
-&#x20;  \<a href="#videos">الفيديوهات\</a>\
-&#x20;  \<a href="#contact">كلمني\</a>\
-&#x20; \</nav>\
-&#x20; \<button class="icon-btn" id="theme" aria-label="تغيير الوضع بين فاتح وغامق">◐\</button>\
-&#x20;\</div>\
-\</header>\
-\
-\<main id="top">\
-\<section class="hero">\
-&#x20;\<div class="wrap">\
-&#x20; \<div>\
-&#x20;  \<h1>برامج بتظبّط شغلك: حسابات وعيادات وكاشير وحضور وانصراف\</h1>\
-&#x20;  \<p>أنا أحمد الزناتي، مطور برمجيات. بعمل أنظمة بسيطة وسريعة تمشي مع شغلك اليومي، وكل برنامج ليه موقعه تدخله وتجرّبه بنفسك قبل ما تقرر.\</p>\
-&#x20;  \<div class="cta">\
-&#x20;   \<a class="btn" href="#projects">شوف شغلي\</a>\
-&#x20;   \<a class="btn alt" href="#contact">احجز مكالمة\</a>\
-&#x20;  \</div>\
-&#x20; \</div>\
-&#x20; \<aside class="ledger" aria-label="ملخص الأنظمة">\
-&#x20;  \<h3>دفتر الأنظمة الشغّالة\</h3>\
-&#x20;  \<div id="ledger">\</div>\
-&#x20;  \<footer>\<span>الإجمالي\</span>\<span id="count">\</span>\</footer>\
-&#x20; \</aside>\
-&#x20;\</div>\
-\</section>\
-\
-\<section id="projects">\
-&#x20;\<div class="wrap">\
-&#x20; \<h2>أعمالي\</h2>\
-&#x20; \<p class="lead">اختار أي برنامج واضغط «افتح موقع البرنامج» تشوفه شغّال. ولو عجبك، اطلب نسخة أو عرض سعر.\</p>\
-&#x20; \<div class="chips" id="chips" role="group" aria-label="تصفية حسب النوع">\</div>\
-&#x20; \<div class="grid" id="grid">\</div>\
-&#x20;\</div>\
-\</section>\
-\
-\<section id="services">\
-&#x20;\<div class="wrap">\
-&#x20; \<h2>أقدر أعملك إيه\</h2>\
-&#x20; \<p class="lead">لو شغلك محتاج برنامج مخصوص، قولّي المشكلة وأنا أظبطها.\</p>\
-&#x20; \<div class="svc">\
-&#x20;  \<div>\<b>برامج المحاسبة\</b>\<span>فواتير، مصروفات، عملاء وموردين، وتقارير واضحة.\</span>\</div>\
-&#x20;  \<div>\<b>إدارة العيادات\</b>\<span>مواعيد، ملفات مرضى، علاج وحسابات.\</span>\</div>\
-&#x20;  \<div>\<b>كاشير ومخازن\</b>\<span>بيع سريع ومتابعة للمخزون والمبيعات.\</span>\</div>\
-&#x20;  \<div>\<b>حضور وانصراف\</b>\<span>تسجيل ببصمة الوجه وتقارير للموظفين.\</span>\</div>\
-&#x20;  \<div>\<b>مواقع وصفحات هبوط\</b>\<span>صفحة تعرّف بشغلك وتجيب لك عملاء.\</span>\</div>\
-&#x20; \</div>\
-&#x20;\</div>\
-\</section>\
-\
-\<section id="videos">\
-&#x20;\<div class="wrap">\
-&#x20; \<div class="yt">\
-&#x20;  \<div>\
-&#x20;   \<h2>شروحات وتجارب على اليوتيوب\</h2>\
-&#x20;   \<p>على القناة هتلاقي شرح للبرامج وتجارب فعلية. اشترك عشان توصلك الفيديوهات الجديدة.\</p>\
-&#x20;  \</div>\
-&#x20;  \<a class="btn" href="http\://www\.youtube.com/@a7zanati" target="\_blank" rel="noopener noreferrer">افتح القناة\</a>\
-&#x20; \</div>\
-&#x20;\</div>\
-\</section>\
-\
-\<section id="contact">\
-&#x20;\<div class="wrap">\
-&#x20; \<h2>احجز مكالمة أو اطلب عرض سعر\</h2>\
-&#x20; \<p class="lead">املا البيانات واضغط إرسال، هيتفتحلك واتساب والرسالة جاهزة تتبعتلي.\</p>\
-&#x20; \<form id="form" novalidate>\
-&#x20;  \<div>\
-&#x20;   \<label for="name">اسمك\</label>\
-&#x20;   \<input id="name" autocomplete="name" required>\
-&#x20;   \<div class="err" id="e-name">\</div>\
-&#x20;  \</div>\
-&#x20;  \<div>\
-&#x20;   \<label for="phone">رقم موبايلك\</label>\
-&#x20;   \<input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required>\
-&#x20;   \<div class="err" id="e-phone">\</div>\
-&#x20;  \</div>\
-&#x20;  \<div>\
-&#x20;   \<label for="service">محتاج إيه\</label>\
-&#x20;   \<select id="service">\</select>\
-&#x20;  \</div>\
-&#x20;  \<div>\
-&#x20;   \<label for="when">أنسب وقت أكلمك فيه\</label>\
-&#x20;   \<input id="when" placeholder="مثلًا: بكرة بعد العصر">\
-&#x20;  \</div>\
-&#x20;  \<div class="full">\
-&#x20;   \<label for="msg">تفاصيل (اختياري)\</label>\
-&#x20;   \<textarea id="msg" placeholder="احكيلي باختصار شغلك محتاج إيه">\</textarea>\
-&#x20;  \</div>\
-&#x20;  \<div class="full">\
-&#x20;   \<button class="btn" type="submit">إرسال على واتساب\</button>\
-&#x20;   \<p class="note" style="margin-top:8px">بياناتك بتتبعت لي أنا بس على واتساب، ومش بتتحفظ في أي مكان.\</p>\
-&#x20;  \</div>\
-&#x20; \</form>\
-&#x20;\</div>\
-\</section>\
-\</main>\
-\
-\<footer class="site">\
-&#x20;\<div class="wrap">\
-&#x20; \<span>© \<span id="yr">\</span> أحمد الزناتي - مطور برمجيات\</span>\
-&#x20; \<a href="http\://www\.youtube.com/@a7zanati" target="\_blank" rel="noopener noreferrer">قناة اليوتيوب\</a>\
-&#x20;\</div>\
-\</footer>\
-\
-\<a class="wa" id="wa" href="#" target="\_blank" rel="noopener noreferrer" aria-label="كلمني على واتساب">واتس\</a>\
-\
-\<script>\
-/\* ====== عدّل هنا ====== \*/\
-// رقم الواتساب بالصيغة الدولية بدون + وبدون أصفار في الأول. مثال: 201012345678\
-const WHATSAPP = "201064404721";\
-const BASE = "https\://a7zanati.github.io/";\
-\
-// لإضافة مشروع جديد: انسخ عنصر وضيفه في القائمة دي، وهيظهر لوحده.\
-const PROJECTS = [\
-&#x20;{id:"dental",title:"مدير عيادة الأسنان",cat:"عيادات",\
-&#x20; about:"نظام لإدارة عيادة الأسنان: المواعيد وملفات المرضى والعلاج والحسابات في مكان واحد.",\
-&#x20; features:["حجز المواعيد ومتابعتها","ملف لكل مريض وخطة علاج","فواتير وحسابات العيادة"],\
-&#x20; url:BASE+"dental-clinic-manager/"},\
-&#x20;{id:"pos",title:"نظام الكاشير ونقاط البيع",cat:"كاشير ومحاسبة",\
-&#x20; about:"كاشير سريع للمحلات: بيع وفواتير ومخزن وتقارير من غير تعقيد.",\
-&#x20; features:["فاتورة في ثواني","متابعة المخزون","تقارير يومية وشهرية"],\
-&#x20; url:BASE+"pos-landing/"},\
-&#x20;{id:"face",title:"نظام الحضور بالوش",cat:"حضور وانصراف",\
-&#x20; about:"نظام بيسجّل حضور وانصراف الموظفين ببصمة الوجه، من غير كروت ولا تلاعب.",\
-&#x20; features:["تسجيل الحضور بالوش","تقارير التأخير والغياب","مفيش كارت يتنسي أو يتبصم عنه حد"],\
-&#x20; url:BASE+"Face-Attendance-System/"},\
-&#x20;{id:"volume",title:"Volume Higher",cat:"أدوات",\
-&#x20; about:"أداة ويب بسيطة وسريعة. افتح الموقع وجرّبها بنفسك.", /\* عدّل الوصف ده بوصف البرنامج الحقيقي \*/\
-&#x20; features:["بتشتغل من المتصفح مباشرة","خفيفة وسهلة الاستخدام","مجانية للتجربة"],\
-&#x20; url:BASE+"volume-higher/"}\
-];\
-/\* ====================== \*/\
-\
-const $ = s => document.querySelector(s);\
-const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));\
-\
-// دفتر الأنظمة\
-$("#ledger").innerHTML = PROJECTS.map(p =>\
-&#x20;\`\<a href="#p-${p.id}">\<span>${esc(p.title)}\</span>\<i>\</i>\<em>شغّال\</em>\</a>\`).join("");\
-$("#count").textContent = PROJECTS.length + " أنظمة";\
-\
-// الكروت والتصفية\
-const cats = ["الكل", ...new Set(PROJECTS.map(p => p.cat))];\
-let active = "الكل";\
-function renderChips(){\
-&#x20;$("#chips").innerHTML = cats.map(c =>\
-&#x20; \`\<button class="chip" aria-pressed="${c===active}" data-c="${esc(c)}">${esc(c)}\</button>\`).join("");\
-}\
-function renderGrid(){\
-&#x20;$("#grid").innerHTML = PROJECTS.filter(p => active==="الكل" || p.cat===active).map(p => \`\
-&#x20; \<article class="card" id="p-${p.id}">\
-&#x20;  \<span class="tag">${esc(p.cat)}\</span>\
-&#x20;  \<h3>${esc(p.title)}\</h3>\
-&#x20;  \<p>${esc(p.about)}\</p>\
-&#x20;  \<ul>${p.features.map(f => \`\<li>${esc(f)}\</li>\`).join("")}\</ul>\
-&#x20;  \<div class="acts">\
-&#x20;   \<a class="btn" href="${esc(p.url)}" target="\_blank" rel="noopener noreferrer">افتح موقع البرنامج\</a>\
-&#x20;   \<button class="btn alt" data-req="${esc(p.title)}">اطلب نسخة\</button>\
-&#x20;  \</div>\
-&#x20; \</article>\`).join("");\
-}\
-$("#chips").addEventListener("click", e => {\
-&#x20;const b = e.target.closest("[data-c]"); if(!b) return;\
-&#x20;active = b.dataset.c; renderChips(); renderGrid();\
-});\
-$("#grid").addEventListener("click", e => {\
-&#x20;const b = e.target.closest("[data-req]"); if(!b) return;\
-&#x20;$("#service").value = b.dataset.req;\
-&#x20;$("#contact").scrollIntoView({behavior:"smooth"});\
-&#x20;setTimeout(() => $("#name").focus({preventScroll:true}), 400);\
-});\
-renderChips(); renderGrid();\
-\
-// قائمة الخدمات في الفورم\
-$("#service").innerHTML = [...PROJECTS.map(p => p.title),\
-&#x20;"برنامج محاسبة","موقع أو صفحة هبوط","حاجة تانية"].map(s => \`\<option>${esc(s)}\</option>\`).join("");\
-\
-// الإرسال على واتساب\
-function waLink(text){ return \`https\://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}\`; }\
-$("#wa").href = waLink("السلام عليكم يا أحمد، شفت موقعك وعاوز أستفسر.");\
-$("#form").addEventListener("submit", e => {\
-&#x20;e.preventDefault();\
-&#x20;const name = $("#name").value.trim();\
-&#x20;const phone = $("#phone").value.replace(/[\s-]/g,"");\
-&#x20;let ok = true;\
-&#x20;$("#e-name").textContent = ""; $("#e-phone").textContent = "";\
-&#x20;if(name.length < 2){ $("#e-name").textContent = "اكتب اسمك من فضلك."; ok = false; }\
-&#x20;if(!/^(\\+?20|0)?1[0125]\d{8}$/.test(phone) && !/^\\+?\d{8,15}$/.test(phone)){\
-&#x20; $("#e-phone").textContent = "اكتب رقم موبايل صحيح، مثلًا 010987654321."; ok = false;\
-&#x20;}\
-&#x20;if(!ok) return;\
-&#x20;const lines = [\
-&#x20; "السلام عليكم يا أحمد 👋",\
-&#x20; "الاسم: " + name,\
-&#x20; "الموبايل: " + phone,\
-&#x20; "محتاج: " + $("#service").value\
-&#x20;];\
-&#x20;if($("#when").value.trim()) lines.push("أنسب وقت: " + $("#when").value.trim());\
-&#x20;if($("#msg").value.trim()) lines.push("التفاصيل: " + $("#msg").value.trim());\
-&#x20;lines.push("(الرسالة من موقعك)");\
-&#x20;window\.open(waLink(lines.join("\n")), "\_blank", "noopener");\
-});\
-\
-// الوضع الفاتح والغامق\
-const root = document.documentElement;\
-try{ const t = localStorage.getItem("theme"); if(t) root.dataset.theme = t; }catch(\_){}\
-$("#theme").addEventListener("click", () => {\
-&#x20;const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme:dark)").matches;\
-&#x20;root.dataset.theme = dark ? "light" : "dark";\
-&#x20;try{ localStorage.setItem("theme", root.dataset.theme); }catch(\_){}\
-});\
-$("#yr").textContent = new Date().getFullYear();\
-\</script>\
-\</body>\
-\</html>\
-&#x20;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>أحمد الزناتي</title>
+  <meta name="description" content="أحمد الزناتي مطور برمجيات. برامج محاسبة، أنظمة إدارة عيادات، كاشير، وحضور وانصراف ببصمة الوجه. جرّب كل برنامج من موقعه.">
+  <meta property="og:title" content="أحمد الزناتي | مطور تطبيقات سطح المكتب">
+  <meta property="og:description" content="أنظمة محاسبة وعيادات وكاشير وحضور وانصراف. جرّب كل برنامج بنفسك.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F4F7F9;
+      --ink: #10283D;
+      --muted: #51657A;
+      --line: #D5DEE6;
+      --card: #fff;
+      --acc: #0B7F72;
+      --acc-ink: #fff;
+      --hi: #F0B44C;
+      color-scheme: light;
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0C1822;
+      --ink: #E6EEF4;
+      --muted: #9FB3C4;
+      --line: #243847;
+      --card: #12212D;
+      --acc: #3FC1AE;
+      --acc-ink: #06201C;
+      --hi: #F0B44C;
+      color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0C1822;
+        --ink: #E6EEF4;
+        --muted: #9FB3C4;
+        --line: #243847;
+        --card: #12212D;
+        --acc: #3FC1AE;
+        --acc-ink: #06201C;
+        color-scheme: dark;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 17px/1.8 "IBM Plex Sans Arabic", Tahoma, sans-serif;
+    }
+
+    h1, h2, h3 {
+      font-family: "Readex Pro", "IBM Plex Sans Arabic", Tahoma, sans-serif;
+      line-height: 1.35;
+    }
+
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    :focus-visible { outline: 3px solid var(--hi); outline-offset: 2px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    header .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
+    .logo { font: 700 18px "Readex Pro", sans-serif; text-decoration: none; margin-inline-end: auto; }
+    nav { display: flex; gap: 18px; font-size: 15px; }
+    nav a { text-decoration: none; color: var(--muted); }
+    nav a:hover { color: var(--ink); }
+
+    .icon-btn {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 22px;
+      font: 600 16px "IBM Plex Sans Arabic", sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      background: var(--acc);
+      color: var(--acc-ink);
+    }
+
+    .btn.alt { background: none; color: var(--ink); border: 1.5px solid var(--ink); }
+    .btn:hover { filter: brightness(1.08); }
+    section { padding: 64px 0; }
+    h2 { font-size: clamp(24px, 4vw, 34px); margin-bottom: 8px; }
+    .lead { color: var(--muted); max-width: 60ch; margin-bottom: 28px; }
+
+    /* Hero */
+    .hero { padding: 56px 0 48px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
+    h1 { font-size: clamp(30px, 5.2vw, 52px); margin-bottom: 16px; }
+    .hero p { color: var(--muted); max-width: 52ch; margin-bottom: 26px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .ledger {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--acc);
+      border-radius: 4px 4px 14px 14px;
+      padding: 22px 22px 14px;
+    }
+
+    .ledger h3 { font-size: 16px; color: var(--muted); font-weight: 500; margin-bottom: 10px; text-align: center; }
+    .ledger a { display: flex; align-items: baseline; gap: 8px; text-decoration: none; padding: 9px 0; }
+    .ledger a span:first-child { font-weight: 600; }
+    .ledger i { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-4px); }
+    .ledger em { font-style: normal; color: var(--acc); font-weight: 600; font-size: 14px; }
+    .ledger a:hover span:first-child { color: var(--acc); }
+    .ledger footer { border-top: 2px solid var(--ink); margin-top: 8px; padding-top: 10px; display: flex; justify-content: space-between; font-weight: 600; }
+
+    /* Projects */
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .chip { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 99px; padding: 5px 16px; font: 500 15px "IBM Plex Sans Arabic", sans-serif; cursor: pointer; }
+    .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .card .tag { font-size: 14px; color: var(--acc); font-weight: 600; }
+    .card h3 { font-size: 21px; }
+    .card p { color: var(--muted); font-size: 16px; }
+    .card ul { padding-inline-start: 20px; font-size: 16px; }
+    .card li::marker { color: var(--acc); }
+    .card .acts { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; padding-top: 8px; }
+    .card .btn { padding: 9px 16px; font-size: 15px; }
+
+    /* Services */
+    .svc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); }
+    .svc div { padding: 20px 22px; border-inline-start: 1px solid var(--line); }
+    .svc div:first-child { border-inline-start: 0; }
+    .svc b { display: block; font-family: "Readex Pro", sans-serif; margin-bottom: 4px; }
+    .svc span { color: var(--muted); font-size: 15px; }
+
+    /* Video and contact */
+    .yt { background: var(--ink); color: var(--bg); border-radius: 14px; padding: 32px; display: flex; gap: 24px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .yt p { opacity: .8; max-width: 46ch; }
+    .yt .btn { background: var(--hi); color: #2a1a00; }
+
+    form { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .full { grid-column: 1 / -1; }
+    label { display: block; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+    input, select, textarea { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+    input[type="tel"] { direction: ltr; text-align: right; }
+    textarea { min-height: 110px; resize: vertical; }
+    .err { color: #C0392B; font-size: 14px; min-height: 20px; }
+    :root[data-theme="dark"] .err { color: #FF8A7A; }
+    .note { color: var(--muted); font-size: 14px; }
+    footer.site { border-top: 1px solid var(--line); padding: 26px 0; color: var(--muted); font-size: 15px; }
+    footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    .wa {
+      position: fixed;
+      inset-inline-start: 18px;
+      bottom: 18px;
+      background: #25D366;
+      color: #073b1b;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      font: 700 13px "Readex Pro", sans-serif;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+    }
+
+    @media (max-width: 760px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      nav { display: none; }
+      form { grid-template-columns: 1fr; }
+      .svc div { border-inline-start: 0; border-top: 1px solid var(--line); }
+      .svc div:first-child { border-top: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="logo" href="#top">أحمد الزناتي</a>
+      <nav aria-label="التنقل">
+        <a href="#projects">أعمالي</a>
+        <a href="#services">الخدمات</a>
+        <a href="#videos">الفيديوهات</a>
+        <a href="#contact">كلمني</a>
+      </nav>
+      <button class="icon-btn" id="theme" aria-label="تغيير الوضع بين فاتح وغامق">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <h1>برامج بتظبّط شغلك: حسابات وعيادات وكاشير وحضور وانصراف</h1>
+          <p>أنا أحمد الزناتي، مطور برمجيات. بعمل أنظمة بسيطة وسريعة تمشي مع شغلك اليومي، وكل برنامج ليه موقعه تدخله وتجرّبه بنفسك قبل ما تقرر.</p>
+          <div class="cta">
+            <a class="btn" href="#projects">شوف شغلي</a>
+            <a class="btn alt" href="#contact">احجز مكالمة</a>
+          </div>
+        </div>
+        <aside class="ledger" aria-label="ملخص الأنظمة">
+          <h3>دفتر الأنظمة الشغّالة</h3>
+          <div id="ledger"></div>
+          <footer><span>الإجمالي</span><span id="count"></span></footer>
+        </aside>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <h2>أعمالي</h2>
+        <p class="lead">اختار أي برنامج واضغط «افتح موقع البرنامج» تشوفه شغّال. ولو عجبك، اطلب نسخة أو عرض سعر.</p>
+        <div class="chips" id="chips" role="group" aria-label="تصفية حسب النوع"></div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <h2>أقدر أعملك إيه</h2>
+        <p class="lead">لو شغلك محتاج برنامج مخصوص، قولّي المشكلة وأنا أظبطها.</p>
+        <div class="svc">
+          <div><b>برامج المحاسبة</b><span>فواتير، مصروفات، عملاء وموردين، وتقارير واضحة.</span></div>
+          <div><b>إدارة العيادات</b><span>مواعيد، ملفات مرضى، علاج وحسابات.</span></div>
+          <div><b>كاشير ومخازن</b><span>بيع سريع ومتابعة للمخزون والمبيعات.</span></div>
+          <div><b>حضور وانصراف</b><span>تسجيل ببصمة الوجه وتقارير للموظفين.</span></div>
+          <div><b>مواقع وصفحات هبوط</b><span>صفحة تعرّف بشغلك وتجيب لك عملاء.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="wrap">
+        <div class="yt">
+          <div>
+            <h2>شروحات وتجارب على اليوتيوب</h2>
+            <p>على القناة هتلاقي شرح للبرامج وتجارب فعلية. اشترك عشان توصلك الفيديوهات الجديدة.</p>
+          </div>
+          <a class="btn" href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener noreferrer">افتح القناة</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>احجز مكالمة أو اطلب عرض سعر</h2>
+        <p class="lead">املا البيانات واضغط إرسال، هيتفتحلك واتساب والرسالة جاهزة تتبعتلي.</p>
+        <form id="form" novalidate>
+          <div>
+            <label for="name">اسمك</label>
+            <input id="name" autocomplete="name" required>
+            <div class="err" id="e-name"></div>
+          </div>
+          <div>
+            <label for="phone">رقم موبايلك</label>
+            <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required>
+            <div class="err" id="e-phone"></div>
+          </div>
+          <div>
+            <label for="service">محتاج إيه</label>
+            <select id="service"></select>
+          </div>
+          <div>
+            <label for="when">أنسب وقت أكلمك فيه</label>
+            <input id="when" placeholder="مثلًا: بكرة بعد العصر">
+          </div>
+          <div class="full">
+            <label for="msg">تفاصيل (اختياري)</label>
+            <textarea id="msg" placeholder="احكيلي باختصار شغلك محتاج إيه"></textarea>
+          </div>
+          <div class="full">
+            <button class="btn" type="submit">إرسال على واتساب</button>
+            <p class="note" style="margin-top: 8px">بياناتك بتتبعت لي أنا بس على واتساب، ومش بتتحفظ في أي مكان.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>© <span id="yr"></span> أحمد الزناتي - مطور برمجيات</span>
+      <a href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener noreferrer">قناة اليوتيوب</a>
+    </div>
+  </footer>
+
+  <a class="wa" id="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="كلمني على واتساب">واتس</a>
+
+  <script>
+    /* ====== عدّل هنا ====== */
+    // رقم الواتساب بالصيغة الدولية بدون + وبدون أصفار في الأول. مثال: 201012345678
+    const WHATSAPP = "201064404721";
+    const BASE = "https://a7zanati.github.io/";
+
+    // لإضافة مشروع جديد: انسخ عنصر وضيفه في القائمة دي، وهيظهر لوحده.
+    const PROJECTS = [
+      {
+        id: "dental",
+        title: "مدير عيادة الأسنان",
+        cat: "عيادات",
+        about: "نظام لإدارة عيادة الأسنان: المواعيد وملفات المرضى والعلاج والحسابات في مكان واحد.",
+        features: ["حجز المواعيد ومتابعتها", "ملف لكل مريض وخطة علاج", "فواتير وحسابات العيادة"],
+        url: BASE + "dental-clinic-manager/"
+      },
+      {
+        id: "pos",
+        title: "نظام الكاشير ونقاط البيع",
+        cat: "كاشير ومحاسبة",
+        about: "كاشير سريع للمحلات: بيع وفواتير ومخزن وتقارير من غير تعقيد.",
+        features: ["فاتورة في ثواني", "متابعة المخزون", "تقارير يومية وشهرية"],
+        url: BASE + "pos-landing/"
+      },
+      {
+        id: "face",
+        title: "نظام الحضور بالوش",
+        cat: "حضور وانصراف",
+        about: "نظام بيسجّل حضور وانصراف الموظفين ببصمة الوجه، من غير كروت ولا تلاعب.",
+        features: ["تسجيل الحضور بالوش", "تقارير التأخير والغياب", "مفيش كارت يتنسي أو يتبصم عنه حد"],
+        url: BASE + "Face-Attendance-System/"
+      },
+      {
+        id: "volume",
+        title: "Volume Higher",
+        cat: "أدوات",
+        about: "أداة ويب بسيطة وسريعة. افتح الموقع وجرّبها بنفسك.", // عدّل الوصف ده بوصف البرنامج الحقيقي
+        features: ["بتشتغل من المتصفح مباشرة", "خفيفة وسهلة الاستخدام", "مجانية للتجربة"],
+        url: BASE + "volume-higher/"
+      }
+    ];
+    /* ====================== */
+
+    const $ = (selector) => document.querySelector(selector);
+    const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char]));
+
+    // دفتر الأنظمة
+    $("#ledger").innerHTML = PROJECTS.map((project) =>
+      `<a href="#p-${project.id}"><span>${esc(project.title)}</span><i></i><em>شغّال</em></a>`
+    ).join("");
+    $("#count").textContent = PROJECTS.length + " أنظمة";
+
+    // الكروت والتصفية
+    const cats = ["الكل", ...new Set(PROJECTS.map((project) => project.cat))];
+    let active = "الكل";
+
+    function renderChips() {
+      $("#chips").innerHTML = cats.map((category) =>
+        `<button class="chip" aria-pressed="${category === active}" data-c="${esc(category)}">${esc(category)}</button>`
+      ).join("");
+    }
+
+    function renderGrid() {
+      $("#grid").innerHTML = PROJECTS
+        .filter((project) => active === "الكل" || project.cat === active)
+        .map((project) => `
+          <article class="card" id="p-${project.id}">
+            <span class="tag">${esc(project.cat)}</span>
+            <h3>${esc(project.title)}</h3>
+            <p>${esc(project.about)}</p>
+            <ul>${project.features.map((feature) => `<li>${esc(feature)}</li>`).join("")}</ul>
+            <div class="acts">
+              <a class="btn" href="${esc(project.url)}" target="_blank" rel="noopener noreferrer">افتح موقع البرنامج</a>
+              <button class="btn alt" data-req="${esc(project.title)}">اطلب نسخة</button>
+            </div>
+          </article>
+        `).join("");
+    }
+
+    $("#chips").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-c]");
+      if (!button) return;
+      active = button.dataset.c;
+      renderChips();
+      renderGrid();
+    });
+
+    $("#grid").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-req]");
+      if (!button) return;
+      $("#service").value = button.dataset.req;
+      $("#contact").scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => $("#name").focus({ preventScroll: true }), 400);
+    });
+
+    renderChips();
+    renderGrid();
+
+    // قائمة الخدمات في الفورم
+    $("#service").innerHTML = [...PROJECTS.map((project) => project.title),
+      "برنامج محاسبة", "موقع أو صفحة هبوط", "حاجة تانية"
+    ].map((service) => `<option>${esc(service)}</option>`).join("");
+
+    // الإرسال على واتساب
+    function waLink(message) {
+      return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+    }
+
+    $("#wa").href = waLink("السلام عليكم يا أحمد، شفت موقعك وعاوز أستفسر.");
+
+    $("#form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = $("#name").value.trim();
+      const phone = $("#phone").value.replace(/[\s-]/g, "");
+      let ok = true;
+
+      $("#e-name").textContent = "";
+      $("#e-phone").textContent = "";
+
+      if (name.length < 2) {
+        $("#e-name").textContent = "اكتب اسمك من فضلك.";
+        ok = false;
+      }
+
+      if (!/^(\+?20|0)?1[0125]\d{8}$/.test(phone) && !/^\+?\d{8,15}$/.test(phone)) {
+        $("#e-phone").textContent = "اكتب رقم موبايل صحيح، مثلًا 010987654321.";
+        ok = false;
+      }
+
+      if (!ok) return;
+
+      const lines = [
+        "السلام عليكم يا أحمد 👋",
+        "الاسم: " + name,
+        "الموبايل: " + phone,
+        "محتاج: " + $("#service").value
+      ];
+
+      if ($("#when").value.trim()) lines.push("أنسب وقت: " + $("#when").value.trim());
+      if ($("#msg").value.trim()) lines.push("التفاصيل: " + $("#msg").value.trim());
+      lines.push("(الرسالة من موقعك)");
+
+      window.open(waLink(lines.join("\n")), "_blank", "noopener");
+    });
+
+    // الوضع الفاتح والغامق
+    const root = document.documentElement;
+
+    try {
+      const theme = localStorage.getItem("theme");
+      if (theme) root.dataset.theme = theme;
+    } catch (_) {}
+
+    $("#theme").addEventListener("click", () => {
+      const dark = root.dataset.theme
+        ? root.dataset.theme === "dark"
+        : matchMedia("(prefers-color-scheme: dark)").matches;
+      root.dataset.theme = dark ? "light" : "dark";
+      try {
+        localStorage.setItem("theme", root.dataset.theme);
+      } catch (_) {}
+    });
+
+    $("#yr").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
