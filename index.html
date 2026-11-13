@@ -49,19 +49,53 @@ h1{font-size:clamp(30px,5.2vw,52px);margin-bottom:16px}
 .ledger em{font-style:normal;color:var(--acc);font-weight:600;font-size:14px}
 .ledger a:hover span:first-child{color:var(--acc)}
 .ledger footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:10px;display:flex;justify-content:space-between;font-weight:600}
-/* projects */
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:5px 16px;font:500 15px "IBM Plex Sans Arabic",sans-serif;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px}
-.card .tag{font-size:14px;color:var(--acc);font-weight:600}
-.card h3{font-size:21px}
-.card p{color:var(--muted);font-size:16px}
-.card ul{padding-inline-start:20px;font-size:16px}
-.card li::marker{color:var(--acc)}
-.card .acts{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:8px}
-.card .btn{padding:9px 16px;font-size:15px}
+/* projects */const PROJECTS = [
+  {
+    id: "madrasity",
+    title: "مدرستي – منصة إدارة التعلم",
+    cat: "منصات تعليمية",
+    about: "منصة تعليم إلكتروني متكاملة لإدارة العملية التعليمية، وتنظيم الدورات والدروس والطلاب، مع أدوات لإدارة المحتوى ومتابعة التعلم.",
+    features: [
+      "إدارة الطلاب والدورات والمحتوى التعليمي",
+      "مشغل فيديو تعليمي مع علامة مائية",
+      "لوحة تحكم للإدارة وإدارة الحسابات والصلاحيات",
+      "متابعة المحتوى التعليمي وإصدار الشهادات"
+    ],
+    url: "https://main-bvxea6i-xu25fw54li7um.de-2.platformsh.site/"
+  },
+  {
+    id: "dental",
+    title: "مدير عيادة الأسنان",
+    cat: "عيادات",
+    about: "نظام لإدارة عيادة الأسنان: المواعيد وملفات المرضى والعلاج والحسابات في مكان واحد.",
+    features: ["حجز المواعيد ومتابعتها", "ملف لكل مريض وخطة علاج", "فواتير وحسابات العيادة"],
+    url: BASE + "dental-clinic-manager/"
+  },
+  {
+    id: "pos",
+    title: "نظام الكاشير ونقاط البيع",
+    cat: "كاشير ومحاسبة",
+    about: "كاشير سريع للمحلات: بيع وفواتير ومخزن وتقارير من غير تعقيد.",
+    features: ["فاتورة في ثواني", "متابعة المخزون", "تقارير يومية وشهرية"],
+    url: BASE + "pos-landing/"
+  },
+  {
+    id: "face",
+    title: "نظام الحضور بالوش",
+    cat: "حضور وانصراف",
+    about: "نظام بيسجّل حضور وانصراف الموظفين ببصمة الوجه، من غير كروت ولا تلاعب.",
+    features: ["تسجيل الحضور بالوش", "تقارير التأخير والغياب", "مفيش كارت يتنسي أو يتبصم عنه حد"],
+    url: BASE + "Face-Attendance-System/"
+  },
+  {
+    id: "volume",
+    title: "Volume Higher",
+    cat: "أدوات",
+    about: "أداة ويب بسيطة وسريعة. افتح الموقع وجرّبها بنفسك.",
+    features: ["بتشتغل من المتصفح مباشرة", "خفيفة وسهلة الاستخدام", "مجانية للتجربة"],
+    url: BASE + "volume-higher/"
+  }
+];
 /* services */
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
 .svc div{padding:20px 22px;border-inline-start:1px solid var(--line)}
