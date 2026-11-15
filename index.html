@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F4F7F9;--ink:#10283D;--muted:#51657A;--line:#D5DEE6;--card:#fff;--acc:#0B7F72;--acc-ink:#fff;--hi:#F0B44C;--deep:#0E2A3F;color-scheme:light}
+:root{--bg:#F4F7F9;--ink:#10283D;--muted:#51657A;--line:#D5DEE6;--card:#fff;--acc:#0B7F72;--acc-ink:#fff;--hi:#F0B44C;--deep:#0E2A3F;--ease:cubic-bezier(.2,.8,.2,1);color-scheme:light}
 :root[data-theme="dark"]{--bg:#0C1822;--ink:#E6EEF4;--muted:#9FB3C4;--line:#243847;--card:#12212D;--acc:#3FC1AE;--acc-ink:#06201C;--deep:#081119;color-scheme:dark}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1822;--ink:#E6EEF4;--muted:#9FB3C4;--line:#243847;--card:#12212D;--acc:#3FC1AE;--acc-ink:#06201C;--deep:#081119;color-scheme:dark}}
 *{box-sizing:border-box;margin:0}
@@ -22,25 +22,39 @@ h1,h2,h3{font-family:"Readex Pro","IBM Plex Sans Arabic",Tahoma,sans-serif;line-
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 :focus-visible{outline:3px solid var(--hi);outline-offset:2px}
+.progress{position:fixed;top:0;inset-inline:0;height:3px;background:var(--hi);transform:scaleX(0);transform-origin:right;z-index:50}
 .promo{background:var(--hi);color:#2a1a00;font-size:15px;font-weight:600;text-align:center;padding:7px 44px;position:relative}
 .promo a{text-decoration:underline;margin-inline-start:8px}
 .promo button{position:absolute;inset-inline-end:10px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:20px;cursor:pointer;color:inherit}
-header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);transition:transform .5s var(--ease)}
+header.hide{transform:translateY(-100%)}
 header .wrap{display:flex;align-items:center;gap:16px;height:64px}
 .logo{font:700 18px "Readex Pro",sans-serif;text-decoration:none;margin-inline-end:auto}
 nav{display:flex;gap:18px;font-size:15px}
-nav a{text-decoration:none;color:var(--muted)}
-nav a:hover{color:var(--ink)}
+nav a{text-decoration:none;color:var(--muted);position:relative}
+nav a:after{content:"";position:absolute;inset-inline:0;bottom:2px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+nav a:hover{color:var(--ink)}nav a:hover:after{transform:scaleX(1);transform-origin:left}
 .icon-btn{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;width:38px;height:38px;cursor:pointer;font-size:17px}
-.btn{display:inline-block;border:0;border-radius:8px;padding:11px 22px;font:600 16px "IBM Plex Sans Arabic",sans-serif;cursor:pointer;text-decoration:none;background:var(--acc);color:var(--acc-ink);transition:transform .2s,filter .2s}
+.btn{display:inline-block;border:0;border-radius:8px;padding:11px 22px;font:600 16px "IBM Plex Sans Arabic",sans-serif;cursor:pointer;text-decoration:none;background:var(--acc);color:var(--acc-ink);transition:transform .3s var(--ease),filter .2s}
 .btn.alt{background:none;color:var(--ink);border:1.5px solid var(--ink)}
-.btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
-section{padding:64px 0}
+.btn:hover{filter:brightness(1.08)}
+section{padding:72px 0}
 h2{font-size:clamp(24px,4vw,34px);margin-bottom:8px}
 .lead{color:var(--muted);max-width:60ch;margin-bottom:28px}
 
-/* Hero: مدرسيتي */
-.hero{background:var(--deep);color:#E6EEF4;padding:56px 0;overflow:hidden}
+/* ===== حركة بأسلوب Levo: كشف الكلمات بقناع ===== */
+.m{display:inline-block;overflow:hidden;vertical-align:top;padding-block:.12em;margin-block:-.12em}
+.m>span{display:inline-block;transform:translateY(115%);transition:transform 1s var(--ease) calc(var(--i)*70ms + var(--d,0ms))}
+.in .m>span,.m.in>span{transform:none}
+/* ظهور تدريجي عام */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease) var(--d,0ms),transform .9s var(--ease) var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+/* خط العنوان يترسم */
+.eyebrow{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:15px;margin-bottom:18px}
+.eyebrow:after{content:"";height:1px;width:80px;background:var(--acc);transform:scaleX(0);transform-origin:right;transition:transform 1.2s var(--ease) .2s}
+.eyebrow.in:after{transform:scaleX(1)}
+
+.hero{background:var(--deep);color:#E6EEF4;padding:72px 0 88px;overflow:hidden;position:relative}
 .hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
 .badge{display:inline-block;background:rgba(240,180,76,.16);color:var(--hi);border:1px solid var(--hi);border-radius:99px;padding:2px 14px;font-size:14px;font-weight:600;margin-bottom:14px}
 h1{font-size:clamp(30px,5vw,50px);margin-bottom:16px}
@@ -48,18 +62,18 @@ h1{font-size:clamp(30px,5vw,50px);margin-bottom:16px}
 .hero .btn{background:var(--hi);color:#2a1a00}
 .hero .btn.alt{background:none;color:#E6EEF4;border-color:#E6EEF4}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero .wrap>div:first-child{animation:rise .8s both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.scroll{position:absolute;bottom:18px;inset-inline-start:50%;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:#A9BDCC}
+.scroll i{width:1px;height:34px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+.scroll i:after{content:"";position:absolute;inset-inline:0;top:-50%;height:50%;background:var(--hi);animation:drop 1.8s var(--ease) infinite}
+@keyframes drop{to{top:110%}}
 
-/* لوحة مدرسيتي المتحركة */
-.dash{background:#12212D;border:1px solid #243847;border-radius:14px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.4);animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-10px)}}
+.dash{background:#12212D;border:1px solid #243847;border-radius:14px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.4);transition:transform .3s ease-out;will-change:transform}
 .dash .bar{display:flex;gap:6px;margin-bottom:14px}
 .dash .bar i{width:10px;height:10px;border-radius:50%;background:#2E4657}
 .dash h3{font-size:15px;color:#A9BDCC;font-weight:500;margin-bottom:12px}
 .row{display:grid;grid-template-columns:90px 1fr 38px;gap:10px;align-items:center;font-size:14px;margin-bottom:10px}
 .track{height:8px;background:#1E3342;border-radius:9px;overflow:hidden}
-.fill{height:100%;width:0;background:linear-gradient(90deg,#3FC1AE,#F0B44C);border-radius:9px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#3FC1AE,#F0B44C);border-radius:9px;transition:width 1.8s var(--ease) calc(var(--k)*150ms)}
 .dash.go .fill{width:var(--w)}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
 .kpis div{background:#0C1822;border-radius:10px;padding:10px;text-align:center;font-size:13px;color:#A9BDCC}
@@ -69,20 +83,22 @@ h1{font-size:clamp(30px,5vw,50px);margin-bottom:16px}
 .live:after{content:"";position:absolute;inset:0;border-radius:50%;background:#3FC1AE;animation:ping 1.8s infinite}
 @keyframes ping{to{transform:scale(3.2);opacity:0}}
 
-/* شريط التعريف */
-.intro{padding:28px 0;border-bottom:1px solid var(--line)}
-.intro .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;color:var(--muted)}
-.intro b{color:var(--ink)}
+/* جملة التعريف: الكلمات تنوّر مع السكرول */
+.intro{padding:96px 0;border-bottom:1px solid var(--line)}
+.stmt{font:500 clamp(24px,4.2vw,44px)/1.6 "Readex Pro","IBM Plex Sans Arabic",sans-serif;max-width:24em}
+.stmt .w{opacity:.16;transition:opacity .35s,color .35s}
+.stmt .w.on{opacity:1}
+.stmt .w.k.on{color:var(--acc)}
 
-/* المشاريع */
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:5px 16px;font:500 15px "IBM Plex Sans Arabic",sans-serif;cursor:pointer}
+.chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:5px 16px;font:500 15px "IBM Plex Sans Arabic",sans-serif;cursor:pointer;transition:background .3s,color .3s}
 .chip small{color:var(--muted);margin-inline-start:4px}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip[aria-pressed="true"] small{color:inherit}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--acc);transform:translateY(-3px)}
+.card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .5s var(--ease)}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(63,193,174,.16),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+.card:hover{border-color:var(--acc)}.card:hover:before{opacity:1}
 .card.feat{grid-column:1/-1;border:2px solid var(--hi);background:linear-gradient(135deg,var(--card),rgba(240,180,76,.08))}
 .card .tag{font-size:14px;color:var(--acc);font-weight:600;display:flex;gap:8px;align-items:center}
 .card .new{background:var(--hi);color:#2a1a00;border-radius:99px;padding:0 10px;font-size:13px}
@@ -92,22 +108,25 @@ h1{font-size:clamp(30px,5vw,50px);margin-bottom:16px}
 .card li::marker{color:var(--acc)}
 .card .acts{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:8px}
 .card .btn{padding:9px 16px;font-size:15px}
-.card.show{animation:rise .45s both}
 
-/* الخدمات */
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
-.svc div{padding:20px 22px;border-inline-start:1px solid var(--line)}
+.svc div{padding:20px 22px;border-inline-start:1px solid var(--line);position:relative;overflow:hidden}
 .svc div:first-child{border-inline-start:0}
+.svc div:after{content:"";position:absolute;inset-inline:0;bottom:0;height:3px;background:var(--acc);transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.svc div:hover:after{transform:scaleX(1)}
 .svc b{display:block;font-family:"Readex Pro",sans-serif;margin-bottom:4px}
 .svc span{color:var(--muted);font-size:15px}
 
 .yt{background:var(--deep);color:#E6EEF4;border-radius:14px;padding:32px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .yt p{opacity:.8;max-width:46ch}
 .yt .btn{background:var(--hi);color:#2a1a00}
+.cur{display:inline-block;width:.5em;height:2px;background:var(--acc);margin-inline-start:4px;vertical-align:baseline;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
 form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .full{grid-column:1/-1}
 label{display:block;font-weight:600;font-size:15px;margin-bottom:4px}
-input,select,textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+input,select,textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);transition:border-color .3s,box-shadow .3s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--acc);box-shadow:0 0 0 3px rgba(63,193,174,.25)}
 input[type=tel]{direction:ltr;text-align:right}
 textarea{min-height:110px;resize:vertical}
 .err{color:#C0392B;font-size:14px;min-height:20px}
@@ -115,23 +134,22 @@ textarea{min-height:110px;resize:vertical}
 .note{color:var(--muted);font-size:14px}
 footer.site{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:15px}
 footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.wa{position:fixed;inset-inline-start:18px;bottom:18px;background:#25D366;color:#073b1b;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font:700 13px "Readex Pro",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-
-/* كارت إعلان منزلق */
-.toast{position:fixed;inset-inline-end:18px;bottom:18px;width:min(320px,calc(100vw - 36px));background:var(--card);border:2px solid var(--hi);border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:20;transform:translateY(160%);transition:transform .5s cubic-bezier(.2,.9,.3,1.2)}
+.wa{position:fixed;inset-inline-start:18px;bottom:18px;background:#25D366;color:#073b1b;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font:700 13px "Readex Pro",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .3s var(--ease)}
+.toast{position:fixed;inset-inline-end:18px;bottom:18px;width:min(320px,calc(100vw - 36px));background:var(--card);border:2px solid var(--hi);border-radius:14px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:20;transform:translateY(160%);transition:transform .7s var(--ease)}
 .toast.on{transform:none}
 .toast h3{font-size:17px;margin-bottom:4px}
 .toast p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:10px}
 .toast .btn{padding:8px 16px;font-size:14px}
 .toast button.x{position:absolute;inset-inline-start:8px;top:4px;background:none;border:0;font-size:20px;color:var(--muted);cursor:pointer}
 
-@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}nav{display:none}form{grid-template-columns:1fr}.svc div{border-inline-start:0;border-top:1px solid var(--line)}.svc div:first-child{border-top:0}.toast{inset-inline-end:auto;inset-inline-start:18px;bottom:84px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.fill{width:var(--w)}.toast{transform:none}}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.scroll{display:none}nav{display:none}form{grid-template-columns:1fr}.svc div{border-inline-start:0;border-top:1px solid var(--line)}.svc div:first-child{border-top:0}.toast{inset-inline-end:auto;inset-inline-start:18px;bottom:84px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.m>span,.rv{transform:none;opacity:1}.fill{width:var(--w)}.toast{transform:none}.stmt .w{opacity:1}.eyebrow:after{transform:none}}
 </style>
 </head>
 <body>
+<div class="progress" id="prog"></div>
 <div class="promo" id="promo">جديد: منصة «مدرسيتي» لإدارة التعلّم <a href="#madrasity">اعرف أكتر</a><button aria-label="إغلاق الشريط" onclick="this.parentNode.remove()">×</button></div>
-<header>
+<header id="hdr">
   <div class="wrap">
     <a class="logo" href="#top">أحمد الزناتي</a>
     <nav aria-label="التنقل">
@@ -145,71 +163,78 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
   <section class="hero" id="madrasity">
     <div class="wrap">
       <div>
-        <span class="badge">جديد</span>
-        <h1>مدرسيتي: إدارة المدرسة أو السنتر التعليمي من مكان واحد</h1>
-        <p>نظام إدارة تعلّم بيجمع الطلاب والمدرسين والدروس والواجبات والاختبارات ومتابعة المستوى، من غير ورق ومن غير لخبطة.</p>
-        <div class="cta">
-          <a class="btn" id="madLink" href="#" target="_blank" rel="noopener noreferrer">جرّب مدرسيتي الآن</a>
-          <a class="btn alt" href="#contact" data-svc="مدرسيتي - نظام إدارة التعلّم">اطلب عرض سعر</a>
+        <span class="badge rv">جديد</span>
+        <h1 data-split>مدرسيتي: إدارة المدرسة أو السنتر التعليمي من مكان واحد</h1>
+        <p class="rv" style="--d:700ms">نظام إدارة تعلّم بيجمع الطلاب والمدرسين والدروس والواجبات والاختبارات ومتابعة المستوى، من غير ورق ومن غير لخبطة.</p>
+        <div class="cta rv" style="--d:850ms">
+          <a class="btn mag" id="madLink" href="#" target="_blank" rel="noopener noreferrer">جرّب مدرسيتي الآن</a>
+          <a class="btn alt mag" href="#contact" data-svc="مدرسيتي - نظام إدارة التعلّم">اطلب عرض سعر</a>
         </div>
       </div>
-      <div class="dash" id="dash" aria-label="مثال لوحة متابعة الطلاب في مدرسيتي">
+      <div class="dash rv" id="dash" style="--d:400ms" aria-label="مثال لوحة متابعة الطلاب في مدرسيتي">
         <div class="bar"><i></i><i></i><i></i></div>
         <h3><span class="live"></span>تقدم الطلاب هذا الأسبوع</h3>
-        <div class="row"><span>الرياضيات</span><div class="track"><div class="fill" style="--w:86%"></div></div><span>86%</span></div>
-        <div class="row"><span>العلوم</span><div class="track"><div class="fill" style="--w:72%"></div></div><span>72%</span></div>
-        <div class="row"><span>اللغة العربية</span><div class="track"><div class="fill" style="--w:94%"></div></div><span>94%</span></div>
-        <div class="row"><span>الإنجليزي</span><div class="track"><div class="fill" style="--w:63%"></div></div><span>63%</span></div>
+        <div class="row"><span>الرياضيات</span><div class="track"><div class="fill" style="--w:86%;--k:0"></div></div><span>86%</span></div>
+        <div class="row"><span>العلوم</span><div class="track"><div class="fill" style="--w:72%;--k:1"></div></div><span>72%</span></div>
+        <div class="row"><span>اللغة العربية</span><div class="track"><div class="fill" style="--w:94%;--k:2"></div></div><span>94%</span></div>
+        <div class="row"><span>الإنجليزي</span><div class="track"><div class="fill" style="--w:63%;--k:3"></div></div><span>63%</span></div>
         <div class="kpis"><div><b data-n="120">0</b>طالب</div><div><b data-n="18">0</b>مدرس</div><div><b data-n="45">0</b>اختبار</div></div>
       </div>
     </div>
+    <div class="scroll" aria-hidden="true"><i></i>اسحب</div>
   </section>
 
-  <div class="intro"><div class="wrap"><span>أنا <b>أحمد الزناتي</b>، مطور برمجيات. بعمل أنظمة تعلمية وبرامج تجارية كاشير و ادارة نقاط بيع
+  <div class="intro"><div class="wrap">
+    <div class="eyebrow rv">نبذة</div>
+    <p class="stmt" id="stmt" data-text=" *أحمد* *الزناتي*، مطور برمجيات. بعمل *أنظمة* *تعليمية* وبرامج *كاشير* و*نقاط* *بيع* و*محاسبة* و*حضور* ببصمة الوجه، *بسيطة* وسريعة و*بتخدم* شغلك فعلًا."></p>
+  </div></div>
+
   <section id="projects">
     <div class="wrap">
-      <h2>أعمالي</h2>
-      <p class="lead">اختار من التصنيف البرنامج او المنصة الى محتاج تشوفها. كل منتج له موقع فيه تفاصيل اكتر عن المشروع.</p>
-      <div class="chips" id="chips" role="group" aria-label="تصفية حسب النوع"></div>
+      <div class="eyebrow rv">أعمالي</div>
+      <h2 data-split>أعمالي</h2>
+      <p class="lead rv">اختار من التصنيف البرنامج أو المنصة اللي محتاج تشوفها. كل منتج له موقع فيه تفاصيل أكتر عن المشروع.</p>
+      <div class="chips rv" id="chips" role="group" aria-label="تصفية حسب النوع"></div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
 
   <section id="services" style="padding-top:0">
     <div class="wrap">
-      <h2>أقدر أعملك إيه</h2>
-      <p class="lead">لو شغلك محتاج برنامج مخصوص،اكتب تفاصيلك فى فورم الاتصال.</p>
+      <div class="eyebrow rv">الخدمات</div>
+      <h2 data-split>أقدر أعملك إيه</h2>
+      <p class="lead rv">لو شغلك محتاج برنامج مخصوص، اكتب تفاصيلك في فورم الاتصال.</p>
       <div class="svc">
-        <div><b>منصات تعليمية</b><span>إدارة طلاب ومدرسين ودروس واختبارات.</span></div>
-        <div><b>برامج المحاسبة</b><span>فواتير ومصروفات وتقارير واضحة.</span></div>
-        <div><b>إدارة العيادات</b><span>مواعيد وملفات مرضى وحسابات.</span></div>
-        <div><b>كاشير ومخازن</b><span>بيع سريع ومتابعة للمخزون.</span></div>
-        <div><b>حضور وانصراف</b><span>تسجيل ببصمة الوجه وتقارير.</span></div>
-        <div><b>مواقع وصفحات هبوط</b><span>صفحة لعرض منتجاتك وتزيد من ثقة عملائك</span></div>
+        <div class="rv"><b>منصات تعليمية</b><span>إدارة طلاب ومدرسين ودروس واختبارات.</span></div>
+        <div class="rv" style="--d:80ms"><b>برامج المحاسبة</b><span>فواتير ومصروفات وتقارير واضحة.</span></div>
+        <div class="rv" style="--d:160ms"><b>إدارة العيادات</b><span>مواعيد وملفات مرضى وحسابات.</span></div>
+        <div class="rv" style="--d:240ms"><b>كاشير ومخازن</b><span>بيع سريع ومتابعة للمخزون.</span></div>
+        <div class="rv" style="--d:320ms"><b>حضور وانصراف</b><span>تسجيل ببصمة الوجه وتقارير.</span></div>
+        <div class="rv" style="--d:400ms"><b>مواقع وصفحات هبوط</b><span>صفحة لعرض منتجاتك وتزيد من ثقة عملائك</span></div>
       </div>
     </div>
   </section>
 
   <section id="videos" style="padding-top:0">
     <div class="wrap">
-      <div class="yt">
+      <div class="yt rv">
         <div><h2>شروحات وتجارب على اليوتيوب</h2><p>على القناة هتلاقي شرح للبرامج وتجارب فعلية. اشترك عشان توصلك الفيديوهات الجديدة.</p></div>
-        <a class="btn" href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener noreferrer">افتح القناة</a>
+        <a class="btn mag" href="https://www.youtube.com/@a7zanati" target="_blank" rel="noopener noreferrer">افتح القناة</a>
       </div>
     </div>
   </section>
 
   <section id="contact" style="padding-top:0">
     <div class="wrap">
-      <h2>احجز مكالمة أو اطلب عرض سعر</h2>
-      <p class="lead">املا البيانات واضغط إرسال، هيتفتحلك واتساب والرسالة جاهزة تتبعتلي.</p>
-      <form id="form" novalidate>
+      <h2 class="rv">احجز مكالمة أو اطلب عرض سعر<i class="cur" aria-hidden="true"></i></h2>
+      <p class="lead rv">املا البيانات واضغط إرسال، هيتفتحلك واتساب والرسالة جاهزة تتبعتلي.</p>
+      <form id="form" class="rv" novalidate>
         <div><label for="name">اسمك</label><input id="name" autocomplete="name" required><div class="err" id="e-name"></div></div>
         <div><label for="phone">رقم موبايلك</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" required><div class="err" id="e-phone"></div></div>
         <div><label for="service">محتاج إيه</label><select id="service"></select></div>
         <div><label for="when">أنسب وقت أكلمك فيه</label><input id="when" placeholder="مثلًا: بكرة بعد العصر"></div>
         <div class="full"><label for="msg">تفاصيل (اختياري)</label><textarea id="msg" placeholder="احكيلي باختصار شغلك محتاج إيه"></textarea></div>
-        <div class="full"><button class="btn" type="submit">إرسال على واتساب</button><p class="note" style="margin-top:8px">بياناتك بتتبعت لي أنا بس على واتساب، ومش بتتحفظ في أي مكان.</p></div>
+        <div class="full"><button class="btn mag" type="submit">إرسال على واتساب</button><p class="note" style="margin-top:8px">بياناتك بتتبعت لي أنا بس على واتساب، ومش بتتحفظ في أي مكان.</p></div>
       </form>
     </div>
   </section>
@@ -224,7 +249,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
   <a class="btn" id="toastGo" href="#" target="_blank" rel="noopener noreferrer">افتح المنصة</a>
 </aside>
 
-<a class="wa" id="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="كلمني على واتساب">واتس</a>
+<a class="wa mag" id="wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="كلمني على واتساب">واتس</a>
 
 <script>
 /* ====== عدّل هنا ====== */
@@ -235,7 +260,7 @@ const MADRASITY = "https://main-bvxea6i-xu25fw54li7um.de-2.platformsh.site/";
 // لإضافة مشروع جديد: انسخ عنصر وضيفه. featured:true بيخليه كارت كبير فوق.
 const PROJECTS = [
   {id:"madrasity",title:"مدرسيتي — نظام إدارة التعلّم",cat:"منصات تعليمية",isNew:true,featured:true,
-   about:"منصة متكاملة لإدارة المدرسة أو السنتر: الطلاب والمدرسين والدروس والواجبات والاختبارات ومتابعة المستوى.", // عدّل الوصف والمميزات بما يطابق المنصة
+   about:"منصة متكاملة لإدارة المدرسة أو السنتر: الطلاب والمدرسين والدروس والواجبات والاختبارات ومتابعة المستوى.",
    features:["إدارة الطلاب والمدرسين والفصول","دروس وواجبات واختبارات إلكترونية","متابعة تقدم كل طالب وتقارير"],url:MADRASITY},
   {id:"dental",title:"مدير عيادة الأسنان",cat:"عيادات",
    about:"نظام لإدارة عيادة الأسنان: المواعيد وملفات المرضى والعلاج والحسابات في مكان واحد.",
@@ -255,10 +280,31 @@ const PROJECTS = [
 const $=s=>document.querySelector(s);
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const waLink=m=>`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`;
-
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
 $("#madLink").href=MADRASITY;$("#toastGo").href=MADRASITY;
 
-// المشاريع والتصفية
+/* ---- كشف العناصر عند الظهور ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15,rootMargin:"0px 0px -6% 0px"});
+const watch=root=>(root||document).querySelectorAll(".rv:not(.in),.eyebrow:not(.in),[data-split]:not(.in)").forEach(el=>io.observe(el));
+
+/* ---- تقسيم العناوين لكلمات بقناع ---- */
+document.querySelectorAll("[data-split]").forEach(el=>{
+  el.setAttribute("aria-label",el.textContent);
+  el.innerHTML=el.textContent.trim().split(/\s+/).map((w,i)=>`<span class="m" aria-hidden="true" style="--i:${i}"><span>${esc(w)}</span></span>`).join(" ");
+});
+
+/* ---- جملة التعريف: الكلمات تنوّر مع السكرول ---- */
+const stmt=$("#stmt");
+stmt.innerHTML=stmt.dataset.text.split(" ").map(w=>{const k=w.startsWith("*");return `<span class="w${k?" k":""}">${esc(w.replace(/\*/g,""))}</span>`}).join(" ");
+const words=[...stmt.children];
+function lightWords(){
+  const r=stmt.getBoundingClientRect(),vh=innerHeight;
+  const p=reduce?1:Math.min(1,Math.max(0,(vh*.85-r.top)/(r.height+vh*.35)));
+  const n=Math.round(p*words.length);
+  words.forEach((w,i)=>w.classList.toggle("on",i<n));
+}
+
+/* ---- المشاريع والتصفية ---- */
 const cats=["الكل",...new Set(PROJECTS.map(p=>p.cat))];
 let active="الكل";
 const countOf=c=>c==="الكل"?PROJECTS.length:PROJECTS.filter(p=>p.cat===c).length;
@@ -266,12 +312,13 @@ function renderChips(){$("#chips").innerHTML=cats.map(c=>`<button class="chip" a
 function renderGrid(){
   const list=PROJECTS.filter(p=>active==="الكل"||p.cat===active).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
   $("#grid").innerHTML=list.map((p,i)=>`
-    <article class="card show${p.featured?" feat":""}" id="p-${p.id}" style="animation-delay:${i*70}ms">
+    <article class="card rv${p.featured?" feat":""}" id="p-${p.id}" style="--d:${i*90}ms">
       <span class="tag">${esc(p.cat)}${p.isNew?'<span class="new">جديد</span>':""}</span>
       <h3>${esc(p.title)}</h3><p>${esc(p.about)}</p>
       <ul>${p.features.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>
       <div class="acts"><a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">افتح موقع البرنامج</a><button class="btn alt" data-req="${esc(p.title)}">اطلب نسخة</button></div>
     </article>`).join("");
+  watch($("#grid"));
 }
 $("#chips").addEventListener("click",e=>{const b=e.target.closest("[data-c]");if(!b)return;active=b.dataset.c;renderChips();renderGrid()});
 function goContact(v){$("#service").value=v;$("#contact").scrollIntoView({behavior:"smooth"});setTimeout(()=>$("#name").focus({preventScroll:true}),400)}
@@ -279,10 +326,17 @@ $("#grid").addEventListener("click",e=>{const b=e.target.closest("[data-req]");i
 document.querySelector("[data-svc]").addEventListener("click",e=>{e.preventDefault();goContact(e.currentTarget.dataset.svc)});
 renderChips();renderGrid();
 
-// قائمة الخدمات
-$("#service").innerHTML=[...PROJECTS.map(p=>p.title),"برنامج محاسبة","موقع أو صفحة هبوط","حاجة تانية"].map(s=>`<option>${esc(s)}</option>`).join("");
+/* ---- إضاءة تتبع الماوس على الكروت ---- */
+$("#grid").addEventListener("pointermove",e=>{const c=e.target.closest(".card");if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")});
 
-// واتساب
+/* ---- أزرار مغناطيسية خفيفة ---- */
+if(!reduce&&matchMedia("(hover:hover)").matches)document.querySelectorAll(".mag").forEach(b=>{
+  b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28}px)`});
+  b.addEventListener("pointerleave",()=>b.style.transform="");
+});
+
+/* ---- قائمة الخدمات + واتساب ---- */
+$("#service").innerHTML=[...PROJECTS.map(p=>p.title),"برنامج محاسبة","موقع أو صفحة هبوط","حاجة تانية"].map(s=>`<option>${esc(s)}</option>`).join("");
 $("#wa").href=waLink("السلام عليكم يا أحمد، شفت موقعك وعاوز أستفسر.");
 $("#form").addEventListener("submit",e=>{
   e.preventDefault();
@@ -298,20 +352,35 @@ $("#form").addEventListener("submit",e=>{
   window.open(waLink(L.join("\n")),"_blank","noopener");
 });
 
-// حركة لوحة مدرسيتي: الأعمدة تتملي والأرقام تعد
-setTimeout(()=>$("#dash").classList.add("go"),400);
+/* ---- لوحة مدرسيتي: الأعمدة تتملي والأرقام تعد ---- */
+setTimeout(()=>$("#dash").classList.add("go"),900);
 document.querySelectorAll("[data-n]").forEach(el=>{
-  const n=+el.dataset.n,t0=performance.now();
-  (function tick(t){const k=Math.min((t-t0)/1500,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(tick)})(t0);
+  const n=+el.dataset.n;
+  setTimeout(()=>{const t0=performance.now();(function tick(t){const k=Math.min((t-t0)/1600,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(tick)})(t0)},900);
 });
 
-// كارت الإعلان المنزلق (مرة واحدة في الجلسة)
+/* ---- السكرول: شريط التقدم + الهيدر + إضاءة الكلمات + براليكس اللوحة ---- */
+let lastY=scrollY,tick=false;
+function onScroll(){
+  const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+  $("#prog").style.transform=`scaleX(${max>0?y/max:0})`;
+  $("#hdr").classList.toggle("hide",y>260&&y>lastY);
+  lastY=y;
+  lightWords();
+  if(!reduce&&y<innerHeight)$("#dash").style.transform=`translateY(${y*-.06}px)`;
+  tick=false;
+}
+addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+addEventListener("resize",onScroll);
+onScroll();watch();
+
+/* ---- كارت الإعلان (مرة واحدة في الجلسة) ---- */
 let seen=false;try{seen=sessionStorage.getItem("madToast")}catch(_){}
-if(!seen)setTimeout(()=>$("#toast").classList.add("on"),3500);
+if(!seen)setTimeout(()=>$("#toast").classList.add("on"),4500);
 function closeToast(){$("#toast").classList.remove("on");try{sessionStorage.setItem("madToast","1")}catch(_){}}
 $("#toastX").addEventListener("click",closeToast);$("#toastGo").addEventListener("click",closeToast);
 
-// الوضع الفاتح والغامق
+/* ---- الوضع الفاتح والغامق ---- */
 const root=document.documentElement;
 try{const t=localStorage.getItem("theme");if(t)root.dataset.theme=t}catch(_){}
 $("#theme").addEventListener("click",()=>{
